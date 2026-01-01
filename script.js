@@ -1,79 +1,191 @@
 // Available room tiles (will be loaded from images folder)
 const availableTiles = [
     // A-series tiles
-    { id: 'A1a', name: 'A1a', image: 'images/A1a.png', width: 3, height: 3 },
-    { id: 'A1b', name: 'A1b', image: 'images/A1b.png', width: 3, height: 3 },
-    { id: 'A2a', name: 'A2a', image: 'images/A2a.png', width: 3, height: 3 },
-    { id: 'A2b', name: 'A2b', image: 'images/A2b.png', width: 3, height: 3 },
-    { id: 'A3a', name: 'A3a', image: 'images/A3a.png', width: 3, height: 3 },
-    { id: 'A3b', name: 'A3b', image: 'images/A3b.png', width: 3, height: 3 },
-    { id: 'A4a', name: 'A4a', image: 'images/A4a.png', width: 3, height: 3 },
-    { id: 'A4b', name: 'A4b', image: 'images/A4b.png', width: 3, height: 3 },
+    { id: 'A1a', name: 'A1a', image: 'mapsections/A1a.png', width: 3, height: 3 },
+    { id: 'A1b', name: 'A1b', image: 'mapsections/A1b.png', width: 3, height: 3 },
+    { id: 'A2a', name: 'A2a', image: 'mapsections/A2a.png', width: 3, height: 3 },
+    { id: 'A2b', name: 'A2b', image: 'mapsections/A2b.png', width: 3, height: 3 },
+    { id: 'A3a', name: 'A3a', image: 'mapsections/A3a.png', width: 3, height: 3 },
+    { id: 'A3b', name: 'A3b', image: 'mapsections/A3b.png', width: 3, height: 3 },
+    { id: 'A4a', name: 'A4a', image: 'mapsections/A4a.png', width: 3, height: 3 },
+    { id: 'A4b', name: 'A4b', image: 'mapsections/A4b.png', width: 3, height: 3 },
     // B-series tiles
-    { id: 'B1a', name: 'B1a', image: 'images/B1a.png', width: 3, height: 3 },
-    { id: 'B1b', name: 'B1b', image: 'images/B1b.png', width: 3, height: 3 },
-    { id: 'B2a', name: 'B2a', image: 'images/B2a.png', width: 3, height: 3 },
-    { id: 'B2b', name: 'B2b', image: 'images/B2b.png', width: 3, height: 3 },
-    { id: 'B3a', name: 'B3a', image: 'images/B3a.png', width: 3, height: 3 },
-    { id: 'B3b', name: 'B3b', image: 'images/B3b.png', width: 3, height: 3 },
-    { id: 'B4a', name: 'B4a', image: 'images/B4a.png', width: 3, height: 3 },
-    { id: 'B4b', name: 'B4b', image: 'images/B4b.png', width: 3, height: 3 },
+    { id: 'B1a', name: 'B1a', image: 'mapsections/B1a.png', width: 3, height: 3 },
+    { id: 'B1b', name: 'B1b', image: 'mapsections/B1b.png', width: 3, height: 3 },
+    { id: 'B2a', name: 'B2a', image: 'mapsections/B2a.png', width: 3, height: 3 },
+    { id: 'B2b', name: 'B2b', image: 'mapsections/B2b.png', width: 3, height: 3 },
+    { id: 'B3a', name: 'B3a', image: 'mapsections/B3a.png', width: 3, height: 3 },
+    { id: 'B3b', name: 'B3b', image: 'mapsections/B3b.png', width: 3, height: 3 },
+    { id: 'B4a', name: 'B4a', image: 'mapsections/B4a.png', width: 3, height: 3 },
+    { id: 'B4b', name: 'B4b', image: 'mapsections/B4b.png', width: 3, height: 3 },
     // C-series tiles
-    { id: 'C1a', name: 'C1a', image: 'images/C1a.png', width: 3, height: 3 },
-    { id: 'C1b', name: 'C1b', image: 'images/C1b.png', width: 3, height: 3 },
-    { id: 'C2a', name: 'C2a', image: 'images/C2a.png', width: 3, height: 3 },
-    { id: 'C2b', name: 'C2b', image: 'images/C2b.png', width: 3, height: 3 },
+    { id: 'C1a', name: 'C1a', image: 'mapsections/C1a.png', width: 3, height: 3 },
+    { id: 'C1b', name: 'C1b', image: 'mapsections/C1b.png', width: 3, height: 3 },
+    { id: 'C2a', name: 'C2a', image: 'mapsections/C2a.png', width: 3, height: 3 },
+    { id: 'C2b', name: 'C2b', image: 'mapsections/C2b.png', width: 3, height: 3 },
     // D-series tiles
-    { id: 'D1a', name: 'D1a', image: 'images/D1a.png', width: 3, height: 3 },
-    { id: 'D1b', name: 'D1b', image: 'images/D1b.png', width: 3, height: 3 },
-    { id: 'D2a', name: 'D2a', image: 'images/D2a.png', width: 3, height: 3 },
-    { id: 'D2b', name: 'D2b', image: 'images/D2b.png', width: 3, height: 3 },
+    { id: 'D1a', name: 'D1a', image: 'mapsections/D1a.png', width: 3, height: 3 },
+    { id: 'D1b', name: 'D1b', image: 'mapsections/D1b.png', width: 3, height: 3 },
+    { id: 'D2a', name: 'D2a', image: 'mapsections/D2a.png', width: 3, height: 3 },
+    { id: 'D2b', name: 'D2b', image: 'mapsections/D2b.png', width: 3, height: 3 },
     // E-series tiles
-    { id: 'E1a', name: 'E1a', image: 'images/E1a.png', width: 3, height: 3 },
-    { id: 'E1b', name: 'E1b', image: 'images/E1b.png', width: 3, height: 3 },
+    { id: 'E1a', name: 'E1a', image: 'mapsections/E1a.png', width: 3, height: 3 },
+    { id: 'E1b', name: 'E1b', image: 'mapsections/E1b.png', width: 3, height: 3 },
     // F-series tiles
-    { id: 'F1a', name: 'F1a', image: 'images/F1a.png', width: 3, height: 3 },
-    { id: 'F1b', name: 'F1b', image: 'images/F1b.png', width: 3, height: 3 },
+    { id: 'F1a', name: 'F1a', image: 'mapsections/F1a.png', width: 3, height: 3 },
+    { id: 'F1b', name: 'F1b', image: 'mapsections/F1b.png', width: 3, height: 3 },
     // G-series tiles
-    { id: 'G1a', name: 'G1a', image: 'images/G1a.png', width: 3, height: 3 },
-    { id: 'G1b', name: 'G1b', image: 'images/G1b.png', width: 3, height: 3 },
-    { id: 'G2a', name: 'G2a', image: 'images/G2a.png', width: 3, height: 3 },
-    { id: 'G2b', name: 'G2b', image: 'images/G2b.png', width: 3, height: 3 },
+    { id: 'G1a', name: 'G1a', image: 'mapsections/G1a.png', width: 3, height: 3 },
+    { id: 'G1b', name: 'G1b', image: 'mapsections/G1b.png', width: 3, height: 3 },
+    { id: 'G2a', name: 'G2a', image: 'mapsections/G2a.png', width: 3, height: 3 },
+    { id: 'G2b', name: 'G2b', image: 'mapsections/G2b.png', width: 3, height: 3 },
     // H-series tiles
-    { id: 'H1a', name: 'H1a', image: 'images/H1a.png', width: 3, height: 3 },
-    { id: 'H1b', name: 'H1b', image: 'images/H1b.png', width: 3, height: 3 },
-    { id: 'H2a', name: 'H2a', image: 'images/H2a.png', width: 3, height: 3 },
-    { id: 'H2b', name: 'H2b', image: 'images/H2b.png', width: 3, height: 3 },
-    { id: 'H3a', name: 'H3a', image: 'images/H3a.png', width: 3, height: 3 },
-    { id: 'H3b', name: 'H3b', image: 'images/H3b.png', width: 3, height: 3 },
+    { id: 'H1a', name: 'H1a', image: 'mapsections/H1a.png', width: 3, height: 3 },
+    { id: 'H1b', name: 'H1b', image: 'mapsections/H1b.png', width: 3, height: 3 },
+    { id: 'H2a', name: 'H2a', image: 'mapsections/H2a.png', width: 3, height: 3 },
+    { id: 'H2b', name: 'H2b', image: 'mapsections/H2b.png', width: 3, height: 3 },
+    { id: 'H3a', name: 'H3a', image: 'mapsections/H3a.png', width: 3, height: 3 },
+    { id: 'H3b', name: 'H3b', image: 'mapsections/H3b.png', width: 3, height: 3 },
     // I-series tiles
-    { id: 'I1a', name: 'I1a', image: 'images/I1a.png', width: 3, height: 3 },
-    { id: 'I1b', name: 'I1b', image: 'images/I1b.png', width: 3, height: 3 },
-    { id: 'I2a', name: 'I2a', image: 'images/I2a.png', width: 3, height: 3 },
-    { id: 'I2b', name: 'I2b', image: 'images/I2b.png', width: 3, height: 3 },
+    { id: 'I1a', name: 'I1a', image: 'mapsections/I1a.png', width: 3, height: 3 },
+    { id: 'I1b', name: 'I1b', image: 'mapsections/I1b.png', width: 3, height: 3 },
+    { id: 'I2a', name: 'I2a', image: 'mapsections/I2a.png', width: 3, height: 3 },
+    { id: 'I2b', name: 'I2b', image: 'mapsections/I2b.png', width: 3, height: 3 },
     // J-series tiles
-    { id: 'J1a', name: 'J1a', image: 'images/J1a.png', width: 3, height: 3 },
-    { id: 'J1b', name: 'J1b', image: 'images/J1b.png', width: 3, height: 3 },
-    { id: 'J2a', name: 'J2a', image: 'images/J2a.png', width: 3, height: 3 },
-    { id: 'J2b', name: 'J2b', image: 'images/J2b.png', width: 3, height: 3 },
+    { id: 'J1a', name: 'J1a', image: 'mapsections/J1a.png', width: 3, height: 3 },
+    { id: 'J1b', name: 'J1b', image: 'mapsections/J1b.png', width: 3, height: 3 },
+    { id: 'J2a', name: 'J2a', image: 'mapsections/J2a.png', width: 3, height: 3 },
+    { id: 'J2b', name: 'J2b', image: 'mapsections/J2b.png', width: 3, height: 3 },
     // K-series tiles
-    { id: 'K1a', name: 'K1a', image: 'images/K1a.png', width: 3, height: 3 },
-    { id: 'K1b', name: 'K1b', image: 'images/K1b.png', width: 3, height: 3 },
-    { id: 'K2a', name: 'K2a', image: 'images/K2a.png', width: 3, height: 3 },
-    { id: 'K2b', name: 'K2b', image: 'images/K2b.png', width: 3, height: 3 },
+    { id: 'K1a', name: 'K1a', image: 'mapsections/K1a.png', width: 3, height: 3 },
+    { id: 'K1b', name: 'K1b', image: 'mapsections/K1b.png', width: 3, height: 3 },
+    { id: 'K2a', name: 'K2a', image: 'mapsections/K2a.png', width: 3, height: 3 },
+    { id: 'K2b', name: 'K2b', image: 'mapsections/K2b.png', width: 3, height: 3 },
     // L-series tiles
-    { id: 'L1a', name: 'L1a', image: 'images/L1a.png', width: 3, height: 3 },
-    { id: 'L1b', name: 'L1b', image: 'images/L1b.png', width: 3, height: 3 },
-    { id: 'L2a', name: 'L2a', image: 'images/L2a.png', width: 3, height: 3 },
-    { id: 'L2b', name: 'L2b', image: 'images/L2b.png', width: 3, height: 3 },
-    { id: 'L3a', name: 'L3a', image: 'images/L3a.png', width: 3, height: 3 },
-    { id: 'L3b', name: 'L3b', image: 'images/L3b.png', width: 3, height: 3 },
+    { id: 'L1a', name: 'L1a', image: 'mapsections/L1a.png', width: 3, height: 3 },
+    { id: 'L1b', name: 'L1b', image: 'mapsections/L1b.png', width: 3, height: 3 },
+    { id: 'L2a', name: 'L2a', image: 'mapsections/L2a.png', width: 3, height: 3 },
+    { id: 'L2b', name: 'L2b', image: 'mapsections/L2b.png', width: 3, height: 3 },
+    { id: 'L3a', name: 'L3a', image: 'mapsections/L3a.png', width: 3, height: 3 },
+    { id: 'L3b', name: 'L3b', image: 'mapsections/L3b.png', width: 3, height: 3 },
     // M-series tiles
-    { id: 'M1a', name: 'M1a', image: 'images/M1a.png', width: 3, height: 3 },
-    { id: 'M1b', name: 'M1b', image: 'images/M1b.png', width: 3, height: 3 },
+    { id: 'M1a', name: 'M1a', image: 'mapsections/M1a.png', width: 3, height: 3 },
+    { id: 'M1b', name: 'M1b', image: 'mapsections/M1b.png', width: 3, height: 3 },
     // N-series tiles
-    { id: 'N1a', name: 'N1a', image: 'images/N1a.png', width: 3, height: 3 },
-    { id: 'N1b', name: 'N1b', image: 'images/N1b.png', width: 3, height: 3 },
+    { id: 'N1a', name: 'N1a', image: 'mapsections/N1a.png', width: 3, height: 3 },
+    { id: 'N1b', name: 'N1b', image: 'mapsections/N1b.png', width: 3, height: 3 },
+    
+    // === TOKENS & OVERLAYS ===
+    // Special Tokens
+    { id: 'coin', name: 'Coin', image: 'tiles/coin.png', width: 1, height: 1 },
+    { id: 'treasure', name: 'Treasure', image: 'tiles/treasure-tile.png', width: 1, height: 1 },
+    { id: 'entrance', name: 'Entrance', image: 'tiles/entrance.png', width: 1, height: 1 },
+    { id: 'pressure-plate', name: 'Pressure Plate', image: 'tiles/pressure-plate.png', width: 1, height: 1 },
+    
+    // Doors
+    { id: 'stone-door-h', name: 'Stone Door (H)', image: 'tiles/stone-door-horizontal.png', width: 1, height: 1 },
+    { id: 'stone-door-v', name: 'Stone Door (V)', image: 'tiles/stone-door-vertical.png', width: 1, height: 1 },
+    { id: 'wood-door-h', name: 'Wood Door (H)', image: 'tiles/wood-door-horizontal.png', width: 1, height: 1 },
+    { id: 'wood-door-v', name: 'Wood Door (V)', image: 'tiles/wood-door-vertical.png', width: 1, height: 1 },
+    { id: 'open-wood-door-h', name: 'Open Wood Door', image: 'tiles/open-wood-door-horizontal.png', width: 1, height: 1 },
+    
+    // Single-Hex Corridors
+    { id: 'corridor-earth', name: 'Corridor Earth', image: 'tiles/corridor-earth.png', width: 1, height: 1 },
+    { id: 'corridor-manmade', name: 'Corridor Stone', image: 'tiles/corridor-manmade.png', width: 1, height: 1 },
+    { id: 'corridor-natural', name: 'Corridor Natural', image: 'tiles/corridor-natural.png', width: 1, height: 1 },
+    { id: 'corridor-wood', name: 'Corridor Wood', image: 'tiles/corridor-wood.png', width: 1, height: 1 },
+    
+    // 2-Hex Corridors
+    { id: 'corridor-earth-2h', name: 'Corridor Earth 2H', image: 'tiles/corridor-earth-2h.png', width: 2, height: 1 },
+    { id: 'corridor-manmade-2h', name: 'Corridor Stone 2H', image: 'tiles/corridor-manmade-2h.png', width: 2, height: 1 },
+    { id: 'corridor-natural-2h', name: 'Corridor Natural 2H', image: 'tiles/corridor-natural-2h.png', width: 2, height: 1 },
+    { id: 'corridor-wood-2h', name: 'Corridor Wood 2H', image: 'tiles/corridor-wood-2h.png', width: 2, height: 1 },
+    
+    // Single-Hex Obstacles
+    { id: 'altar-h', name: 'Altar (H)', image: 'tiles/altar-horizontal.png', width: 1, height: 1 },
+    { id: 'altar-v', name: 'Altar (V)', image: 'tiles/altar-vertical.png', width: 1, height: 1 },
+    { id: 'barrel', name: 'Barrel', image: 'tiles/barrel.png', width: 1, height: 1 },
+    { id: 'boulder', name: 'Boulder', image: 'tiles/boulder.png', width: 1, height: 1 },
+    { id: 'bush', name: 'Bush', image: 'tiles/bush.png', width: 1, height: 1 },
+    { id: 'cabinet', name: 'Cabinet', image: 'tiles/cabinet.png', width: 1, height: 1 },
+    { id: 'crate', name: 'Crate', image: 'tiles/crate.png', width: 1, height: 1 },
+    { id: 'crystal', name: 'Crystal', image: 'tiles/crystal.png', width: 1, height: 1 },
+    { id: 'fountain', name: 'Fountain', image: 'tiles/fountain.png', width: 1, height: 1 },
+    { id: 'nest', name: 'Nest', image: 'tiles/nest.png', width: 1, height: 1 },
+    { id: 'rock-column', name: 'Rock Column', image: 'tiles/rock-column.png', width: 1, height: 1 },
+    { id: 'stalagmites', name: 'Stalagmites', image: 'tiles/stalagmites.png', width: 1, height: 1 },
+    { id: 'stone-pillar', name: 'Stone Pillar', image: 'tiles/stone-pillar.png', width: 1, height: 1 },
+    { id: 'stump', name: 'Stump', image: 'tiles/stump.png', width: 1, height: 1 },
+    { id: 'totem', name: 'Totem', image: 'tiles/totem.png', width: 1, height: 1 },
+    
+    // 2-Hex Obstacles
+    { id: 'bookcase-2h', name: 'Bookcase', image: 'tiles/bookcase-2h.png', width: 2, height: 1 },
+    { id: 'dark-pit-2h', name: 'Dark Pit', image: 'tiles/dark-pit-2h.png', width: 2, height: 1 },
+    { id: 'large-boulders-2h', name: 'Large Boulders', image: 'tiles/large-boulders-2h.png', width: 2, height: 1 },
+    { id: 'sarcophagus-2h', name: 'Sarcophagus', image: 'tiles/sarcophagus-2h.png', width: 2, height: 1 },
+    { id: 'shelf-2h', name: 'Shelf', image: 'tiles/shelf-2h.png', width: 2, height: 1 },
+    { id: 'table-2h', name: 'Table', image: 'tiles/table-2h.png', width: 2, height: 1 },
+    { id: 'wall-section-2h', name: 'Wall Section', image: 'tiles/wall-section-2h.png', width: 2, height: 1 },
+    
+    // 3-Hex Obstacles
+    { id: 'huge-boulders-3h', name: 'Huge Boulders', image: 'tiles/huge-boulders-3h.png', width: 3, height: 1 },
+    
+    // Difficult Terrain
+    { id: 'tree', name: 'Tree', image: 'tiles/tree.png', width: 1, height: 1 },
+    { id: 'hot-coals', name: 'Hot Coals', image: 'tiles/hot-coals.png', width: 1, height: 1 },
+    { id: 'thorns', name: 'Thorns', image: 'tiles/thorns.png', width: 1, height: 1 },
+    { id: 'rubble', name: 'Rubble', image: 'tiles/rubble.png', width: 1, height: 1 },
+    { id: 'stairs-h', name: 'Stairs (H)', image: 'tiles/stairs-horizontal.png', width: 1, height: 1 },
+    { id: 'stairs-v', name: 'Stairs (V)', image: 'tiles/stairs-vertical.png', width: 1, height: 1 },
+    { id: 'water', name: 'Water', image: 'tiles/water.png', width: 1, height: 1 },
+    { id: 'log', name: 'Log', image: 'tiles/log.png', width: 1, height: 1 },
+    
+    // Hazardous Terrain/Traps
+    { id: 'bear-trap', name: 'Bear Trap', image: 'tiles/bear-trap.png', width: 1, height: 1 },
+    { id: 'poison-gas-trap', name: 'Poison Gas Trap', image: 'tiles/poison-gas-trap.png', width: 1, height: 1 },
+    { id: 'spike-trap', name: 'Spike Trap', image: 'tiles/spike-trap.png', width: 1, height: 1 },
+    
+    // Fog
+    { id: 'dark-fog', name: 'Dark Fog', image: 'tiles/dark-fog.png', width: 1, height: 1 },
+    { id: 'light-fog', name: 'Light Fog', image: 'tiles/light-fog.png', width: 1, height: 1 },
+    
+    // Red Circle Markers (Numbers)
+    { id: 'red-1', name: 'Red Circle 1', image: 'tiles/red-circle-1.png', width: 1, height: 1 },
+    { id: 'red-2', name: 'Red Circle 2', image: 'tiles/red-circle-2.png', width: 1, height: 1 },
+    { id: 'red-3', name: 'Red Circle 3', image: 'tiles/red-circle-3.png', width: 1, height: 1 },
+    { id: 'red-4', name: 'Red Circle 4', image: 'tiles/red-circle-4.png', width: 1, height: 1 },
+    { id: 'red-5', name: 'Red Circle 5', image: 'tiles/red-circle-5.png', width: 1, height: 1 },
+    { id: 'red-6', name: 'Red Circle 6', image: 'tiles/red-circle-6.png', width: 1, height: 1 },
+    { id: 'red-7', name: 'Red Circle 7', image: 'tiles/red-circle-7.png', width: 1, height: 1 },
+    { id: 'red-8', name: 'Red Circle 8', image: 'tiles/red-circle-8.png', width: 1, height: 1 },
+    { id: 'red-9', name: 'Red Circle 9', image: 'tiles/red-circle-9.png', width: 1, height: 1 },
+    { id: 'red-10', name: 'Red Circle 10', image: 'tiles/red-circle-10.png', width: 1, height: 1 },
+    { id: 'red-11', name: 'Red Circle 11', image: 'tiles/red-circle-11.png', width: 1, height: 1 },
+    { id: 'red-12', name: 'Red Circle 12', image: 'tiles/red-circle-12.png', width: 1, height: 1 },
+    { id: 'red-13', name: 'Red Circle 13', image: 'tiles/red-circle-13.png', width: 1, height: 1 },
+    { id: 'red-14', name: 'Red Circle 14', image: 'tiles/red-circle-14.png', width: 1, height: 1 },
+    { id: 'red-15', name: 'Red Circle 15', image: 'tiles/red-circle-15.png', width: 1, height: 1 },
+    { id: 'red-16', name: 'Red Circle 16', image: 'tiles/red-circle-16.png', width: 1, height: 1 },
+    { id: 'red-17', name: 'Red Circle 17', image: 'tiles/red-circle-17.png', width: 1, height: 1 },
+    { id: 'red-18', name: 'Red Circle 18', image: 'tiles/red-circle-18.png', width: 1, height: 1 },
+    { id: 'red-19', name: 'Red Circle 19', image: 'tiles/red-circle-19.png', width: 1, height: 1 },
+    { id: 'red-20', name: 'Red Circle 20', image: 'tiles/red-circle-20.png', width: 1, height: 1 },
+    
+    // Red Circle Markers (Letters)
+    { id: 'red-A', name: 'Red Circle A', image: 'tiles/red-circle-A.png', width: 1, height: 1 },
+    { id: 'red-B', name: 'Red Circle B', image: 'tiles/red-circle-B.png', width: 1, height: 1 },
+    { id: 'red-C', name: 'Red Circle C', image: 'tiles/red-circle-C.png', width: 1, height: 1 },
+    { id: 'red-D', name: 'Red Circle D', image: 'tiles/red-circle-D.png', width: 1, height: 1 },
+    { id: 'red-E', name: 'Red Circle E', image: 'tiles/red-circle-E.png', width: 1, height: 1 },
+    { id: 'red-F', name: 'Red Circle F', image: 'tiles/red-circle-F.png', width: 1, height: 1 },
+    { id: 'red-G', name: 'Red Circle G', image: 'tiles/red-circle-G.png', width: 1, height: 1 },
+    { id: 'red-H', name: 'Red Circle H', image: 'tiles/red-circle-H.png', width: 1, height: 1 },
+    { id: 'red-I', name: 'Red Circle I', image: 'tiles/red-circle-I.png', width: 1, height: 1 },
+    { id: 'red-J', name: 'Red Circle J', image: 'tiles/red-circle-J.png', width: 1, height: 1 },
+    { id: 'red-K', name: 'Red Circle K', image: 'tiles/red-circle-K.png', width: 1, height: 1 },
+    { id: 'red-L', name: 'Red Circle L', image: 'tiles/red-circle-L.png', width: 1, height: 1 },
+    { id: 'red-M', name: 'Red Circle M', image: 'tiles/red-circle-M.png', width: 1, height: 1 },
+    { id: 'red-N', name: 'Red Circle N', image: 'tiles/red-circle-N.png', width: 1, height: 1 },
 ];
 
 // Placed tiles on the grid
@@ -121,14 +233,20 @@ function createGrid() {
 
 // Load tiles into palette
 function loadTilePalette() {
-    const tileList = document.getElementById('tileList');
-    tileList.innerHTML = '';
+    const mapTilesList = document.getElementById('mapTiles-list');
+    const tokensList = document.getElementById('tokens-list');
+    
+    if (!mapTilesList || !tokensList) return;
+    
+    mapTilesList.innerHTML = '';
+    tokensList.innerHTML = '';
     
     availableTiles.forEach(tile => {
         const tileItem = document.createElement('div');
         tileItem.className = 'tile-item';
         tileItem.draggable = true;
         tileItem.dataset.tileId = tile.id;
+        tileItem.dataset.tileName = tile.name.toLowerCase();
         
         tileItem.innerHTML = `
             <div class="tile-preview" style="background-image: url('${tile.image}')"></div>
@@ -141,8 +259,53 @@ function loadTilePalette() {
         tileItem.addEventListener('dragstart', handleDragStart);
         tileItem.addEventListener('dragend', handleDragEnd);
         
-        tileList.appendChild(tileItem);
+        // Separate map tiles from tokens/overlays
+        if (tile.image.startsWith('mapsections/')) {
+            mapTilesList.appendChild(tileItem);
+        } else {
+            tokensList.appendChild(tileItem);
+        }
     });
+    
+    // Setup search filter
+    setupTileSearch();
+}
+
+// Setup tile search functionality
+function setupTileSearch() {
+    const searchInput = document.getElementById('tileSearch');
+    if (!searchInput) return;
+    
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const allTileItems = document.querySelectorAll('.tile-item');
+        
+        allTileItems.forEach(item => {
+            const tileName = item.dataset.tileName || '';
+            if (tileName.includes(searchTerm)) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    });
+}
+
+// Toggle palette section visibility
+function togglePaletteSection(sectionId) {
+    const list = document.getElementById(`${sectionId}-list`);
+    const button = list.previousElementSibling;
+    const icon = button.querySelector('.toggle-icon');
+    
+    if (list.classList.contains('collapsed')) {
+        list.classList.remove('collapsed');
+        button.classList.add('active');
+        icon.textContent = '▼';
+    } else {
+        list.classList.add('collapsed');
+        button.classList.remove('active');
+        icon.textContent = '▶';
+    }
 }
 
 // Drag and drop handlers
@@ -184,11 +347,6 @@ function placeTile(tileTypeId, col, row) {
     const tileType = availableTiles.find(t => t.id === tileTypeId);
     if (!tileType) return;
     
-    // Check if space is available
-    if (!isSpaceAvailable(col, row, tileType.width, tileType.height)) {
-        return;
-    }
-    
     const placedTile = {
         id: `placed_${nextTileId++}`,
         tileTypeId: tileTypeId,
@@ -198,14 +356,13 @@ function placeTile(tileTypeId, col, row) {
         row: row,
         width: tileType.width,
         height: tileType.height,
-        revealed: false,
+        revealed: true,
         rotation: 0,
         zIndex: 10
     };
     
     placedTiles.push(placedTile);
     renderPlacedTile(placedTile);
-    markCellsOccupied(col, row, tileType.width, tileType.height);
     updatePlacedTilesList();
 }
 
@@ -243,19 +400,31 @@ function markCellsOccupied(col, row, width, height) {
 function renderPlacedTile(tile) {
     const grid = document.getElementById('placementGrid');
     const tileDiv = document.createElement('div');
+    const isMapSection = tile.image.startsWith('mapsections/');
+    
     tileDiv.className = `placed-tile ${tile.revealed ? 'revealed' : 'fogged'}`;
     tileDiv.dataset.tileId = tile.id;
+    tileDiv.dataset.isMapSection = isMapSection;
     updateTilePosition(tileDiv, tile);
     tileDiv.style.backgroundImage = `url('${tile.image}')`;
     
-    // Fog overlay
-    const fogOverlay = document.createElement('div');
-    fogOverlay.className = 'fog-overlay';
+    // Fog overlay - only for map sections
+    if (isMapSection) {
+        const fogOverlay = document.createElement('div');
+        fogOverlay.className = 'fog-overlay';
+        tileDiv.appendChild(fogOverlay);
+    }
     
-    // Label
+    // Drag handle
+    const dragHandle = document.createElement('div');
+    dragHandle.className = 'drag-handle';
+    dragHandle.innerHTML = '⋮⋮';
+    dragHandle.title = 'Drag to move tile';
+    
+    // Label with z-index
     const label = document.createElement('div');
     label.className = 'tile-label';
-    label.textContent = tile.name;
+    label.textContent = `${tile.name} (z:${tile.zIndex})`;
     
     // Controls
     const controls = document.createElement('div');
@@ -273,30 +442,52 @@ function renderPlacedTile(tile) {
             <button class="tile-btn" onclick="event.stopPropagation(); changeZIndex('${tile.id}', 1)" title="Bring Forward">▲</button>
             <button class="tile-btn" onclick="event.stopPropagation(); changeZIndex('${tile.id}', -1)" title="Send Backward">▼</button>
         </div>
+        <div class="tile-controls-row movement-row">
+            <button class="tile-btn" onclick="event.stopPropagation(); moveTilePixels('${tile.id}', 0, -10)" title="Move Up 10px">⬆</button>
+        </div>
+        <div class="tile-controls-row movement-row">
+            <button class="tile-btn" onclick="event.stopPropagation(); moveTilePixels('${tile.id}', -10, 0)" title="Move Left 10px">⬅</button>
+            <button class="tile-btn" onclick="event.stopPropagation(); moveTilePixels('${tile.id}', 10, 0)" title="Move Right 10px">➡</button>
+        </div>
+        <div class="tile-controls-row movement-row">
+            <button class="tile-btn" onclick="event.stopPropagation(); moveTilePixels('${tile.id}', 0, 10)" title="Move Down 10px">⬇</button>
+        </div>
         <div class="tile-controls-row">
             <button class="tile-btn" onclick="event.stopPropagation(); removeTile('${tile.id}')" title="Remove">✕</button>
         </div>
     `;
     
-    tileDiv.appendChild(fogOverlay);
+    tileDiv.appendChild(dragHandle);
     tileDiv.appendChild(label);
     tileDiv.appendChild(controls);
     
-    // Click to reveal (only on the tile itself, not controls)
+    // Click to reveal (only for map sections)
     tileDiv.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('tile-btn') && !e.target.closest('.tile-controls')) {
-            toggleTileReveal(tile.id);
+        if (!e.target.classList.contains('tile-btn') && !e.target.closest('.tile-controls') && !e.target.closest('.drag-handle')) {
+            if (isMapSection) {
+                toggleTileReveal(tile.id);
+            }
         }
     });
     
-    // Drag to move
-    tileDiv.addEventListener('mousedown', handleTileDragStart);
+    // Drag to move - only from drag handle or label
+    dragHandle.addEventListener('mousedown', handleTileDragStart);
+    label.addEventListener('mousedown', handleTileDragStart);
     
     grid.appendChild(tileDiv);
+    
+    // Update token visibility after adding tile
+    updateTokenVisibility();
 }
 
 // Update tile position and dimensions
 function updateTilePosition(tileDiv, tile) {
+    // Use offset version if tile has pixel offsets
+    if (tile.pixelOffsetX !== undefined || tile.pixelOffsetY !== undefined) {
+        updateTilePositionWithOffset(tileDiv, tile);
+        return;
+    }
+    
     tileDiv.style.left = `${tile.col * (CELL_SIZE + 2)}px`;
     tileDiv.style.top = `${tile.row * (CELL_SIZE + 2)}px`;
     tileDiv.style.zIndex = tile.zIndex || 10;
@@ -311,14 +502,10 @@ function updateTilePosition(tileDiv, tile) {
     tileDiv.style.transform = `rotate(${tile.rotation}deg)`;
     tileDiv.style.transformOrigin = 'center center';
     
-    // Counter-rotate controls and label to keep them upright
+    // Counter-rotate controls to keep them upright (but let label rotate with tile)
     const controls = tileDiv.querySelector('.tile-controls');
-    const label = tileDiv.querySelector('.tile-label');
     if (controls) {
         controls.style.transform = `rotate(${-tile.rotation}deg)`;
-    }
-    if (label) {
-        label.style.transform = `rotate(${-tile.rotation}deg)`;
     }
 }
 
@@ -341,22 +528,86 @@ function toggleTileReveal(tileId) {
     }
     
     updateRevealedRooms();
+    updateTokenVisibility();
+}
+
+// Update token visibility based on underlying map tiles
+function updateTokenVisibility() {
+    // Get all tokens (non-map-section tiles)
+    const tokens = placedTiles.filter(t => !t.image.startsWith('mapsections/'));
+    const mapSections = placedTiles.filter(t => t.image.startsWith('mapsections/'));
+    
+    tokens.forEach(token => {
+        const tokenElement = document.querySelector(`[data-tile-id="${token.id}"]`);
+        if (!tokenElement) return;
+        
+        // Doors always visible - check if tile is a door
+        const isDoor = token.image.includes('door');
+        if (isDoor) {
+            tokenElement.style.opacity = '1';
+            tokenElement.style.pointerEvents = 'auto';
+            return;
+        }
+        
+        // Check if token is under any fogged map section
+        let isUnderFoggedTile = false;
+        
+        for (const mapTile of mapSections) {
+            if (!mapTile.revealed && tilesOverlap(token, mapTile)) {
+                isUnderFoggedTile = true;
+                break;
+            }
+        }
+        
+        // Hide or show token based on fog state
+        if (isUnderFoggedTile) {
+            tokenElement.style.opacity = '0';
+            tokenElement.style.pointerEvents = 'none';
+        } else {
+            tokenElement.style.opacity = '1';
+            tokenElement.style.pointerEvents = 'auto';
+        }
+    });
+}
+
+// Check if two tiles overlap
+function tilesOverlap(tile1, tile2) {
+    const rect1 = getTileBounds(tile1);
+    const rect2 = getTileBounds(tile2);
+    
+    return !(rect1.right < rect2.left || 
+             rect1.left > rect2.right || 
+             rect1.bottom < rect2.top || 
+             rect1.top > rect2.bottom);
+}
+
+// Get tile bounds in pixels
+function getTileBounds(tile) {
+    const pixelOffsetX = tile.pixelOffsetX || 0;
+    const pixelOffsetY = tile.pixelOffsetY || 0;
+    
+    const left = tile.col * (CELL_SIZE + 2) + pixelOffsetX;
+    const top = tile.row * (CELL_SIZE + 2) + pixelOffsetY;
+    
+    const isRotated90 = tile.rotation === 90 || tile.rotation === 270;
+    const displayWidth = isRotated90 ? tile.height : tile.width;
+    const displayHeight = isRotated90 ? tile.width : tile.height;
+    
+    const width = displayWidth * CELL_SIZE + (displayWidth - 1) * 2;
+    const height = displayHeight * CELL_SIZE + (displayHeight - 1) * 2;
+    
+    return {
+        left: left,
+        top: top,
+        right: left + width,
+        bottom: top + height
+    };
 }
 
 // Remove a tile
 function removeTile(tileId) {
     const tile = placedTiles.find(t => t.id === tileId);
     if (!tile) return;
-    
-    // Free up grid cells
-    for (let r = tile.row; r < tile.row + tile.height; r++) {
-        for (let c = tile.col; c < tile.col + tile.width; c++) {
-            const cell = document.querySelector(`[data-row="${r}"][data-col="${c}"]`);
-            if (cell) {
-                cell.classList.remove('occupied');
-            }
-        }
-    }
     
     // Remove from array
     placedTiles = placedTiles.filter(t => t.id !== tileId);
@@ -369,6 +620,7 @@ function removeTile(tileId) {
     
     updatePlacedTilesList();
     updateRevealedRooms();
+    updateTokenVisibility();
 }
 
 // Update placed tiles list
@@ -445,18 +697,257 @@ function toggleGrid() {
     grid.classList.toggle('show-grid');
 }
 
-// Save map to localStorage
+// Save map with custom name
 function saveMap() {
-    const mapData = {
-        tiles: placedTiles,
-        nextId: nextTileId
+    const mapName = prompt('Enter a name for this map:', 'Mission_1');
+    if (!mapName) return;
+    
+    // Get all textarea values
+    const scenarioData = {
+        missionTitle: document.getElementById('missionTitle').textContent,
+        objectives: document.getElementById('objectives')?.value || '',
+        loot: document.getElementById('loot')?.value || '',
+        intro: document.getElementById('intro')?.value || '',
+        room1: document.getElementById('room1')?.value || '',
+        room2: document.getElementById('room2')?.value || '',
+        room3: document.getElementById('room3')?.value || '',
+        rules: document.getElementById('rules')?.value || '',
+        conclusion: document.getElementById('conclusion')?.value || '',
+        notes: document.getElementById('notes')?.value || ''
     };
     
+    const mapData = {
+        name: mapName,
+        tiles: placedTiles,
+        nextId: nextTileId,
+        scenario: scenarioData,
+        savedAt: new Date().toISOString()
+    };
+    
+    // Get existing saved maps
+    const savedMaps = JSON.parse(localStorage.getItem('gloomhavenMaps') || '{}');
+    savedMaps[mapName] = mapData;
+    
+    localStorage.setItem('gloomhavenMaps', JSON.stringify(savedMaps));
+    
+    // Also save as default for backward compatibility and scenario viewer
     localStorage.setItem('gloomhavenMap', JSON.stringify(mapData));
-    alert('Map saved successfully!');
+    
+    alert(`Map "${mapName}" saved successfully!`);
 }
 
-// Load map from localStorage
+// Download map as JSON file
+function downloadMap() {
+    const mapName = prompt('Enter a name for the download file:', 'gloomhaven_map');
+    if (!mapName) return;
+    
+    // Get all textarea values
+    const scenarioData = {
+        missionTitle: document.getElementById('missionTitle').textContent,
+        objectives: document.getElementById('objectives')?.value || '',
+        loot: document.getElementById('loot')?.value || '',
+        intro: document.getElementById('intro')?.value || '',
+        room1: document.getElementById('room1')?.value || '',
+        room2: document.getElementById('room2')?.value || '',
+        room3: document.getElementById('room3')?.value || '',
+        rules: document.getElementById('rules')?.value || '',
+        conclusion: document.getElementById('conclusion')?.value || '',
+        notes: document.getElementById('notes')?.value || ''
+    };
+    
+    const mapData = {
+        name: mapName,
+        tiles: placedTiles,
+        nextId: nextTileId,
+        scenario: scenarioData,
+        savedAt: new Date().toISOString()
+    };
+    
+    // Create JSON file and download
+    const dataStr = JSON.stringify(mapData, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${mapName}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    alert(`Map "${mapName}" downloaded successfully!`);
+}
+
+// Import map from JSON file
+function importMap() {
+    const fileInput = document.getElementById('fileInput');
+    fileInput.click();
+}
+
+// Handle file import
+function handleFileImport(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const mapData = JSON.parse(e.target.result);
+            
+            // Validate map data
+            if (!mapData.tiles || !Array.isArray(mapData.tiles)) {
+                alert('Invalid map file format.');
+                return;
+            }
+            
+            if (confirm(`Import map "${mapData.name || 'Unnamed'}"? This will replace the current map.`)) {
+                clearMap();
+                
+                placedTiles = mapData.tiles || [];
+                nextTileId = mapData.nextId || 0;
+                
+                // Render all tiles
+                placedTiles.forEach(tile => {
+                    if (tile.rotation === undefined) tile.rotation = 0;
+                    if (tile.zIndex === undefined) tile.zIndex = 10;
+                    if (tile.revealed === undefined) tile.revealed = true;
+                    
+                    renderPlacedTile(tile);
+                });
+                
+                // Load scenario data
+                if (mapData.scenario) {
+                    const s = mapData.scenario;
+                    document.getElementById('missionTitle').textContent = s.missionTitle || 'Mission';
+                    if (document.getElementById('objectives')) document.getElementById('objectives').value = s.objectives || '';
+                    if (document.getElementById('loot')) document.getElementById('loot').value = s.loot || '';
+                    if (document.getElementById('intro')) document.getElementById('intro').value = s.intro || '';
+                    if (document.getElementById('room1')) document.getElementById('room1').value = s.room1 || '';
+                    if (document.getElementById('room2')) document.getElementById('room2').value = s.room2 || '';
+                    if (document.getElementById('room3')) document.getElementById('room3').value = s.room3 || '';
+                    if (document.getElementById('rules')) document.getElementById('rules').value = s.rules || '';
+                    if (document.getElementById('conclusion')) document.getElementById('conclusion').value = s.conclusion || '';
+                    if (document.getElementById('notes')) document.getElementById('notes').value = s.notes || '';
+                }
+                
+                // Also save to localStorage
+                const savedMaps = JSON.parse(localStorage.getItem('gloomhavenMaps') || '{}');
+                savedMaps[mapData.name] = mapData;
+                localStorage.setItem('gloomhavenMaps', JSON.stringify(savedMaps));
+                localStorage.setItem('gloomhavenMap', JSON.stringify(mapData));
+                
+                updatePlacedTilesList();
+                updateRevealedRooms();
+                updateTokenVisibility();
+                
+                alert(`Map "${mapData.name || 'Unnamed'}" imported successfully!`);
+            }
+        } catch (error) {
+            console.error('Error importing map:', error);
+            alert('Error importing map. Please check the file format.');
+        }
+        
+        // Reset file input
+        event.target.value = '';
+    };
+    
+    reader.readAsText(file);
+}
+
+// Load map from saved files
+function loadMap() {
+    const savedMaps = JSON.parse(localStorage.getItem('gloomhavenMaps') || '{}');
+    const mapNames = Object.keys(savedMaps);
+    
+    const modal = document.getElementById('loadMapModal');
+    const mapListContainer = document.getElementById('mapListContainer');
+    
+    if (mapNames.length === 0) {
+        mapListContainer.innerHTML = '<div class="no-maps-message">No saved maps found. Create and save a map first!</div>';
+    } else {
+        // Sort by date, newest first
+        mapNames.sort((a, b) => {
+            return new Date(savedMaps[b].savedAt) - new Date(savedMaps[a].savedAt);
+        });
+        
+        mapListContainer.innerHTML = mapNames.map(name => {
+            const map = savedMaps[name];
+            const date = new Date(map.savedAt).toLocaleString();
+            const tileCount = (map.tiles || []).length;
+            
+            return `
+                <div class="map-list-item" onclick="loadSelectedMap('${name.replace(/'/g, "\\'")}')">
+                    <div class="map-list-item-name">${name}</div>
+                    <div class="map-list-item-date">📅 ${date}</div>
+                    <div class="map-list-item-tiles">🗺️ ${tileCount} tiles placed</div>
+                </div>
+            `;
+        }).join('');
+    }
+    
+    modal.classList.add('show');
+}
+
+// Close load map modal
+function closeLoadMapModal() {
+    const modal = document.getElementById('loadMapModal');
+    modal.classList.remove('show');
+}
+
+// Load selected map
+function loadSelectedMap(mapName) {
+    const savedMaps = JSON.parse(localStorage.getItem('gloomhavenMaps') || '{}');
+    const mapToLoad = savedMaps[mapName];
+    
+    if (!mapToLoad) {
+        alert('Map not found.');
+        return;
+    }
+    
+    closeLoadMapModal();
+    
+    if (confirm(`Load map "${mapToLoad.name}"? This will replace the current map.`)) {
+        clearMap();
+        
+        placedTiles = mapToLoad.tiles || [];
+        nextTileId = mapToLoad.nextId || 0;
+        
+        // Render all tiles
+        placedTiles.forEach(tile => {
+            if (tile.rotation === undefined) tile.rotation = 0;
+            if (tile.zIndex === undefined) tile.zIndex = 10;
+            if (tile.revealed === undefined) tile.revealed = false;
+            
+            renderPlacedTile(tile);
+        });
+        
+        // Load scenario data
+        if (mapToLoad.scenario) {
+            const s = mapToLoad.scenario;
+            document.getElementById('missionTitle').textContent = s.missionTitle || 'Mission';
+            if (document.getElementById('objectives')) document.getElementById('objectives').value = s.objectives || '';
+            if (document.getElementById('loot')) document.getElementById('loot').value = s.loot || '';
+            if (document.getElementById('intro')) document.getElementById('intro').value = s.intro || '';
+            if (document.getElementById('room1')) document.getElementById('room1').value = s.room1 || '';
+            if (document.getElementById('room2')) document.getElementById('room2').value = s.room2 || '';
+            if (document.getElementById('room3')) document.getElementById('room3').value = s.room3 || '';
+            if (document.getElementById('rules')) document.getElementById('rules').value = s.rules || '';
+            if (document.getElementById('conclusion')) document.getElementById('conclusion').value = s.conclusion || '';
+            if (document.getElementById('notes')) document.getElementById('notes').value = s.notes || '';
+        }
+        
+        // Also save as default for scenario viewer
+        localStorage.setItem('gloomhavenMap', JSON.stringify(mapToLoad));
+        
+        updatePlacedTilesList();
+        updateRevealedRooms();
+        updateTokenVisibility();
+        
+        alert(`Map "${mapToLoad.name}" loaded successfully!`);
+    }
+}
+
+// Load default map (for backward compatibility)
 function loadSavedMap() {
     const saved = localStorage.getItem('gloomhavenMap');
     if (!saved) return;
@@ -466,11 +957,6 @@ function loadSavedMap() {
         placedTiles = mapData.tiles || [];
         nextTileId = mapData.nextId || 0;
         
-        // Clear grid
-        document.querySelectorAll('.grid-cell').forEach(cell => {
-            cell.classList.remove('occupied');
-        });
-        
         // Render all tiles (ensure all properties exist)
         placedTiles.forEach(tile => {
             // Add default values for properties that might not exist in old saves
@@ -479,11 +965,11 @@ function loadSavedMap() {
             if (tile.revealed === undefined) tile.revealed = false;
             
             renderPlacedTile(tile);
-            markCellsOccupied(tile.col, tile.row, tile.width, tile.height);
         });
         
         updatePlacedTilesList();
         updateRevealedRooms();
+        updateTokenVisibility();
     } catch (e) {
         console.error('Error loading map:', e);
     }
@@ -520,6 +1006,12 @@ function changeZIndex(tileId, delta) {
     const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
     if (tileElement) {
         tileElement.style.zIndex = tile.zIndex;
+        
+        // Update label to show new z-index
+        const label = tileElement.querySelector('.tile-label');
+        if (label) {
+            label.textContent = `${tile.name} (z:${tile.zIndex})`;
+        }
     }
 }
 
@@ -534,21 +1026,11 @@ function resizeTile(tileId, delta) {
     // Check if new size would fit
     const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
     
-    // Temporarily remove this tile's occupied cells
-    freeTileCells(tile);
+    tile.width = newWidth;
+    tile.height = newHeight;
     
-    // Check if resized tile fits
-    if (isSpaceAvailable(tile.col, tile.row, newWidth, newHeight)) {
-        tile.width = newWidth;
-        tile.height = newHeight;
-        
-        if (tileElement) {
-            updateTilePosition(tileElement, tile);
-        }
-        markCellsOccupied(tile.col, tile.row, tile.width, tile.height);
-    } else {
-        // Restore original occupied cells
-        markCellsOccupied(tile.col, tile.row, tile.width, tile.height);
+    if (tileElement) {
+        updateTilePosition(tileElement, tile);
     }
 }
 
@@ -571,7 +1053,8 @@ function handleTileDragStart(e) {
         return;
     }
     
-    const tileElement = e.currentTarget;
+    // Find the tile element (could be the currentTarget or its parent)
+    const tileElement = e.currentTarget.closest('.placed-tile') || e.currentTarget;
     const tileId = tileElement.dataset.tileId;
     const tile = placedTiles.find(t => t.id === tileId);
     
@@ -630,16 +1113,12 @@ function handleTileDragEnd(e) {
     const newCol = Math.max(0, Math.min(GRID_COLS - draggedPlacedTile.width, Math.round(x / (CELL_SIZE + 2))));
     const newRow = Math.max(0, Math.min(GRID_ROWS - draggedPlacedTile.height, Math.round(y / (CELL_SIZE + 2))));
     
-    // Check if the new position is valid
-    if (isSpaceAvailable(newCol, newRow, draggedPlacedTile.width, draggedPlacedTile.height)) {
-        // Update tile position
-        draggedPlacedTile.col = newCol;
-        draggedPlacedTile.row = newRow;
-    }
+    // Update tile position
+    draggedPlacedTile.col = newCol;
+    draggedPlacedTile.row = newRow;
     
     // Snap to grid and update display
     updateTilePosition(tileElement, draggedPlacedTile);
-    markCellsOccupied(draggedPlacedTile.col, draggedPlacedTile.row, draggedPlacedTile.width, draggedPlacedTile.height);
     
     tileElement.classList.remove('dragging-tile');
     
@@ -649,6 +1128,79 @@ function handleTileDragEnd(e) {
     draggedPlacedTile = null;
     
     e.preventDefault();
+}
+
+// Move tile by pixels (fine-tuning)
+function moveTilePixels(tileId, deltaX, deltaY) {
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (!tile) return;
+    
+    // Store pixel offset (or initialize if not exists)
+    if (!tile.pixelOffsetX) tile.pixelOffsetX = 0;
+    if (!tile.pixelOffsetY) tile.pixelOffsetY = 0;
+    
+    tile.pixelOffsetX += deltaX;
+    tile.pixelOffsetY += deltaY;
+    
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        updateTilePositionWithOffset(tileElement, tile);
+    }
+    
+    updateTokenVisibility();
+}
+
+// Update tile position with pixel offset
+function updateTilePositionWithOffset(tileDiv, tile) {
+    const baseX = tile.col * (CELL_SIZE + 2);
+    const baseY = tile.row * (CELL_SIZE + 2);
+    const offsetX = tile.pixelOffsetX || 0;
+    const offsetY = tile.pixelOffsetY || 0;
+    
+    tileDiv.style.left = `${baseX + offsetX}px`;
+    tileDiv.style.top = `${baseY + offsetY}px`;
+    tileDiv.style.zIndex = tile.zIndex || 10;
+    
+    // Swap width/height if rotated 90 or 270 degrees
+    const isRotated90 = tile.rotation === 90 || tile.rotation === 270;
+    const displayWidth = isRotated90 ? tile.height : tile.width;
+    const displayHeight = isRotated90 ? tile.width : tile.height;
+    
+    tileDiv.style.width = `${displayWidth * CELL_SIZE + (displayWidth - 1) * 2}px`;
+    tileDiv.style.height = `${displayHeight * CELL_SIZE + (displayHeight - 1) * 2}px`;
+    tileDiv.style.transform = `rotate(${tile.rotation}deg)`;
+    tileDiv.style.transformOrigin = 'center center';
+    
+    // Counter-rotate controls to keep them upright (but let label rotate with tile)
+    const controls = tileDiv.querySelector('.tile-controls');
+    if (controls) {
+        controls.style.transform = `rotate(${-tile.rotation}deg)`;
+    }
+}
+
+// Resize all tiles to a uniform size
+function resizeAllTiles() {
+    const size = prompt('Enter uniform size for all tiles (1-15):', '3');
+    if (!size) return;
+    
+    const newSize = Math.max(1, Math.min(15, parseInt(size)));
+    if (isNaN(newSize)) return;
+    
+    placedTiles.forEach(tile => {
+        tile.width = newSize;
+        tile.height = newSize;
+        
+        const tileElement = document.querySelector(`[data-tile-id="${tile.id}"]`);
+        if (tileElement) {
+            if (tile.pixelOffsetX !== undefined || tile.pixelOffsetY !== undefined) {
+                updateTilePositionWithOffset(tileElement, tile);
+            } else {
+                updateTilePosition(tileElement, tile);
+            }
+        }
+    });
+    
+    alert(`All tiles resized to ${newSize}x${newSize}`);
 }
 
 // Add CSS animation
@@ -662,6 +1214,23 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Toggle section visibility
+function toggleSection(sectionId) {
+    const content = document.getElementById(`${sectionId}-content`);
+    const button = content.previousElementSibling;
+    const icon = button.querySelector('.toggle-icon');
+    
+    if (content.classList.contains('collapsed')) {
+        content.classList.remove('collapsed');
+        button.classList.add('active');
+        icon.textContent = '▼';
+    } else {
+        content.classList.add('collapsed');
+        button.classList.remove('active');
+        icon.textContent = '▶';
+    }
+}
+
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     initializeMap();
@@ -671,5 +1240,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('toggleGrid').addEventListener('click', toggleGrid);
     document.getElementById('saveMap').addEventListener('click', saveMap);
     document.getElementById('loadMap').addEventListener('click', loadMap);
+    document.getElementById('downloadMap').addEventListener('click', downloadMap);
+    document.getElementById('importMap').addEventListener('click', importMap);
+    document.getElementById('fileInput').addEventListener('change', handleFileImport);
+    document.getElementById('resizeAll').addEventListener('click', resizeAllTiles);
     document.getElementById('clearMap').addEventListener('click', clearMap);
 });
+

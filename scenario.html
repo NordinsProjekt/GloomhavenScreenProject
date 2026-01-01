@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gloomhaven Scenario Viewer</title>
+    <link rel="stylesheet" href="scenario.css">
+</head>
+<body>
+    <div class="scenario-container">
+        <!-- Main Map Area -->
+        <div class="map-section">
+            <div class="map-header">
+                <h1>Gloomhaven Scenario</h1>
+                <div class="controls">
+                    <button id="loadMap" class="btn">📂 Load Map</button>
+                    <button id="toggleAllFog" class="btn">🌫️ Toggle All Fog</button>
+                    <button id="toggleGrid" class="btn">⊞ Toggle Grid</button>
+                </div>
+            </div>
+            
+            <div id="hexMap" class="hex-map">
+                <div id="placementGrid" class="placement-grid">
+                    <!-- Grid cells and tiles will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario Info Sidebar -->
+        <div class="scenario-sidebar">
+            <div class="mission-info">
+                <h2 id="missionTitle">Black Barrow</h2>
+                <p class="mission-number">Mission #1</p>
+                
+                <!-- Objectives Section -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('objectives')">
+                        <span class="toggle-icon">▼</span> Objectives
+                    </button>
+                    <div id="objectives-content" class="section-content">
+                        <textarea id="objectives" readonly placeholder="Enter mission objectives...">Clear all enemies from the dungeon and retrieve the ancient artifact.</textarea>
+                    </div>
+                </div>
+
+                <!-- Scenario Loot Section -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('loot')">
+                        <span class="toggle-icon">▼</span> Scenario Loot
+                    </button>
+                    <div id="loot-content" class="section-content">
+                        <textarea id="loot" readonly placeholder="Enter loot information...">Treasure #12: Random Item
+Treasure #65: 50 Gold
+Chest: 2 Random Items</textarea>
+                    </div>
+                </div>
+
+                <!-- Text Section 1 -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('text1')">
+                        <span class="toggle-icon">▼</span> Introduction
+                    </button>
+                    <div id="text1-content" class="section-content">
+                        <textarea id="text1" readonly placeholder="Enter introduction text...">The entrance to the Black Barrow looms before you, ancient stone weathered by centuries of neglect. Strange sounds echo from within...</textarea>
+                    </div>
+                </div>
+
+                <!-- Text Section 2 -->
+                <div class="info-section">
+                    <button class="section-toggle" onclick="toggleSection('text2')">
+                        <span class="toggle-icon">▶</span> Room 1 Reveal
+                    </button>
+                    <div id="text2-content" class="section-content collapsed">
+                        <textarea id="text2" readonly placeholder="Enter room 1 text...">As you push open the heavy door, the stench of decay fills your nostrils. Undead creatures turn to face you...</textarea>
+                    </div>
+                </div>
+
+                <!-- Text Section 3 -->
+                <div class="info-section">
+                    <button class="section-toggle" onclick="toggleSection('text3')">
+                        <span class="toggle-icon">▶</span> Room 2 Reveal
+                    </button>
+                    <div id="text3-content" class="section-content collapsed">
+                        <textarea id="text3" readonly placeholder="Enter room 2 text..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Text Section 4 -->
+                <div class="info-section">
+                    <button class="section-toggle" onclick="toggleSection('text4')">
+                        <span class="toggle-icon">▶</span> Room 3 Reveal
+                    </button>
+                    <div id="text4-content" class="section-content collapsed">
+                        <textarea id="text4" readonly placeholder="Enter room 3 text..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Special Rules -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('rules')">
+                        <span class="toggle-icon">▼</span> Special Rules
+                    </button>
+                    <div id="rules-content" class="section-content">
+                        <textarea id="rules" readonly placeholder="Enter special rules...">- Trap damage increased by 1
+- Monsters gain +1 movement
+- All monsters have Shield 1</textarea>
+                    </div>
+                </div>
+
+                <!-- Conclusion -->
+                <div class="info-section">
+                    <button class="section-toggle" onclick="toggleSection('conclusion')">
+                        <span class="toggle-icon">▶</span> Conclusion
+                    </button>
+                    <div id="conclusion-content" class="section-content collapsed">
+                        <textarea id="conclusion" readonly placeholder="Enter conclusion text...">With the last enemy defeated, an eerie silence falls over the barrow. The ancient artifact pulses with mysterious energy...</textarea>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('notes')">
+                        <span class="toggle-icon">▼</span> Notes
+                    </button>
+                    <div id="notes-content" class="section-content">
+                        <textarea id="notes" readonly placeholder="Add session notes here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Map Modal -->
+    <div id="loadMapModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Load Scenario</h2>
+                <button class="modal-close" onclick="closeLoadMapModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="mapListContainer" class="map-list">
+                    <!-- Map list will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scenario.js"></script>
+</body>
+</html>

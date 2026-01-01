@@ -3,105 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gloomhaven Digital Tabletop</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Gloomhaven Digital Companion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #e0e0e0;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 900px;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: #f39c12;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 50px;
+            color: #bdc3c7;
+            font-style: italic;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .nav-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 3px solid #8b6f47;
+            border-radius: 15px;
+            padding: 35px 25px;
+            text-decoration: none;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(230, 126, 34, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .nav-card:hover::before {
+            opacity: 1;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-8px);
+            border-color: #f39c12;
+            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);
+        }
+
+        .nav-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #f39c12;
+        }
+
+        .nav-card p {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #bdc3c7;
+        }
+
+        .nav-card.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: #555;
+        }
+
+        .nav-card.disabled:hover {
+            transform: none;
+            border-color: #555;
+            box-shadow: none;
+        }
+
+        .nav-card.disabled h2 {
+            color: #888;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(243, 156, 18, 0.2);
+            color: #f39c12;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-top: 10px;
+            border: 1px solid #f39c12;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(139, 111, 71, 0.3);
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- Tile Palette -->
-        <div class="tile-palette">
-            <h3>Room Tiles</h3>
-            <div class="controls-top">
-                <button id="saveMap" class="btn btn-small">💾 Save Map</button>
-                <button id="loadMap" class="btn btn-small">📂 Load Map</button>
-                <button id="clearMap" class="btn btn-small">🗑️ Clear Map</button>
-            </div>
-            <div id="tileList" class="tile-list">
-                <!-- Tiles will be loaded here -->
-            </div>
-            <div class="palette-info">
-                <p>Drag tiles onto the grid to build your map</p>
-            </div>
+        <h1>⚔️ Gloomhaven Digital Companion</h1>
+        <p class="subtitle">Your ultimate tool for managing Gloomhaven adventures</p>
+
+        <div class="nav-grid">
+            <a href="scenariomaker.html" class="nav-card">
+                <div class="nav-card-content">
+                    <h2>📝 Scenario Maker</h2>
+                    <p>Create and edit scenarios, place map tiles and tokens, manage fog of war, and save your campaigns.</p>
+                    <span class="badge">GAME MASTER</span>
+                </div>
+            </a>
+
+            <a href="scenario.html" class="nav-card">
+                <div class="nav-card-content">
+                    <h2>🎮 Scenario Viewer</h2>
+                    <p>View active scenarios in read-only mode. Perfect for players to reference during gameplay.</p>
+                    <span class="badge">PLAYER VIEW</span>
+                </div>
+            </a>
+
+            <a href="#" class="nav-card disabled" onclick="return false;">
+                <div class="nav-card-content">
+                    <h2>🗺️ World Map</h2>
+                    <p>Explore the world of Gloomhaven. Track completed scenarios and unlocked locations.</p>
+                    <span class="badge">COMING SOON</span>
+                </div>
+            </a>
+
+            <a href="#" class="nav-card disabled" onclick="return false;">
+                <div class="nav-card-content">
+                    <h2>🏘️ Visiting Gloomhaven</h2>
+                    <p>Manage party resources, visit the shop, upgrade abilities, and plan your next adventure.</p>
+                    <span class="badge">COMING SOON</span>
+                </div>
+            </a>
         </div>
 
-        <!-- Main Map Area -->
-        <div class="map-container">
-            <div class="map-header">
-                <h1>Gloomhaven Mission Board</h1>
-                <div class="controls">
-                    <button id="resetFog" class="btn">🌫️ Reset Fog</button>
-                    <button id="revealAll" class="btn">👁️ Reveal All</button>
-                    <button id="toggleGrid" class="btn">⊞ Toggle Grid</button>
-                </div>
-            </div>
-            
-            <div id="hexMap" class="hex-map">
-                <div id="placementGrid" class="placement-grid">
-                    <!-- Grid cells will be generated here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Mission Info Sidebar -->
-        <div class="sidebar">
-            <div class="mission-info">
-                <h2>Mission Information</h2>
-                <div class="mission-details">
-                    <h3 id="missionTitle">Black Barrow</h3>
-                    <p class="mission-number">Mission #1</p>
-                    
-                    <div class="info-section">
-                        <h4>Objective</h4>
-                        <p id="objective">
-                            Clear all enemies from the dungeon and retrieve the ancient artifact.
-                        </p>
-                    </div>
-
-                    <div class="info-section">
-                        <h4>Placed Tiles</h4>
-                        <div id="placedTiles">
-                            <span class="room-tag">None</span>
-                        </div>
-                    </div>
-
-                    <div class="info-section">
-                        <h4>Revealed Rooms</h4>
-                        <div id="revealedRooms">
-                            <span class="room-tag">None</span>
-                        </div>
-                    </div>
-
-                    <div class="info-section">
-                        <h4>Special Rules</h4>
-                        <ul id="specialRules">
-                            <li>Trap damage increased by 1</li>
-                            <li>Monsters gain +1 movement</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-section">
-                        <h4>Notes</h4>
-                        <textarea id="notes" placeholder="Add mission notes here..."></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div class="room-legend">
-                <h4>Room Legend</h4>
-                <div class="legend-items">
-                    <div class="legend-item">
-                        <span class="color-box revealed"></span>
-                        <span>Revealed</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="color-box fogged"></span>
-                        <span>Fog of War</span>
-                    </div>
-                </div>
-            </div>
+        <div class="footer">
+            <p>Gloomhaven Digital Companion • Created for enhancing your tabletop experience</p>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
