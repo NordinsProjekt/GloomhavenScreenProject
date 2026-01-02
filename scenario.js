@@ -64,6 +64,16 @@ function renderPlacedTile(tile) {
     
     tileDiv.appendChild(label);
     
+    // Custom character display for custom-red-circle tiles
+    const isCustomCharTile = tile.tileTypeId === 'custom-red-circle';
+    if (isCustomCharTile && tile.customChar) {
+        const charDisplay = document.createElement('div');
+        charDisplay.className = 'custom-char-display';
+        charDisplay.textContent = tile.customChar || '';
+        charDisplay.style.display = tile.customChar ? 'flex' : 'none';
+        tileDiv.appendChild(charDisplay);
+    }
+    
     // Click to reveal/hide fog (only for map sections)
     tileDiv.addEventListener('click', (e) => {
         if (isMapSection) {
@@ -262,9 +272,12 @@ function updateTokenVisibility() {
         const tokenElement = document.querySelector(`[data-tile-id="${token.id}"]`);
         if (!tokenElement) return;
         
-        // Doors always visible - check if tile is a door
+        // Doors, custom-red-circles, and traps always visible
         const isDoor = token.image.includes('door');
-        if (isDoor) {
+        const isCustomRedCircle = token.tileTypeId === 'custom-red-circle';
+        const isTrap = token.tileTypeId && (token.tileTypeId.includes('trap') || token.tileTypeId === 'bear-trap' || token.tileTypeId === 'spike-trap' || token.tileTypeId === 'poison-gas-trap');
+        
+        if (isDoor || isCustomRedCircle || isTrap) {
             tokenElement.style.opacity = '1';
             tokenElement.style.pointerEvents = 'auto';
             return;
