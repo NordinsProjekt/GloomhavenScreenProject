@@ -438,3 +438,114 @@ body {
     color: #bdc3c7;
 }
 
+
+/* Load Options */
+.load-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(139, 111, 71, 0.3);
+}
+
+.load-option-btn {
+    flex: 1;
+    padding: 15px 20px;
+    background: rgba(139, 111, 71, 0.3);
+    color: #e8d4b0;
+    border: 2px solid #8b6f47;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.load-option-btn:hover {
+    background: rgba(139, 111, 71, 0.6);
+    border-color: #d4af37;
+    transform: translateY(-2px);
+}
+
+.load-view {
+    min-height: 300px;
+}
+
+/* File Upload Area */
+.file-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    border: 3px dashed #8b6f47;
+    border-radius: 12px;
+    background: rgba(139, 111, 71, 0.1);
+}
+
+.upload-btn {
+    padding: 20px 40px;
+    background: rgba(139, 111, 71, 0.5);
+    color: #e8d4b0;
+    border: 2px solid #8b6f47;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+}
+
+.upload-btn:hover {
+    background: rgba(139, 111, 71, 0.8);
+    border-color: #d4af37;
+    transform: scale(1.05);
+}
+
+.upload-hint {
+    color: #8b6f47;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Mission File List */
+.mission-file-list {
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.mission-files-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mission-file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: rgba(139, 111, 71, 0.2);
+    border: 2px solid #8b6f47;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.mission-file-item:hover {
+    background: rgba(139, 111, 71, 0.4);
+    border-color: #d4af37;
+    transform: translateX(5px);
+}
+
+.mission-file-icon {
+    font-size: 20px;
+}
+
+.mission-file-name {
+    color: #e8d4b0;
+    font-size: 14px;
+    flex: 1;
+    word-break: break-word;
+}

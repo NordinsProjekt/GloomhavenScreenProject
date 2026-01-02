@@ -281,6 +281,16 @@ function loadSavedMap() {
 
 // Show load map modal
 function loadMap() {
+    showSavedMaps();
+    const modal = document.getElementById('loadMapModal');
+    modal.classList.add('show');
+}
+
+// Show saved maps view
+function showSavedMaps() {
+    document.getElementById('savedMapsView').style.display = 'block';
+    document.getElementById('fileUploadView').style.display = 'none';
+    
     const savedMaps = JSON.parse(localStorage.getItem('gloomhavenMaps') || '{}');
     const mapListContainer = document.getElementById('mapListContainer');
     
@@ -303,9 +313,111 @@ function loadMap() {
         }
         mapListContainer.innerHTML = html;
     }
+}
+
+// Show file upload view
+function showFileUpload() {
+    document.getElementById('savedMapsView').style.display = 'none';
+    document.getElementById('fileUploadView').style.display = 'block';
+}
+
+let missionsDirectoryHandle = null;
+
+async function selectMissionsFolder() {
+    try {
+        // Request directory picker
+        const dirHandle = await window.showDirectoryPicker();
+        
+        // Verify it's the Missions folder or contains it
+        if (dirHandle.name !== 'Missions') {
+            // Check if Missions exists as a subdirectory
+            let foundMissions = false;
+            try {
+                const missionsHandle = await dirHandle.getDirectoryHandle('Missions');
+                missionsDirectoryHandle = missionsHandle;
+                foundMissions = true;
+            } catch {
+                // Not found, use selected folder anyway
+                missionsDirectoryHandle = dirHandle;
+            }
+            
+            if (!foundMissions) {
+                const useAnyway = confirm(`Selected folder is "${dirHandle.name}". Continue anyway?\n\n(Recommended: Select the "Missions" folder or its parent folder)`);
+                if (!useAnyway) return;
+            }
+        } else {
+            missionsDirectoryHandle = dirHandle;
+        }
+        
+        await displayMissionFiles();
+    } catch (error) {
+        if (error.name !== 'AbortError') {
+            alert('Error accessing folder: ' + error.message);
+        }
+    }
+}
+
+async function displayMissionFiles() {
+    const fileList = document.getElementById('missionFileList');
+    fileList.innerHTML = '<p style="color: #8b6f47; margin: 15px 0;">Loading files...</p>';
     
-    const modal = document.getElementById('loadMapModal');
-    modal.classList.add('show');
+    const files = [];
+    await collectJSONFiles(missionsDirectoryHandle, files, '');
+    
+    if (files.length === 0) {
+        fileList.innerHTML = '<p style="color: #8b6f47; margin: 15px 0;">No .json files found in selected folder</p>';
+        return;
+    }
+    
+    let html = '<div class="mission-files-container">';
+    for (const file of files) {
+        html += `
+            <div class="mission-file-item" onclick="loadMissionFile('${file.path.replace(/'/g, "\\'")}')">
+                <span class="mission-file-icon">📄</span>
+                <span class="mission-file-name">${file.path}</span>
+            </div>
+        `;
+    }
+    html += '</div>';
+    
+    fileList.innerHTML = html;
+}
+
+async function collectJSONFiles(dirHandle, files, currentPath) {
+    for await (const entry of dirHandle.values()) {
+        const entryPath = currentPath ? `${currentPath}/${entry.name}` : entry.name;
+        
+        if (entry.kind === 'file' && entry.name.endsWith('.json')) {
+            files.push({ handle: entry, path: entryPath });
+        } else if (entry.kind === 'directory') {
+            await collectJSONFiles(entry, files, entryPath);
+        }
+    }
+}
+
+window.missionFileHandles = {};
+
+async function loadMissionFile(path) {
+    try {
+        // Find the file handle
+        const files = [];
+        await collectJSONFiles(missionsDirectoryHandle, files, '');
+        const fileInfo = files.find(f => f.path === path);
+        
+        if (!fileInfo) {
+            alert('File not found: ' + path);
+            return;
+        }
+        
+        const file = await fileInfo.handle.getFile();
+        const text = await file.text();
+        const mapData = JSON.parse(text);
+        
+        loadMapData(mapData);
+        closeLoadMapModal();
+    } catch (error) {
+        alert('Error loading file: ' + error.message);
+    }
 }
 
 // Close load map modal
