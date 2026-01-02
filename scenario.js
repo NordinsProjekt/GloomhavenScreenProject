@@ -1,5 +1,6 @@
 // Placed tiles on the grid
 let placedTiles = [];
+let originalMapData = null; // Store original map data for resetting
 
 const GRID_COLS = 25;
 const GRID_ROWS = 25;
@@ -32,6 +33,7 @@ function createGrid() {
 // Setup event listeners
 function setupEventListeners() {
     document.getElementById('loadMap').addEventListener('click', loadMap);
+    document.getElementById('clearMap').addEventListener('click', clearMap);
     document.getElementById('toggleAllFog').addEventListener('click', toggleAllFog);
     document.getElementById('toggleGrid').addEventListener('click', toggleGrid);
 }
@@ -63,9 +65,12 @@ function renderPlacedTile(tile) {
     tileDiv.appendChild(label);
     
     // Click to reveal/hide fog (only for map sections)
-    tileDiv.addEventListener('click', () => {
+    tileDiv.addEventListener('click', (e) => {
         if (isMapSection) {
             toggleTileReveal(tile.id);
+        } else {
+            // For non-map tiles (obstacles, tokens, etc.)
+            handleObstacleClick(tile, e);
         }
     });
     
@@ -165,6 +170,89 @@ function toggleGrid() {
     grid.classList.toggle('show-grid');
 }
 
+// Handle obstacle click
+function handleObstacleClick(tile, event) {
+    // Check if tile is revealed
+    if (!tile.revealed) return;
+    
+    // Check if it's a door
+    const isDoor = tile.image.includes('door');
+    if (isDoor) return;
+    
+    // Check if it's a custom-red-circle
+    if (tile.tileTypeId === 'custom-red-circle') return;
+    
+    // Show destroy option
+    showDestroyOption(tile, event);
+}
+
+// Show destroy obstacle option
+function showDestroyOption(tile, event) {
+    event.stopPropagation();
+    
+    // Remove any existing destroy menu
+    const existingMenu = document.querySelector('.destroy-menu');
+    if (existingMenu) existingMenu.remove();
+    
+    // Create destroy menu
+    const menu = document.createElement('div');
+    menu.className = 'destroy-menu';
+    menu.style.left = `${event.pageX}px`;
+    menu.style.top = `${event.pageY}px`;
+    
+    menu.innerHTML = `
+        <div class="destroy-menu-content">
+            <div class="destroy-menu-header">Destroy Obstacle?</div>
+            <div class="destroy-menu-info">${tile.name}</div>
+            <div class="destroy-menu-buttons">
+                <button class="destroy-btn destroy-confirm" onclick="destroyObstacle('${tile.id}')">
+                    💥 Destroy
+                </button>
+                <button class="destroy-btn destroy-cancel" onclick="closeDestroyMenu()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(menu);
+    
+    // Close menu when clicking outside
+    setTimeout(() => {
+        document.addEventListener('click', closeDestroyMenu, { once: true });
+    }, 10);
+}
+
+// Close destroy menu
+function closeDestroyMenu() {
+    const menu = document.querySelector('.destroy-menu');
+    if (menu) menu.remove();
+}
+
+// Destroy obstacle
+function destroyObstacle(tileId) {
+    // Find and remove the tile
+    const tileIndex = placedTiles.findIndex(t => t.id === tileId);
+    if (tileIndex === -1) return;
+    
+    // Remove from array
+    placedTiles.splice(tileIndex, 1);
+    
+    // Remove from DOM
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        tileElement.style.transition = 'opacity 0.3s, transform 0.3s';
+        tileElement.style.opacity = '0';
+        tileElement.style.transform = tileElement.style.transform + ' scale(0.5)';
+        
+        setTimeout(() => {
+            tileElement.remove();
+        }, 300);
+    }
+    
+    closeDestroyMenu();
+}
+
 // Update token visibility based on underlying map tiles
 function updateTokenVisibility() {
     const tokens = placedTiles.filter(t => !t.image.startsWith('mapsections/'));
@@ -235,6 +323,44 @@ function getTileBounds(tile) {
     };
 }
 
+// Load map data (shared function for localStorage and file upload)
+function loadMapData(mapData) {
+    // Store original map data for reset functionality
+    originalMapData = JSON.parse(JSON.stringify(mapData)); // Deep copy
+    
+    placedTiles = mapData.tiles || [];
+    
+    // Clear existing tiles
+    document.querySelectorAll('.placed-tile').forEach(tile => tile.remove());
+    
+    // Render all tiles
+    placedTiles.forEach(tile => {
+        // Add default values for properties that might not exist in old saves
+        if (tile.rotation === undefined) tile.rotation = 0;
+        if (tile.zIndex === undefined) tile.zIndex = 10;
+        if (tile.revealed === undefined) tile.revealed = true;
+        
+        renderPlacedTile(tile);
+    });
+    
+    // Load scenario data if available
+    if (mapData.scenario) {
+        const s = mapData.scenario;
+        document.getElementById('missionTitle').textContent = s.missionTitle || 'Mission';
+        if (document.getElementById('objectives')) document.getElementById('objectives').value = s.objectives || '';
+        if (document.getElementById('loot')) document.getElementById('loot').value = s.loot || '';
+        if (document.getElementById('text1')) document.getElementById('text1').value = s.intro || '';
+        if (document.getElementById('text2')) document.getElementById('text2').value = s.room1 || '';
+        if (document.getElementById('text3')) document.getElementById('text3').value = s.room2 || '';
+        if (document.getElementById('text4')) document.getElementById('text4').value = s.room3 || '';
+        if (document.getElementById('rules')) document.getElementById('rules').value = s.rules || '';
+        if (document.getElementById('conclusion')) document.getElementById('conclusion').value = s.conclusion || '';
+        if (document.getElementById('notes')) document.getElementById('notes').value = s.notes || '';
+    }
+    
+    updateTokenVisibility();
+}
+
 // Load map from localStorage
 function loadSavedMap() {
     const saved = localStorage.getItem('gloomhavenMap');
@@ -242,40 +368,35 @@ function loadSavedMap() {
     
     try {
         const mapData = JSON.parse(saved);
-        placedTiles = mapData.tiles || [];
-        
-        // Clear existing tiles
-        document.querySelectorAll('.placed-tile').forEach(tile => tile.remove());
-        
-        // Render all tiles
-        placedTiles.forEach(tile => {
-            // Add default values for properties that might not exist in old saves
-            if (tile.rotation === undefined) tile.rotation = 0;
-            if (tile.zIndex === undefined) tile.zIndex = 10;
-            if (tile.revealed === undefined) tile.revealed = true;
-            
-            renderPlacedTile(tile);
-        });
-        
-        // Load scenario data if available
-        if (mapData.scenario) {
-            const s = mapData.scenario;
-            document.getElementById('missionTitle').textContent = s.missionTitle || 'Mission';
-            if (document.getElementById('objectives')) document.getElementById('objectives').value = s.objectives || '';
-            if (document.getElementById('loot')) document.getElementById('loot').value = s.loot || '';
-            if (document.getElementById('text1')) document.getElementById('text1').value = s.intro || '';
-            if (document.getElementById('text2')) document.getElementById('text2').value = s.room1 || '';
-            if (document.getElementById('text3')) document.getElementById('text3').value = s.room2 || '';
-            if (document.getElementById('text4')) document.getElementById('text4').value = s.room3 || '';
-            if (document.getElementById('rules')) document.getElementById('rules').value = s.rules || '';
-            if (document.getElementById('conclusion')) document.getElementById('conclusion').value = s.conclusion || '';
-            if (document.getElementById('notes')) document.getElementById('notes').value = s.notes || '';
-        }
-        
-        updateTokenVisibility();
-        
+        loadMapData(mapData);
     } catch (e) {
         console.error('Error loading map:', e);
+    }
+}
+
+// Clear the current map
+function clearMap() {
+    if (!confirm('Clear the current map and reset all fog? This will reload the scenario from the beginning.')) {
+        return;
+    }
+    
+    // Reload from original map data to restore destroyed obstacles
+    if (originalMapData) {
+        // Create a fresh copy from original
+        const resetData = JSON.parse(JSON.stringify(originalMapData));
+        
+        // Reset only map sections to fogged, keep obstacles visible
+        resetData.tiles.forEach(tile => {
+            const isMapSection = tile.image.startsWith('mapsections/');
+            tile.revealed = !isMapSection; // Map sections fogged, obstacles revealed
+        });
+        
+        placedTiles = resetData.tiles;
+        
+        // Clear and re-render
+        document.querySelectorAll('.placed-tile').forEach(tile => tile.remove());
+        placedTiles.forEach(tile => renderPlacedTile(tile));
+        updateTokenVisibility();
     }
 }
 

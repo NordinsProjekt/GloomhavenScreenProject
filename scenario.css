@@ -137,8 +137,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, 1);
+    backdrop-filter: none;
     border-radius: 6px;
     display: flex;
     justify-content: center;
@@ -149,7 +149,7 @@ body {
 }
 
 .fog-overlay::before {
-    content: '🌫️';
+    content: '';
     font-size: 36px;
     opacity: 0.6;
 }
@@ -548,4 +548,90 @@ body {
     font-size: 14px;
     flex: 1;
     word-break: break-word;
+}
+
+/* Warning button style */
+.btn-warning {
+    background: rgba(180, 80, 30, 0.6);
+    border-color: #d4722f;
+}
+
+.btn-warning:hover {
+    background: rgba(180, 80, 30, 0.9);
+    border-color: #ff8c42;
+}
+
+/* Destroy Obstacle Menu */
+.destroy-menu {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.destroy-menu-content {
+    background: rgba(40, 30, 20, 0.98);
+    border: 3px solid #d4af37;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    pointer-events: auto;
+    min-width: 250px;
+    transform: translate(-50%, -100%) translateY(-10px);
+}
+
+.destroy-menu-header {
+    color: #d4af37;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.destroy-menu-info {
+    color: #e8d4b0;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 8px;
+    background: rgba(139, 111, 71, 0.2);
+    border-radius: 6px;
+}
+
+.destroy-menu-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.destroy-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.destroy-confirm {
+    background: rgba(180, 50, 30, 0.6);
+    color: #fff;
+    border-color: #d4472f;
+}
+
+.destroy-confirm:hover {
+    background: rgba(180, 50, 30, 0.9);
+    border-color: #ff5c42;
+    transform: scale(1.05);
+}
+
+.destroy-cancel {
+    background: rgba(80, 80, 80, 0.6);
+    color: #e8d4b0;
+    border-color: #666;
+}
+
+.destroy-cancel:hover {
+    background: rgba(80, 80, 80, 0.9);
+    border-color: #999;
 }
