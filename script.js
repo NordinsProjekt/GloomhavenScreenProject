@@ -1,3 +1,6 @@
+// Selected tile management
+let selectedTileId = null;
+
 // Available room tiles (will be loaded from images folder)
 const availableTiles = [
     // A-series tiles
@@ -76,116 +79,66 @@ const availableTiles = [
     { id: 'N1b', name: 'N1b', image: 'mapsections/N1b.png', width: 3, height: 3 },
     
     // === TOKENS & OVERLAYS ===
-    // Special Tokens
-    { id: 'coin', name: 'Coin', image: 'tiles/coin.png', width: 1, height: 1 },
-    { id: 'treasure', name: 'Treasure', image: 'tiles/treasure-tile.png', width: 1, height: 1 },
-    { id: 'entrance', name: 'Entrance', image: 'tiles/entrance.png', width: 1, height: 1 },
-    { id: 'pressure-plate', name: 'Pressure Plate', image: 'tiles/pressure-plate.png', width: 1, height: 1 },
+    // Sorted alphabetically within categories
+    
+    // Altars
+    { id: 'altar-h', name: 'Altar (H)', image: 'tiles/altar-horizontal.png', width: 1, height: 1 },
+    { id: 'altar-v', name: 'Altar (V)', image: 'tiles/altar-vertical.png', width: 1, height: 1 },
+    
+    // Boulders & Rocks
+    { id: 'boulder-1h', name: 'Boulder', image: 'tiles/boulder-1h.png', width: 1, height: 1 },
+    { id: 'boulder-2h', name: 'Boulder (2H)', image: 'tiles/boulder-2h.png', width: 2, height: 1 },
+    { id: 'boulder-3h', name: 'Boulder (3H)', image: 'tiles/boulder-3h.png', width: 3, height: 1 },
+    { id: 'rock-column', name: 'Rock Column', image: 'tiles/rock-column.png', width: 1, height: 1 },
+    { id: 'stalagmites', name: 'Stalagmites', image: 'tiles/stalagmites.png', width: 1, height: 1 },
+    
+    // Containers & Furniture
+    { id: 'barrel', name: 'Barrel', image: 'tiles/barrel.png', width: 1, height: 1 },
+    { id: 'bookcase-2h', name: 'Bookcase', image: 'tiles/bookcase-2h.png', width: 2, height: 1 },
+    { id: 'cabinet', name: 'Cabinet', image: 'tiles/cabinet.png', width: 1, height: 1 },
+    { id: 'chest', name: 'Treasure Chest', image: 'tiles/chest.png', width: 1, height: 1 },
+    { id: 'crate', name: 'Crate', image: 'tiles/crate.png', width: 1, height: 1 },
+    { id: 'sarcophagus-2h', name: 'Sarcophagus', image: 'tiles/sarcophagus-2h.png', width: 2, height: 1 },
+    { id: 'shelf-2h', name: 'Shelf', image: 'tiles/shelf-2h.png', width: 2, height: 1 },
+    { id: 'table-2h', name: 'Table', image: 'tiles/table-2h.png', width: 2, height: 1 },
     
     // Doors
     { id: 'stone-door-h', name: 'Stone Door (H)', image: 'tiles/stone-door-horizontal.png', width: 1, height: 1 },
     { id: 'stone-door-v', name: 'Stone Door (V)', image: 'tiles/stone-door-vertical.png', width: 1, height: 1 },
     { id: 'wood-door-h', name: 'Wood Door (H)', image: 'tiles/wood-door-horizontal.png', width: 1, height: 1 },
     { id: 'wood-door-v', name: 'Wood Door (V)', image: 'tiles/wood-door-vertical.png', width: 1, height: 1 },
-    { id: 'open-wood-door-h', name: 'Open Wood Door', image: 'tiles/open-wood-door-horizontal.png', width: 1, height: 1 },
     
-    // Single-Hex Corridors
-    { id: 'corridor-earth', name: 'Corridor Earth', image: 'tiles/corridor-earth.png', width: 1, height: 1 },
-    { id: 'corridor-manmade', name: 'Corridor Stone', image: 'tiles/corridor-manmade.png', width: 1, height: 1 },
-    { id: 'corridor-natural', name: 'Corridor Natural', image: 'tiles/corridor-natural.png', width: 1, height: 1 },
-    { id: 'corridor-wood', name: 'Corridor Wood', image: 'tiles/corridor-wood.png', width: 1, height: 1 },
-    
-    // 2-Hex Corridors
-    { id: 'corridor-earth-2h', name: 'Corridor Earth 2H', image: 'tiles/corridor-earth-2h.png', width: 2, height: 1 },
-    { id: 'corridor-manmade-2h', name: 'Corridor Stone 2H', image: 'tiles/corridor-manmade-2h.png', width: 2, height: 1 },
-    { id: 'corridor-natural-2h', name: 'Corridor Natural 2H', image: 'tiles/corridor-natural-2h.png', width: 2, height: 1 },
-    { id: 'corridor-wood-2h', name: 'Corridor Wood 2H', image: 'tiles/corridor-wood-2h.png', width: 2, height: 1 },
-    
-    // Single-Hex Obstacles
-    { id: 'altar-h', name: 'Altar (H)', image: 'tiles/altar-horizontal.png', width: 1, height: 1 },
-    { id: 'altar-v', name: 'Altar (V)', image: 'tiles/altar-vertical.png', width: 1, height: 1 },
-    { id: 'barrel', name: 'Barrel', image: 'tiles/barrel.png', width: 1, height: 1 },
-    { id: 'boulder', name: 'Boulder', image: 'tiles/boulder.png', width: 1, height: 1 },
+    // Environmental
     { id: 'bush', name: 'Bush', image: 'tiles/bush.png', width: 1, height: 1 },
-    { id: 'cabinet', name: 'Cabinet', image: 'tiles/cabinet.png', width: 1, height: 1 },
-    { id: 'crate', name: 'Crate', image: 'tiles/crate.png', width: 1, height: 1 },
     { id: 'crystal', name: 'Crystal', image: 'tiles/crystal.png', width: 1, height: 1 },
+    { id: 'dark-pit-2h', name: 'Dark Pit', image: 'tiles/dark-pit-2h.png', width: 2, height: 1 },
     { id: 'fountain', name: 'Fountain', image: 'tiles/fountain.png', width: 1, height: 1 },
+    { id: 'hot-coals', name: 'Hot Coals', image: 'tiles/hot-coals.png', width: 1, height: 1 },
     { id: 'nest', name: 'Nest', image: 'tiles/nest.png', width: 1, height: 1 },
-    { id: 'rock-column', name: 'Rock Column', image: 'tiles/rock-column.png', width: 1, height: 1 },
-    { id: 'stalagmites', name: 'Stalagmites', image: 'tiles/stalagmites.png', width: 1, height: 1 },
+    { id: 'rubble', name: 'Rubble', image: 'tiles/rubble.png', width: 1, height: 1 },
     { id: 'stone-pillar', name: 'Stone Pillar', image: 'tiles/stone-pillar.png', width: 1, height: 1 },
     { id: 'stump', name: 'Stump', image: 'tiles/stump.png', width: 1, height: 1 },
-    { id: 'totem', name: 'Totem', image: 'tiles/totem.png', width: 1, height: 1 },
-    
-    // 2-Hex Obstacles
-    { id: 'bookcase-2h', name: 'Bookcase', image: 'tiles/bookcase-2h.png', width: 2, height: 1 },
-    { id: 'dark-pit-2h', name: 'Dark Pit', image: 'tiles/dark-pit-2h.png', width: 2, height: 1 },
-    { id: 'large-boulders-2h', name: 'Large Boulders', image: 'tiles/large-boulders-2h.png', width: 2, height: 1 },
-    { id: 'sarcophagus-2h', name: 'Sarcophagus', image: 'tiles/sarcophagus-2h.png', width: 2, height: 1 },
-    { id: 'shelf-2h', name: 'Shelf', image: 'tiles/shelf-2h.png', width: 2, height: 1 },
-    { id: 'table-2h', name: 'Table', image: 'tiles/table-2h.png', width: 2, height: 1 },
-    { id: 'wall-section-2h', name: 'Wall Section', image: 'tiles/wall-section-2h.png', width: 2, height: 1 },
-    
-    // 3-Hex Obstacles
-    { id: 'huge-boulders-3h', name: 'Huge Boulders', image: 'tiles/huge-boulders-3h.png', width: 3, height: 1 },
-    
-    // Difficult Terrain
-    { id: 'tree', name: 'Tree', image: 'tiles/tree.png', width: 1, height: 1 },
-    { id: 'hot-coals', name: 'Hot Coals', image: 'tiles/hot-coals.png', width: 1, height: 1 },
     { id: 'thorns', name: 'Thorns', image: 'tiles/thorns.png', width: 1, height: 1 },
-    { id: 'rubble', name: 'Rubble', image: 'tiles/rubble.png', width: 1, height: 1 },
+    { id: 'totem', name: 'Totem', image: 'tiles/totem.png', width: 1, height: 1 },
+    { id: 'tree-3h', name: 'Tree (3H)', image: 'tiles/tree-3h.png', width: 3, height: 1 },
+    { id: 'wall-section-2h', name: 'Wall Section', image: 'tiles/wall-section-2h.png', width: 2, height: 1 },
+    { id: 'water', name: 'Water', image: 'tiles/water.png', width: 1, height: 1 },
+    
+    // Stairs
     { id: 'stairs-h', name: 'Stairs (H)', image: 'tiles/stairs-horizontal.png', width: 1, height: 1 },
     { id: 'stairs-v', name: 'Stairs (V)', image: 'tiles/stairs-vertical.png', width: 1, height: 1 },
-    { id: 'water', name: 'Water', image: 'tiles/water.png', width: 1, height: 1 },
-    { id: 'log', name: 'Log', image: 'tiles/log.png', width: 1, height: 1 },
     
-    // Hazardous Terrain/Traps
+    // Tokens & Markers
+    { id: 'coin', name: 'Coin', image: 'tiles/coin.png', width: 1, height: 1 },
+    { id: 'pressure-plate', name: 'Pressure Plate', image: 'tiles/pressure-plate.png', width: 1, height: 1 },
+    
+    // Traps
     { id: 'bear-trap', name: 'Bear Trap', image: 'tiles/bear-trap.png', width: 1, height: 1 },
     { id: 'poison-gas-trap', name: 'Poison Gas Trap', image: 'tiles/poison-gas-trap.png', width: 1, height: 1 },
     { id: 'spike-trap', name: 'Spike Trap', image: 'tiles/spike-trap.png', width: 1, height: 1 },
     
-    // Fog
-    { id: 'dark-fog', name: 'Dark Fog', image: 'tiles/dark-fog.png', width: 1, height: 1 },
-    { id: 'light-fog', name: 'Light Fog', image: 'tiles/light-fog.png', width: 1, height: 1 },
-    
-    // Red Circle Markers (Numbers)
-    { id: 'red-1', name: 'Red Circle 1', image: 'tiles/red-circle-1.png', width: 1, height: 1 },
-    { id: 'red-2', name: 'Red Circle 2', image: 'tiles/red-circle-2.png', width: 1, height: 1 },
-    { id: 'red-3', name: 'Red Circle 3', image: 'tiles/red-circle-3.png', width: 1, height: 1 },
-    { id: 'red-4', name: 'Red Circle 4', image: 'tiles/red-circle-4.png', width: 1, height: 1 },
-    { id: 'red-5', name: 'Red Circle 5', image: 'tiles/red-circle-5.png', width: 1, height: 1 },
-    { id: 'red-6', name: 'Red Circle 6', image: 'tiles/red-circle-6.png', width: 1, height: 1 },
-    { id: 'red-7', name: 'Red Circle 7', image: 'tiles/red-circle-7.png', width: 1, height: 1 },
-    { id: 'red-8', name: 'Red Circle 8', image: 'tiles/red-circle-8.png', width: 1, height: 1 },
-    { id: 'red-9', name: 'Red Circle 9', image: 'tiles/red-circle-9.png', width: 1, height: 1 },
-    { id: 'red-10', name: 'Red Circle 10', image: 'tiles/red-circle-10.png', width: 1, height: 1 },
-    { id: 'red-11', name: 'Red Circle 11', image: 'tiles/red-circle-11.png', width: 1, height: 1 },
-    { id: 'red-12', name: 'Red Circle 12', image: 'tiles/red-circle-12.png', width: 1, height: 1 },
-    { id: 'red-13', name: 'Red Circle 13', image: 'tiles/red-circle-13.png', width: 1, height: 1 },
-    { id: 'red-14', name: 'Red Circle 14', image: 'tiles/red-circle-14.png', width: 1, height: 1 },
-    { id: 'red-15', name: 'Red Circle 15', image: 'tiles/red-circle-15.png', width: 1, height: 1 },
-    { id: 'red-16', name: 'Red Circle 16', image: 'tiles/red-circle-16.png', width: 1, height: 1 },
-    { id: 'red-17', name: 'Red Circle 17', image: 'tiles/red-circle-17.png', width: 1, height: 1 },
-    { id: 'red-18', name: 'Red Circle 18', image: 'tiles/red-circle-18.png', width: 1, height: 1 },
-    { id: 'red-19', name: 'Red Circle 19', image: 'tiles/red-circle-19.png', width: 1, height: 1 },
-    { id: 'red-20', name: 'Red Circle 20', image: 'tiles/red-circle-20.png', width: 1, height: 1 },
-    
-    // Red Circle Markers (Letters)
-    { id: 'red-A', name: 'Red Circle A', image: 'tiles/red-circle-A.png', width: 1, height: 1 },
-    { id: 'red-B', name: 'Red Circle B', image: 'tiles/red-circle-B.png', width: 1, height: 1 },
-    { id: 'red-C', name: 'Red Circle C', image: 'tiles/red-circle-C.png', width: 1, height: 1 },
-    { id: 'red-D', name: 'Red Circle D', image: 'tiles/red-circle-D.png', width: 1, height: 1 },
-    { id: 'red-E', name: 'Red Circle E', image: 'tiles/red-circle-E.png', width: 1, height: 1 },
-    { id: 'red-F', name: 'Red Circle F', image: 'tiles/red-circle-F.png', width: 1, height: 1 },
-    { id: 'red-G', name: 'Red Circle G', image: 'tiles/red-circle-G.png', width: 1, height: 1 },
-    { id: 'red-H', name: 'Red Circle H', image: 'tiles/red-circle-H.png', width: 1, height: 1 },
-    { id: 'red-I', name: 'Red Circle I', image: 'tiles/red-circle-I.png', width: 1, height: 1 },
-    { id: 'red-J', name: 'Red Circle J', image: 'tiles/red-circle-J.png', width: 1, height: 1 },
-    { id: 'red-K', name: 'Red Circle K', image: 'tiles/red-circle-K.png', width: 1, height: 1 },
-    { id: 'red-L', name: 'Red Circle L', image: 'tiles/red-circle-L.png', width: 1, height: 1 },
-    { id: 'red-M', name: 'Red Circle M', image: 'tiles/red-circle-M.png', width: 1, height: 1 },
-    { id: 'red-N', name: 'Red Circle N', image: 'tiles/red-circle-N.png', width: 1, height: 1 },
+    // Custom Character Tile
+    { id: 'custom-red-circle', name: 'Custom Red Circle', image: 'tiles/custom-red-circle.png', width: 1, height: 1, customChar: '' },
 ];
 
 // Placed tiles on the grid
@@ -228,6 +181,243 @@ function createGrid() {
             
             grid.appendChild(cell);
         }
+    }
+    
+    // Click on grid background to deselect
+    grid.addEventListener('click', (e) => {
+        if (e.target === grid || e.target.classList.contains('grid-cell')) {
+            deselectTile();
+        }
+    });
+}
+
+// Select a tile
+function selectTile(tileId) {
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (!tile) return;
+    
+    // Update selected tile
+    selectedTileId = tileId;
+    
+    // Update visual selection
+    document.querySelectorAll('.placed-tile').forEach(t => {
+        t.classList.remove('selected');
+    });
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        tileElement.classList.add('selected');
+    }
+    
+    // Show control panel
+    showControlPanel(tile);
+    
+    // Toggle reveal for map sections
+    const isMapSection = tile.image.startsWith('mapsections/');
+    if (isMapSection) {
+        toggleTileReveal(tile.id);
+    }
+}
+
+// Deselect tile
+function deselectTile() {
+    selectedTileId = null;
+    document.querySelectorAll('.placed-tile').forEach(t => {
+        t.classList.remove('selected');
+    });
+    hideControlPanel();
+}
+
+// Show control panel
+function showControlPanel(tile) {
+    let panel = document.getElementById('tileControlPanel');
+    
+    if (!panel) {
+        panel = document.createElement('div');
+        panel.id = 'tileControlPanel';
+        panel.className = 'tile-control-panel';
+        document.body.appendChild(panel);
+    }
+    
+    const isMapSection = tile.image.startsWith('mapsections/');
+    
+    const rotationButtons = `
+        <div class="control-buttons">
+            <button class="control-btn" onclick="setTileRotation('${tile.id}', 0)" title="0°">0°</button>
+            <button class="control-btn" onclick="setTileRotation('${tile.id}', 30)" title="30°">30°</button>
+            <button class="control-btn" onclick="setTileRotation('${tile.id}', 45)" title="45°">45°</button>
+            <button class="control-btn" onclick="setTileRotation('${tile.id}', 90)" title="90°">90°</button>
+        </div>
+        <div class="control-buttons">
+            <button class="control-btn" onclick="setTileRotation('${tile.id}', 180)" title="180°">180°</button>
+            <button class="control-btn" onclick="setTileRotation('${tile.id}', 270)" title="270°">270°</button>
+            <button class="control-btn" onclick="setTileRotation('${tile.id}', 315)" title="315°">315°</button>
+            <button class="control-btn" onclick="setTileRotation('${tile.id}', 330)" title="330°">330°</button>
+        </div>
+        <div class="control-buttons rotation-fine">
+            <button class="control-btn-icon" onclick="rotateTile('${tile.id}', -5)" title="Rotate -5°">↶</button>
+            <span class="rotation-display">${tile.rotation}°</span>
+            <button class="control-btn-icon" onclick="rotateTile('${tile.id}', 5)" title="Rotate +5°">↷</button>
+        </div>
+    `;
+    
+    const movementButtons = `
+        <div class="control-movement">
+            <button class="control-btn-icon" onclick="moveTilePixels('${tile.id}', 0, -10)" title="Up">⬆</button>
+        </div>
+        <div class="control-movement">
+            <button class="control-btn-icon" onclick="moveTilePixels('${tile.id}', -10, 0)" title="Left">⬅</button>
+            <button class="control-btn-icon" onclick="moveTilePixels('${tile.id}', 10, 0)" title="Right">➡</button>
+        </div>
+        <div class="control-movement">
+            <button class="control-btn-icon" onclick="moveTilePixels('${tile.id}', 0, 10)" title="Down">⬇</button>
+        </div>
+    `;
+    
+    const isCustomCharTile = tile.tileTypeId === 'custom-red-circle';
+    
+    const customCharSection = isCustomCharTile ? `
+        <div class="control-section">
+            <label>Custom Character</label>
+            <div class="control-buttons">
+                <input type="text" 
+                       id="customCharInput" 
+                       maxlength="1" 
+                       value="${tile.customChar || ''}" 
+                       placeholder="1 char" 
+                       onchange="updateTileCustomChar('${tile.id}', this.value)"
+                       class="custom-char-input" />
+            </div>
+            <div class="control-hint">Enter a single character to display on the tile</div>
+        </div>
+    ` : '';
+    
+    const fogSection = isMapSection ? `
+        <div class="control-section">
+            <label>Fog of War</label>
+            <div class="control-buttons">
+                <button class="control-btn" onclick="toggleTileRevealFromPanel('${tile.id}')" title="Toggle Fog">
+                    ${tile.revealed ? '🌞 Hide' : '🌚 Reveal'}
+                </button>
+            </div>
+        </div>
+    ` : '';
+    
+    panel.innerHTML = `
+        <div class="control-panel-header">
+            <h4>${tile.name}</h4>
+            <button class="control-panel-close" onclick="deselectTile()">✕</button>
+        </div>
+        <div class="control-panel-content">
+            <div class="control-section">
+                <label>Rotation</label>
+                ${rotationButtons}
+            </div>
+            
+            <div class="control-section">
+                <label>Size</label>
+                <div class="control-buttons">
+                    <button class="control-btn" onclick="resizeTile('${tile.id}', -1)" title="Shrink">− Shrink</button>
+                    <button class="control-btn" onclick="resizeTile('${tile.id}', 1)" title="Grow">+ Grow</button>
+                </div>
+            </div>
+            
+            <div class="control-section">
+                <label>Z-Index (Layer)</label>
+                <div class="control-buttons">
+                    <button class="control-btn" onclick="changeZIndex('${tile.id}', 1)" title="Bring Forward">▲ Forward</button>
+                    <button class="control-btn" onclick="changeZIndex('${tile.id}', -1)" title="Send Backward">▼ Backward</button>
+                </div>
+                <div class="z-index-display">Current: ${tile.zIndex}</div>
+            </div>
+            
+            <div class="control-section">
+                <label>Fine Position (10px)</label>
+                ${movementButtons}
+            </div>
+            
+            ${customCharSection}
+            
+            ${fogSection}
+            
+            <div class="control-section">
+                <button class="control-btn-danger" onclick="removeTileFromPanel('${tile.id}')" title="Remove Tile">✕ Remove Tile</button>
+            </div>
+        </div>
+    `;
+    
+    panel.style.display = 'block';
+}
+
+// Hide control panel
+function hideControlPanel() {
+    const panel = document.getElementById('tileControlPanel');
+    if (panel) {
+        panel.style.display = 'none';
+    }
+}
+
+// Set tile to specific rotation
+function setTileRotation(tileId, angle) {
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (!tile) return;
+    
+    tile.rotation = angle % 360;
+    const tileElement = document.querySelector(`[data-tile-id=\"${tileId}\"]`);
+    if (tileElement) {
+        updateTilePosition(tileElement, tile);
+        updateTileLabel(tileElement, tile);
+    }
+    
+    // Update control panel to show new rotation
+    if (selectedTileId === tileId) {
+        showControlPanel(tile);
+    }
+}
+
+// Toggle reveal from panel (doesn't deselect)
+function toggleTileRevealFromPanel(tileId) {
+    toggleTileReveal(tileId);
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (tile && selectedTileId === tileId) {
+        showControlPanel(tile);
+    }
+}
+
+// Remove tile from panel
+function removeTileFromPanel(tileId) {
+    removeTile(tileId);
+    deselectTile();
+}
+
+// Update tile label
+function updateTileLabel(tileElement, tile) {
+    const label = tileElement.querySelector('.tile-label');
+    if (label) {
+        label.textContent = `${tile.name} (z:${tile.zIndex})`;
+    }
+}
+
+// Update custom character on tile
+function updateTileCustomChar(tileId, char) {
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (!tile) return;
+    
+    // Limit to 1 character
+    tile.customChar = char.substring(0, 1).toUpperCase();
+    
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        // Update or create custom character display
+        let charDisplay = tileElement.querySelector('.custom-char-display');
+        if (charDisplay) {
+            charDisplay.textContent = tile.customChar;
+            charDisplay.style.display = tile.customChar ? 'flex' : 'none';
+        }
+    }
+    
+    // Refresh control panel to show updated character
+    if (selectedTileId === tileId) {
+        showControlPanel(tile);
     }
 }
 
@@ -358,7 +548,8 @@ function placeTile(tileTypeId, col, row) {
         height: tileType.height,
         revealed: true,
         rotation: 0,
-        zIndex: 10
+        zIndex: 10,
+        customChar: tileType.customChar || ''
     };
     
     placedTiles.push(placedTile);
@@ -426,47 +617,29 @@ function renderPlacedTile(tile) {
     label.className = 'tile-label';
     label.textContent = `${tile.name} (z:${tile.zIndex})`;
     
-    // Controls
-    const controls = document.createElement('div');
-    controls.className = 'tile-controls';
-    controls.innerHTML = `
-        <div class="tile-controls-row">
-            <button class="tile-btn" onclick="event.stopPropagation(); rotateTile('${tile.id}', -90)" title="Rotate Left">↶</button>
-            <button class="tile-btn" onclick="event.stopPropagation(); rotateTile('${tile.id}', 90)" title="Rotate Right">↷</button>
-        </div>
-        <div class="tile-controls-row">
-            <button class="tile-btn" onclick="event.stopPropagation(); resizeTile('${tile.id}', -1)" title="Shrink">−</button>
-            <button class="tile-btn" onclick="event.stopPropagation(); resizeTile('${tile.id}', 1)" title="Grow">+</button>
-        </div>
-        <div class="tile-controls-row">
-            <button class="tile-btn" onclick="event.stopPropagation(); changeZIndex('${tile.id}', 1)" title="Bring Forward">▲</button>
-            <button class="tile-btn" onclick="event.stopPropagation(); changeZIndex('${tile.id}', -1)" title="Send Backward">▼</button>
-        </div>
-        <div class="tile-controls-row movement-row">
-            <button class="tile-btn" onclick="event.stopPropagation(); moveTilePixels('${tile.id}', 0, -10)" title="Move Up 10px">⬆</button>
-        </div>
-        <div class="tile-controls-row movement-row">
-            <button class="tile-btn" onclick="event.stopPropagation(); moveTilePixels('${tile.id}', -10, 0)" title="Move Left 10px">⬅</button>
-            <button class="tile-btn" onclick="event.stopPropagation(); moveTilePixels('${tile.id}', 10, 0)" title="Move Right 10px">➡</button>
-        </div>
-        <div class="tile-controls-row movement-row">
-            <button class="tile-btn" onclick="event.stopPropagation(); moveTilePixels('${tile.id}', 0, 10)" title="Move Down 10px">⬇</button>
-        </div>
-        <div class="tile-controls-row">
-            <button class="tile-btn" onclick="event.stopPropagation(); removeTile('${tile.id}')" title="Remove">✕</button>
-        </div>
-    `;
+    // Selection indicator
+    const selectionIndicator = document.createElement('div');
+    selectionIndicator.className = 'selection-indicator';
+    
+    // Custom character display for custom-red-circle tiles
+    const isCustomCharTile = tile.tileTypeId === 'custom-red-circle';
+    if (isCustomCharTile) {
+        const charDisplay = document.createElement('div');
+        charDisplay.className = 'custom-char-display';
+        charDisplay.textContent = tile.customChar || '';
+        charDisplay.style.display = tile.customChar ? 'flex' : 'none';
+        tileDiv.appendChild(charDisplay);
+    }
     
     tileDiv.appendChild(dragHandle);
     tileDiv.appendChild(label);
-    tileDiv.appendChild(controls);
+    tileDiv.appendChild(selectionIndicator);
     
-    // Click to reveal (only for map sections)
+    // Click to select tile or reveal (for map sections)
     tileDiv.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('tile-btn') && !e.target.closest('.tile-controls') && !e.target.closest('.drag-handle')) {
-            if (isMapSection) {
-                toggleTileReveal(tile.id);
-            }
+        if (!e.target.closest('.drag-handle')) {
+            e.stopPropagation();
+            selectTile(tile.id);
         }
     });
     
@@ -993,6 +1166,12 @@ function rotateTile(tileId, degrees) {
     const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
     if (tileElement) {
         updateTilePosition(tileElement, tile);
+        updateTileLabel(tileElement, tile);
+    }
+    
+    // Update control panel if this tile is selected
+    if (selectedTileId === tileId) {
+        showControlPanel(tile);
     }
 }
 
@@ -1006,12 +1185,12 @@ function changeZIndex(tileId, delta) {
     const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
     if (tileElement) {
         tileElement.style.zIndex = tile.zIndex;
-        
-        // Update label to show new z-index
-        const label = tileElement.querySelector('.tile-label');
-        if (label) {
-            label.textContent = `${tile.name} (z:${tile.zIndex})`;
-        }
+        updateTileLabel(tileElement, tile);
+    }
+    
+    // Update control panel if this tile is selected
+    if (selectedTileId === tileId) {
+        showControlPanel(tile);
     }
 }
 
