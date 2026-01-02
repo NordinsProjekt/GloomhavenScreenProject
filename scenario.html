@@ -137,8 +137,29 @@ Chest: 2 Random Items</textarea>
                 <button class="modal-close" onclick="closeLoadMapModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <div id="mapListContainer" class="map-list">
-                    <!-- Map list will be populated here -->
+                <div class="load-options">
+                    <button class="load-option-btn" onclick="showSavedMaps()">
+                        💾 Saved Maps
+                    </button>
+                    <button class="load-option-btn" onclick="showFileUpload()">
+                        📁 Upload JSON File
+                    </button>
+                </div>
+                
+                <div id="savedMapsView" class="load-view">
+                    <div id="mapListContainer" class="map-list">
+                        <!-- Map list will be populated here -->
+                    </div>
+                </div>
+                
+                <div id="fileUploadView" class="load-view" style="display: none;">
+                    <div class="file-upload-area">
+                        <button class="upload-btn" onclick="selectMissionsFolder()">
+                            📁 Browse Missions Folder
+                        </button>
+                        <p class="upload-hint">Select files from Missions folder and subfolders</p>
+                        <div id="missionFileList" class="mission-file-list"></div>
+                    </div>
                 </div>
             </div>
         </div>
