@@ -34,6 +34,11 @@ function createGrid() {
 let currentPlayerCount = 4;
 let monstersVisible = true;
 
+// Line tool state
+let lineToolActive = false;
+let lineStartPoint = null;
+let lineElement = null;
+
 // Setup event listeners
 function setupEventListeners() {
     document.getElementById('loadMap').addEventListener('click', loadMap);
@@ -41,6 +46,7 @@ function setupEventListeners() {
     document.getElementById('toggleAllFog').addEventListener('click', toggleAllFog);
     document.getElementById('toggleGrid').addEventListener('click', toggleGrid);
     document.getElementById('toggleMonsters').addEventListener('click', toggleMonsterVisibility);
+    document.getElementById('lineToolBtn').addEventListener('click', toggleLineTool);
     
     // Player count buttons
     document.querySelectorAll('.player-count-btn').forEach(btn => {
@@ -49,6 +55,11 @@ function setupEventListeners() {
             setPlayerCount(count);
         });
     });
+    
+    // Map click and mouse move for line tool
+    const hexMap = document.getElementById('hexMap');
+    hexMap.addEventListener('click', handleMapClick);
+    hexMap.addEventListener('mousemove', handleMapMouseMove);
 }
 
 // Render a placed tile (read-only)
@@ -116,6 +127,11 @@ function renderPlacedTile(tile) {
     
     // Click to reveal/hide fog (only for map sections)
     tileDiv.addEventListener('click', (e) => {
+        // Prevent tile interactions when line tool is active
+        if (lineToolActive) {
+            return;
+        }
+        
         if (isMapSection) {
             toggleTileReveal(tile.id);
         } else {
@@ -191,6 +207,7 @@ function toggleTileReveal(tileId) {
     }
     
     updateTokenVisibility();
+    updateMonsterVisibility();
 }
 
 // Toggle all fog
@@ -212,6 +229,9 @@ function toggleAllFog() {
             }
         }
     });
+    
+    updateTokenVisibility();
+    updateMonsterVisibility();
 }
 
 // Toggle grid visibility
@@ -669,6 +689,8 @@ function setPlayerCount(count) {
 
 // Update monster visibility based on player count
 function updateMonsterVisibility() {
+    const mapSections = placedTiles.filter(t => t.image.startsWith('mapsections/'));
+    
     placedTiles.forEach(tile => {
         if (tile.isMonster) {
             const tileElement = document.querySelector(`[data-tile-id="${tile.id}"]`);
@@ -679,8 +701,23 @@ function updateMonsterVisibility() {
                                            tile.players[currentPlayerCount] && 
                                            tile.players[currentPlayerCount].enabled;
             
-            // Hide monster if not enabled for player count OR if monsters are globally hidden
-            if (!monstersVisible || !isEnabledForPlayerCount) {
+            // Check if monster is under a fogged map section
+            let isUnderFoggedTile = false;
+            for (const mapTile of mapSections) {
+                if (!mapTile.revealed && tilesOverlap(tile, mapTile)) {
+                    // Check if the map tile is ABOVE the monster (higher z-index)
+                    const monsterZIndex = tile.zIndex || 10;
+                    const mapZIndex = mapTile.zIndex || 10;
+                    
+                    if (mapZIndex >= monsterZIndex) {
+                        isUnderFoggedTile = true;
+                        break;
+                    }
+                }
+            }
+            
+            // Hide monster if not enabled for player count OR if monsters are globally hidden OR if under fogged tile
+            if (!monstersVisible || !isEnabledForPlayerCount || isUnderFoggedTile) {
                 tileElement.setAttribute('data-monster-hidden', 'true');
             } else {
                 tileElement.removeAttribute('data-monster-hidden');
@@ -688,7 +725,7 @@ function updateMonsterVisibility() {
             
             // Update border style based on current player count
             tileElement.classList.remove('monster-border-normal', 'monster-border-elite');
-            if (isEnabledForPlayerCount && monstersVisible) {
+            if (isEnabledForPlayerCount && monstersVisible && !isUnderFoggedTile) {
                 const isElite = tile.players[currentPlayerCount].elite;
                 tileElement.classList.add(isElite ? 'monster-border-elite' : 'monster-border-normal');
             }
@@ -702,6 +739,85 @@ function toggleMonsterVisibility() {
     const btn = document.getElementById('toggleMonsters');
     btn.textContent = monstersVisible ? '👹 Hide Monsters' : '👹 Show Monsters';
     updateMonsterVisibility();
+}
+
+// Toggle line tool
+function toggleLineTool() {
+    lineToolActive = !lineToolActive;
+    const btn = document.getElementById('lineToolBtn');
+    const hexMap = document.getElementById('hexMap');
+    
+    if (lineToolActive) {
+        btn.classList.add('btn-active');
+        hexMap.style.cursor = 'crosshair';
+    } else {
+        btn.classList.remove('btn-active');
+        hexMap.style.cursor = 'default';
+        clearLineTool();
+    }
+}
+
+// Clear line tool
+function clearLineTool() {
+    lineStartPoint = null;
+    if (lineElement) {
+        lineElement.remove();
+        lineElement = null;
+    }
+}
+
+// Handle map click for line tool
+function handleMapClick(e) {
+    if (!lineToolActive) return;
+    
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    if (!lineStartPoint) {
+        // First click - set start point
+        lineStartPoint = { x, y };
+        createLineElement();
+    } else {
+        // Second click - reset for new line
+        lineStartPoint = { x, y };
+        if (lineElement) {
+            lineElement.remove();
+        }
+        createLineElement();
+    }
+}
+
+// Handle mouse move for line tool
+function handleMapMouseMove(e) {
+    if (!lineToolActive || !lineStartPoint || !lineElement) return;
+    
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    updateLineElement(x, y);
+}
+
+// Create line element
+function createLineElement() {
+    const hexMap = document.getElementById('hexMap');
+    lineElement = document.createElement('div');
+    lineElement.className = 'range-line';
+    hexMap.appendChild(lineElement);
+}
+
+// Update line element position and rotation
+function updateLineElement(endX, endY) {
+    const dx = endX - lineStartPoint.x;
+    const dy = endY - lineStartPoint.y;
+    const length = Math.sqrt(dx * dx + dy * dy);
+    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+    
+    lineElement.style.left = lineStartPoint.x + 'px';
+    lineElement.style.top = lineStartPoint.y + 'px';
+    lineElement.style.width = length + 'px';
+    lineElement.style.transform = `rotate(${angle}deg)`;
 }
 
 // Toggle section visibility
