@@ -76,9 +76,30 @@ const availableTiles = [
     { id: 'N1b', name: 'N1b', image: 'images/N1b.png', width: 3, height: 3 },
 ];
 
+// Available monster tiles
+const availableMonsters = [
+    { id: 'bandit-guard', name: 'Bandit Guard', image: 'monsters/bandit-guard.png' },
+    { id: 'bandit-archer', name: 'Bandit Archer', image: 'monsters/bandit-archer.png' },
+    { id: 'living-bones', name: 'Living Bones', image: 'monsters/living-bones.png' },
+    { id: 'living-corpse', name: 'Living Corpse', image: 'monsters/living-corpse.png' },
+    { id: 'giant-viper', name: 'Giant Viper', image: 'monsters/giant-viper.png' },
+    { id: 'cave-bear', name: 'Cave Bear', image: 'monsters/cave-bear.png' },
+    { id: 'stone-golem', name: 'Stone Golem', image: 'monsters/stone-golem.png' },
+    { id: 'flame-demon', name: 'Flame Demon', image: 'monsters/flame-demon.png' },
+    { id: 'earth-demon', name: 'Earth Demon', image: 'monsters/earth-demon.png' },
+    { id: 'wind-demon', name: 'Wind Demon', image: 'monsters/wind-demon.png' },
+    { id: 'frost-demon', name: 'Frost Demon', image: 'monsters/frost-demon.png' },
+    { id: 'night-demon', name: 'Night Demon', image: 'monsters/night-demon.png' },
+    { id: 'sun-demon', name: 'Sun Demon', image: 'monsters/sun-demon.png' },
+    { id: 'inox-guard', name: 'Inox Guard', image: 'monsters/inox-guard.png' },
+    { id: 'inox-shaman', name: 'Inox Shaman', image: 'monsters/inox-shaman.png' },
+];
+
 // Placed tiles on the grid
 let placedTiles = [];
+let placedMonsters = [];
 let nextTileId = 0;
+let nextMonsterId = 0;
 
 const GRID_COLS = 25;
 const GRID_ROWS = 25;
@@ -93,6 +114,7 @@ let dragOffsetY = 0;
 function initializeMap() {
     createGrid();
     loadTilePalette();
+    loadMonsterPalette();
     loadSavedMap();
 }
 
@@ -145,11 +167,46 @@ function loadTilePalette() {
     });
 }
 
+// Load monsters into palette
+function loadMonsterPalette() {
+    const monsterList = document.getElementById('monsterList');
+    monsterList.innerHTML = '';
+    
+    availableMonsters.forEach(monster => {
+        const monsterItem = document.createElement('div');
+        monsterItem.className = 'tile-item monster-item';
+        monsterItem.draggable = true;
+        monsterItem.dataset.monsterId = monster.id;
+        
+        monsterItem.innerHTML = `
+            <div class="tile-preview" style="background-image: url('${monster.image}')"></div>
+            <div class="tile-info">
+                <div class="tile-name">${monster.name}</div>
+                <div class="tile-size">Token</div>
+            </div>
+        `;
+        
+        monsterItem.addEventListener('dragstart', handleMonsterDragStart);
+        monsterItem.addEventListener('dragend', handleDragEnd);
+        
+        monsterList.appendChild(monsterItem);
+    });
+}
+
 // Drag and drop handlers
 let draggedTileId = null;
+let draggedMonsterId = null;
 
 function handleDragStart(e) {
     draggedTileId = e.currentTarget.dataset.tileId;
+    draggedMonsterId = null;
+    e.currentTarget.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'copy';
+}
+
+function handleMonsterDragStart(e) {
+    draggedMonsterId = e.currentTarget.dataset.monsterId;
+    draggedTileId = null;
     e.currentTarget.classList.add('dragging');
     e.dataTransfer.effectAllowed = 'copy';
 }
@@ -175,8 +232,13 @@ function handleDrop(e) {
     const col = parseInt(e.currentTarget.dataset.col);
     const row = parseInt(e.currentTarget.dataset.row);
     
-    placeTile(draggedTileId, col, row);
-    draggedTileId = null;
+    if (draggedTileId) {
+        placeTile(draggedTileId, col, row);
+        draggedTileId = null;
+    } else if (draggedMonsterId) {
+        placeMonster(draggedMonsterId, col, row);
+        draggedMonsterId = null;
+    }
 }
 
 // Place a tile on the grid
@@ -343,6 +405,119 @@ function toggleTileReveal(tileId) {
     updateRevealedRooms();
 }
 
+// Place a monster on the grid
+function placeMonster(monsterTypeId, col, row) {
+    const monsterType = availableMonsters.find(m => m.id === monsterTypeId);
+    if (!monsterType) return;
+    
+    const placedMonster = {
+        id: `monster_${nextMonsterId++}`,
+        monsterTypeId: monsterTypeId,
+        name: monsterType.name,
+        image: monsterType.image,
+        col: col,
+        row: row,
+        players: {
+            2: { enabled: true, elite: false },
+            3: { enabled: true, elite: false },
+            4: { enabled: true, elite: false }
+        },
+        zIndex: 50
+    };
+    
+    placedMonsters.push(placedMonster);
+    renderMonster(placedMonster);
+}
+
+// Render a placed monster
+function renderMonster(monster) {
+    const grid = document.getElementById('placementGrid');
+    const monsterDiv = document.createElement('div');
+    monsterDiv.className = 'placed-monster';
+    monsterDiv.dataset.monsterId = monster.id;
+    monsterDiv.style.left = `${monster.col * (CELL_SIZE + 2)}px`;
+    monsterDiv.style.top = `${monster.row * (CELL_SIZE + 2)}px`;
+    monsterDiv.style.zIndex = monster.zIndex || 50;
+    monsterDiv.style.backgroundImage = `url('${monster.image}')`;
+    
+    // Monster info and controls
+    monsterDiv.innerHTML = `
+        <div class="monster-label">${monster.name}</div>
+        <div class="monster-controls">
+            <div class="player-count-controls">
+                <div class="player-count-row">
+                    <label class="player-checkbox">
+                        <input type="checkbox" 
+                            ${monster.players[2].enabled ? 'checked' : ''} 
+                            onchange="toggleMonsterPlayer('${monster.id}', 2)"
+                        />
+                        <span>2P</span>
+                    </label>
+                    <select class="elite-select" onchange="toggleMonsterElite('${monster.id}', 2, this.value)">
+                        <option value="normal" ${!monster.players[2].elite ? 'selected' : ''}>Normal</option>
+                        <option value="elite" ${monster.players[2].elite ? 'selected' : ''}>Elite</option>
+                    </select>
+                </div>
+                <div class="player-count-row">
+                    <label class="player-checkbox">
+                        <input type="checkbox" 
+                            ${monster.players[3].enabled ? 'checked' : ''} 
+                            onchange="toggleMonsterPlayer('${monster.id}', 3)"
+                        />
+                        <span>3P</span>
+                    </label>
+                    <select class="elite-select" onchange="toggleMonsterElite('${monster.id}', 3, this.value)">
+                        <option value="normal" ${!monster.players[3].elite ? 'selected' : ''}>Normal</option>
+                        <option value="elite" ${monster.players[3].elite ? 'selected' : ''}>Elite</option>
+                    </select>
+                </div>
+                <div class="player-count-row">
+                    <label class="player-checkbox">
+                        <input type="checkbox" 
+                            ${monster.players[4].enabled ? 'checked' : ''} 
+                            onchange="toggleMonsterPlayer('${monster.id}', 4)"
+                        />
+                        <span>4P</span>
+                    </label>
+                    <select class="elite-select" onchange="toggleMonsterElite('${monster.id}', 4, this.value)">
+                        <option value="normal" ${!monster.players[4].elite ? 'selected' : ''}>Normal</option>
+                        <option value="elite" ${monster.players[4].elite ? 'selected' : ''}>Elite</option>
+                    </select>
+                </div>
+            </div>
+            <button class="tile-btn monster-remove" onclick="event.stopPropagation(); removeMonster('${monster.id}')" title="Remove">✕</button>
+        </div>
+    `;
+    
+    grid.appendChild(monsterDiv);
+}
+
+// Toggle monster player count
+function toggleMonsterPlayer(monsterId, playerCount) {
+    const monster = placedMonsters.find(m => m.id === monsterId);
+    if (!monster) return;
+    
+    monster.players[playerCount].enabled = !monster.players[playerCount].enabled;
+}
+
+// Toggle monster elite status
+function toggleMonsterElite(monsterId, playerCount, value) {
+    const monster = placedMonsters.find(m => m.id === monsterId);
+    if (!monster) return;
+    
+    monster.players[playerCount].elite = (value === 'elite');
+}
+
+// Remove a monster
+function removeMonster(monsterId) {
+    placedMonsters = placedMonsters.filter(m => m.id !== monsterId);
+    
+    const monsterElement = document.querySelector(`[data-monster-id="${monsterId}"]`);
+    if (monsterElement) {
+        monsterElement.remove();
+    }
+}
+
 // Remove a tile
 function removeTile(tileId) {
     const tile = placedTiles.find(t => t.id === tileId);
@@ -425,15 +600,18 @@ function revealAll() {
 
 // Clear the entire map
 function clearMap() {
-    if (placedTiles.length === 0) return;
+    if (placedTiles.length === 0 && placedMonsters.length === 0) return;
     
-    if (confirm('Clear all tiles from the map?')) {
+    if (confirm('Clear all tiles and monsters from the map?')) {
         placedTiles.forEach(tile => removeTile(tile.id));
         placedTiles = [];
+        placedMonsters.forEach(monster => removeMonster(monster.id));
+        placedMonsters = [];
         document.querySelectorAll('.grid-cell').forEach(cell => {
             cell.classList.remove('occupied');
         });
         document.querySelectorAll('.placed-tile').forEach(tile => tile.remove());
+        document.querySelectorAll('.placed-monster').forEach(monster => monster.remove());
         updatePlacedTilesList();
         updateRevealedRooms();
     }
@@ -449,7 +627,9 @@ function toggleGrid() {
 function saveMap() {
     const mapData = {
         tiles: placedTiles,
-        nextId: nextTileId
+        monsters: placedMonsters,
+        nextId: nextTileId,
+        nextMonsterId: nextMonsterId
     };
     
     localStorage.setItem('gloomhavenMap', JSON.stringify(mapData));
@@ -464,7 +644,9 @@ function loadSavedMap() {
     try {
         const mapData = JSON.parse(saved);
         placedTiles = mapData.tiles || [];
+        placedMonsters = mapData.monsters || [];
         nextTileId = mapData.nextId || 0;
+        nextMonsterId = mapData.nextMonsterId || 0;
         
         // Clear grid
         document.querySelectorAll('.grid-cell').forEach(cell => {
@@ -480,6 +662,21 @@ function loadSavedMap() {
             
             renderPlacedTile(tile);
             markCellsOccupied(tile.col, tile.row, tile.width, tile.height);
+        });
+        
+        // Render all monsters
+        placedMonsters.forEach(monster => {
+            // Add default values for properties that might not exist in old saves
+            if (monster.zIndex === undefined) monster.zIndex = 50;
+            if (monster.players === undefined) {
+                monster.players = {
+                    2: { enabled: true, elite: false },
+                    3: { enabled: true, elite: false },
+                    4: { enabled: true, elite: false }
+                };
+            }
+            
+            renderMonster(monster);
         });
         
         updatePlacedTilesList();

@@ -503,3 +503,115 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #a67c52;
 }
+
+/* Monster Tokens */
+.placed-monster {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 3px solid #d4af37;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.placed-monster:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.6);
+    z-index: 100;
+}
+
+.placed-monster:hover .monster-controls {
+    display: block;
+}
+
+.monster-label {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: #d4af37;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 5;
+}
+
+.monster-controls {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 25px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #8b6f47;
+    border-radius: 8px;
+    padding: 10px;
+    min-width: 160px;
+    z-index: 100;
+}
+
+.player-count-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.player-count-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.player-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: #d4af37;
+    font-weight: bold;
+    min-width: 40px;
+}
+
+.player-checkbox input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.elite-select {
+    flex: 1;
+    background: rgba(139, 111, 71, 0.3);
+    color: #e8d4b0;
+    border: 1px solid #8b6f47;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.elite-select:focus {
+    outline: none;
+    border-color: #d4af37;
+}
+
+.elite-select option {
+    background: #2c1810;
+    color: #e8d4b0;
+}
+
+.monster-remove {
+    width: 100%;
+    margin-top: 5px;
+}
