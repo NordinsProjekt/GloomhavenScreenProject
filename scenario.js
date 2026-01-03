@@ -30,12 +30,25 @@ function createGrid() {
     }
 }
 
+// Current player count for monster filtering
+let currentPlayerCount = 4;
+let monstersVisible = true;
+
 // Setup event listeners
 function setupEventListeners() {
     document.getElementById('loadMap').addEventListener('click', loadMap);
     document.getElementById('clearMap').addEventListener('click', clearMap);
     document.getElementById('toggleAllFog').addEventListener('click', toggleAllFog);
     document.getElementById('toggleGrid').addEventListener('click', toggleGrid);
+    document.getElementById('toggleMonsters').addEventListener('click', toggleMonsterVisibility);
+    
+    // Player count buttons
+    document.querySelectorAll('.player-count-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const count = parseInt(e.target.dataset.count);
+            setPlayerCount(count);
+        });
+    });
 }
 
 // Render a placed tile (read-only)
@@ -57,12 +70,13 @@ function renderPlacedTile(tile) {
         tileDiv.appendChild(fogOverlay);
     }
     
-    // Label
-    const label = document.createElement('div');
-    label.className = 'tile-label';
-    label.textContent = `${tile.name} (z:${tile.zIndex})`;
-    
-    tileDiv.appendChild(label);
+    // Label - only for map sections
+    if (isMapSection) {
+        const label = document.createElement('div');
+        label.className = 'tile-label';
+        label.textContent = `${tile.name} (z:${tile.zIndex})`;
+        tileDiv.appendChild(label);
+    }
     
     // Custom character display for custom-red-circle tiles
     const isCustomCharTile = tile.tileTypeId === 'custom-red-circle';
@@ -72,6 +86,32 @@ function renderPlacedTile(tile) {
         charDisplay.textContent = tile.customChar || '';
         charDisplay.style.display = tile.customChar ? 'flex' : 'none';
         tileDiv.appendChild(charDisplay);
+    }
+    
+    // Monster border indicator - show colored border based on player count
+    if (tile.isMonster && tile.players) {
+        // Find which player counts this monster is enabled for
+        let borderClass = '';
+        let isElite = false;
+        
+        // Check for current player count first
+        if (tile.players[currentPlayerCount] && tile.players[currentPlayerCount].enabled) {
+            isElite = tile.players[currentPlayerCount].elite;
+            borderClass = isElite ? 'monster-border-elite' : 'monster-border-normal';
+        } else {
+            // Fallback to showing any enabled player count
+            for (let count of [2, 3, 4]) {
+                if (tile.players[count] && tile.players[count].enabled) {
+                    isElite = tile.players[count].elite;
+                    borderClass = isElite ? 'monster-border-elite' : 'monster-border-normal';
+                    break;
+                }
+            }
+        }
+        
+        if (borderClass) {
+            tileDiv.classList.add(borderClass);
+        }
     }
     
     // Click to reveal/hide fog (only for map sections)
@@ -192,6 +232,9 @@ function handleObstacleClick(tile, event) {
     // Check if it's a custom-red-circle
     if (tile.tileTypeId === 'custom-red-circle') return;
     
+    // Check if it's a monster tile
+    if (tile.isMonster) return;
+    
     // Show destroy option
     showDestroyOption(tile, event);
 }
@@ -285,10 +328,17 @@ function updateTokenVisibility() {
         
         let isUnderFoggedTile = false;
         
+        // Only hide if token is UNDER a fogged map section (lower z-index)
         for (const mapTile of mapSections) {
             if (!mapTile.revealed && tilesOverlap(token, mapTile)) {
-                isUnderFoggedTile = true;
-                break;
+                // Check if the map tile is ABOVE the token (higher z-index)
+                const tokenZIndex = token.zIndex || 10;
+                const mapZIndex = mapTile.zIndex || 10;
+                
+                if (mapZIndex >= tokenZIndex) {
+                    isUnderFoggedTile = true;
+                    break;
+                }
             }
         }
         
@@ -602,6 +652,56 @@ function loadSelectedMap(mapName) {
     }
     
     updateTokenVisibility();
+    updateMonsterVisibility();
+}
+
+// Set player count and filter monsters
+function setPlayerCount(count) {
+    currentPlayerCount = count;
+    
+    // Update button states
+    document.querySelectorAll('.player-count-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.count) === count);
+    });
+    
+    updateMonsterVisibility();
+}
+
+// Update monster visibility based on player count
+function updateMonsterVisibility() {
+    placedTiles.forEach(tile => {
+        if (tile.isMonster) {
+            const tileElement = document.querySelector(`[data-tile-id="${tile.id}"]`);
+            if (!tileElement) return;
+            
+            // Check if monster is enabled for current player count
+            const isEnabledForPlayerCount = tile.players && 
+                                           tile.players[currentPlayerCount] && 
+                                           tile.players[currentPlayerCount].enabled;
+            
+            // Hide monster if not enabled for player count OR if monsters are globally hidden
+            if (!monstersVisible || !isEnabledForPlayerCount) {
+                tileElement.setAttribute('data-monster-hidden', 'true');
+            } else {
+                tileElement.removeAttribute('data-monster-hidden');
+            }
+            
+            // Update border style based on current player count
+            tileElement.classList.remove('monster-border-normal', 'monster-border-elite');
+            if (isEnabledForPlayerCount && monstersVisible) {
+                const isElite = tile.players[currentPlayerCount].elite;
+                tileElement.classList.add(isElite ? 'monster-border-elite' : 'monster-border-normal');
+            }
+        }
+    });
+}
+
+// Toggle monster visibility (for setup vs play)
+function toggleMonsterVisibility() {
+    monstersVisible = !monstersVisible;
+    const btn = document.getElementById('toggleMonsters');
+    btn.textContent = monstersVisible ? '👹 Hide Monsters' : '👹 Show Monsters';
+    updateMonsterVisibility();
 }
 
 // Toggle section visibility

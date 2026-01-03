@@ -162,9 +162,7 @@ const availableMonsters = [
 
 // Placed tiles on the grid
 let placedTiles = [];
-let placedMonsters = [];
 let nextTileId = 0;
-let nextMonsterId = 0;
 
 const GRID_COLS = 25;
 const GRID_ROWS = 25;
@@ -313,6 +311,26 @@ function showControlPanel(tile) {
         </div>
     ` : '';
     
+    const monsterSection = tile.isMonster ? `
+        <div class="control-section">
+            <label>Player Count Settings</label>
+            ${[2, 3, 4].map(count => `
+                <div class="monster-player-row">
+                    <label>
+                        <input type="checkbox" 
+                            ${tile.players[count].enabled ? 'checked' : ''}
+                            onchange="toggleMonsterPlayer('${tile.id}', ${count})" />
+                        ${count}P
+                    </label>
+                    <select onchange="toggleMonsterElite('${tile.id}', ${count}, this.value)">
+                        <option value="normal" ${!tile.players[count].elite ? 'selected' : ''}>Normal</option>
+                        <option value="elite" ${tile.players[count].elite ? 'selected' : ''}>Elite</option>
+                    </select>
+                </div>
+            `).join('')}
+        </div>
+    ` : '';
+    
     const fogSection = isMapSection ? `
         <div class="control-section">
             <label>Fog of War</label>
@@ -337,9 +355,31 @@ function showControlPanel(tile) {
             
             <div class="control-section">
                 <label>Size</label>
-                <div class="control-buttons">
-                    <button class="control-btn" onclick="resizeTile('${tile.id}', -1)" title="Shrink">− Shrink</button>
-                    <button class="control-btn" onclick="resizeTile('${tile.id}', 1)" title="Grow">+ Grow</button>
+                <div class="size-control-group">
+                    <div class="size-slider-row">
+                        <label class="size-slider-label">Width: <span id="width-value-${tile.id}">${isMapSection ? tile.width : tile.width.toFixed(1)}</span></label>
+                        <input type="range" 
+                            min="${isMapSection ? '1' : '1.0'}" 
+                            max="${isMapSection ? '15' : '5.0'}" 
+                            step="${isMapSection ? '1' : '0.2'}" 
+                            value="${tile.width}" 
+                            class="size-slider"
+                            oninput="setTileWidth('${tile.id}', ${isMapSection ? 'parseInt(this.value)' : 'parseFloat(this.value)'})" />
+                    </div>
+                    <div class="size-slider-row">
+                        <label class="size-slider-label">Height: <span id="height-value-${tile.id}">${isMapSection ? tile.height : tile.height.toFixed(1)}</span></label>
+                        <input type="range" 
+                            min="${isMapSection ? '1' : '1.0'}" 
+                            max="${isMapSection ? '15' : '5.0'}" 
+                            step="${isMapSection ? '1' : '0.2'}" 
+                            value="${tile.height}" 
+                            class="size-slider"
+                            oninput="setTileHeight('${tile.id}', ${isMapSection ? 'parseInt(this.value)' : 'parseFloat(this.value)'})" />
+                    </div>
+                    <div class="control-buttons">
+                        <button class="control-btn" onclick="resizeTile('${tile.id}', ${isMapSection ? '-1' : '-0.2'})" title="Shrink Both">− Both</button>
+                        <button class="control-btn" onclick="resizeTile('${tile.id}', ${isMapSection ? '1' : '0.2'})" title="Grow Both">+ Both</button>
+                    </div>
                 </div>
             </div>
             
@@ -358,6 +398,8 @@ function showControlPanel(tile) {
             </div>
             
             ${customCharSection}
+            
+            ${monsterSection}
             
             ${fogSection}
             
@@ -486,6 +528,8 @@ function loadTilePalette() {
 // Load monsters into palette
 function loadMonsterPalette() {
     const monsterList = document.getElementById('monsterList');
+    if (!monsterList) return; // Skip if element doesn't exist
+    
     monsterList.innerHTML = '';
     
     availableMonsters.forEach(monster => {
@@ -599,6 +643,8 @@ function placeTile(tileTypeId, col, row) {
     const tileType = availableTiles.find(t => t.id === tileTypeId);
     if (!tileType) return;
     
+    const isMapSection = tileType.image.startsWith('mapsections/');
+    
     const placedTile = {
         id: `placed_${nextTileId++}`,
         tileTypeId: tileTypeId,
@@ -606,8 +652,8 @@ function placeTile(tileTypeId, col, row) {
         image: tileType.image,
         col: col,
         row: row,
-        width: tileType.width,
-        height: tileType.height,
+        width: isMapSection ? tileType.width : 1.0,
+        height: isMapSection ? tileType.height : 1.0,
         revealed: true,
         rotation: 0,
         zIndex: 10,
@@ -693,6 +739,25 @@ function renderPlacedTile(tile) {
         tileDiv.appendChild(charDisplay);
     }
     
+    // Monster indicators - show colored circles for each player count
+    if (tile.isMonster && tile.players) {
+        const monsterIndicators = document.createElement('div');
+        monsterIndicators.className = 'monster-indicators';
+        
+        [2, 3, 4].forEach(playerCount => {
+            if (tile.players[playerCount] && tile.players[playerCount].enabled) {
+                const indicator = document.createElement('div');
+                indicator.className = `monster-indicator player-${playerCount}`;
+                indicator.classList.add(tile.players[playerCount].elite ? 'elite' : 'normal');
+                indicator.textContent = playerCount;
+                indicator.dataset.playerCount = playerCount;
+                monsterIndicators.appendChild(indicator);
+            }
+        });
+        
+        tileDiv.appendChild(monsterIndicators);
+    }
+    
     tileDiv.appendChild(dragHandle);
     tileDiv.appendChild(label);
     tileDiv.appendChild(selectionIndicator);
@@ -772,113 +837,107 @@ function placeMonster(monsterTypeId, col, row) {
     if (!monsterType) return;
     
     const placedMonster = {
-        id: `monster_${nextMonsterId++}`,
-        monsterTypeId: monsterTypeId,
+        id: `tile_${nextTileId++}`,
+        tileTypeId: monsterTypeId,
         name: monsterType.name,
         image: monsterType.image,
         col: col,
         row: row,
+        x: col * (CELL_SIZE + 2),
+        y: row * (CELL_SIZE + 2),
+        width: 1.0,
+        height: 1.0,
+        rotation: 0,
+        zIndex: 10,
+        revealed: true,
+        isMonster: true,
         players: {
             2: { enabled: true, elite: false },
             3: { enabled: true, elite: false },
             4: { enabled: true, elite: false }
-        },
-        zIndex: 50
+        }
     };
     
-    placedMonsters.push(placedMonster);
-    renderMonster(placedMonster);
+    placedTiles.push(placedMonster);
+    renderPlacedTile(placedMonster);
+    updatePlacedTilesList();
 }
 
-// Render a placed monster
+// Render a placed monster (now handled by renderPlacedTile)
 function renderMonster(monster) {
-    const grid = document.getElementById('placementGrid');
-    const monsterDiv = document.createElement('div');
-    monsterDiv.className = 'placed-monster';
-    monsterDiv.dataset.monsterId = monster.id;
-    monsterDiv.style.left = `${monster.col * (CELL_SIZE + 2)}px`;
-    monsterDiv.style.top = `${monster.row * (CELL_SIZE + 2)}px`;
-    monsterDiv.style.zIndex = monster.zIndex || 50;
-    monsterDiv.style.backgroundImage = `url('${monster.image}')`;
-    
-    // Monster info and controls
-    // Generate player count rows
-    const playerCountRows = [2, 3, 4].map(count => `
-        <div class="player-count-row" data-player-count="${count}">
-            <label class="player-checkbox">
-                <input type="checkbox" 
-                    ${monster.players[count].enabled ? 'checked' : ''} 
-                    class="player-checkbox-input"
-                />
-                <span>${count}P</span>
-            </label>
-            <select class="elite-select">
-                <option value="normal" ${!monster.players[count].elite ? 'selected' : ''}>Normal</option>
-                <option value="elite" ${monster.players[count].elite ? 'selected' : ''}>Elite</option>
-            </select>
-        </div>
-    `).join('');
-    
-    monsterDiv.innerHTML = `
-        <div class="monster-label">${monster.name}</div>
-        <div class="monster-controls">
-            <div class="player-count-controls">
-                ${playerCountRows}
-            </div>
-            <button class="tile-btn monster-remove" title="Remove">✕</button>
-        </div>
-    `;
-    
-    // Add event listeners for checkboxes and selects
-    const playerCountRowElements = monsterDiv.querySelectorAll('.player-count-row');
-    playerCountRowElements.forEach(row => {
-        const playerCount = parseInt(row.dataset.playerCount);
-        const checkbox = row.querySelector('.player-checkbox-input');
-        const select = row.querySelector('.elite-select');
-        
-        checkbox.addEventListener('change', () => {
-            toggleMonsterPlayer(monster.id, playerCount);
-        });
-        
-        select.addEventListener('change', (e) => {
-            toggleMonsterElite(monster.id, playerCount, e.target.value);
-        });
-    });
-    
-    // Add event listener for remove button
-    const removeBtn = monsterDiv.querySelector('.monster-remove');
-    removeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        removeMonster(monster.id);
-    });
-    
-    grid.appendChild(monsterDiv);
+    // Monsters are now rendered as regular tiles
+    renderPlacedTile(monster);
 }
 
 // Toggle monster player count
-function toggleMonsterPlayer(monsterId, playerCount) {
-    const monster = placedMonsters.find(m => m.id === monsterId);
-    if (!monster) return;
+function toggleMonsterPlayer(tileId, playerCount) {
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (!tile || !tile.isMonster) return;
     
-    monster.players[playerCount].enabled = !monster.players[playerCount].enabled;
+    tile.players[playerCount].enabled = !tile.players[playerCount].enabled;
+    
+    // Re-render to update visual state
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        refreshMonsterIndicators(tileElement, tile);
+        showControlPanel(tile); // Refresh control panel
+    }
 }
 
 // Toggle monster elite status
-function toggleMonsterElite(monsterId, playerCount, value) {
-    const monster = placedMonsters.find(m => m.id === monsterId);
-    if (!monster) return;
+function toggleMonsterElite(tileId, playerCount, value) {
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (!tile || !tile.isMonster) return;
     
-    monster.players[playerCount].elite = (value === 'elite');
+    tile.players[playerCount].elite = (value === 'elite');
+    
+    // Re-render to update visual state
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        refreshMonsterIndicators(tileElement, tile);
+        showControlPanel(tile); // Refresh control panel
+    }
 }
 
-// Remove a monster
-function removeMonster(monsterId) {
-    placedMonsters = placedMonsters.filter(m => m.id !== monsterId);
-    
-    const monsterElement = document.querySelector(`[data-monster-id="${monsterId}"]`);
-    if (monsterElement) {
-        monsterElement.remove();
+// Refresh monster indicators on a tile element
+function refreshMonsterIndicators(tileElement, tile) {
+    // Remove old indicators
+    const oldIndicators = tileElement.querySelector('.monster-indicators');
+    if (oldIndicators) {
+        oldIndicators.remove();
     }
+    
+    // Add new indicators
+    if (tile.isMonster && tile.players) {
+        const monsterIndicators = document.createElement('div');
+        monsterIndicators.className = 'monster-indicators';
+        
+        [2, 3, 4].forEach(playerCount => {
+            if (tile.players[playerCount] && tile.players[playerCount].enabled) {
+                const indicator = document.createElement('div');
+                indicator.className = `monster-indicator player-${playerCount}`;
+                indicator.classList.add(tile.players[playerCount].elite ? 'elite' : 'normal');
+                indicator.textContent = playerCount;
+                indicator.dataset.playerCount = playerCount;
+                monsterIndicators.appendChild(indicator);
+            }
+        });
+        
+        tileElement.appendChild(monsterIndicators);
+    }
+}
+
+// Remove a monster (now uses regular tile removal)
+function removeMonster(tileId) {
+    placedTiles = placedTiles.filter(t => t.id !== tileId);
+    
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        tileElement.remove();
+    }
+    
+    updatePlacedTilesList();
+    hideControlPanel();
 }
 
 // Update token visibility based on underlying map tiles
@@ -902,10 +961,17 @@ function updateTokenVisibility() {
         // Check if token is under any fogged map section
         let isUnderFoggedTile = false;
         
+        // Only hide if token is UNDER a fogged map section (lower z-index)
         for (const mapTile of mapSections) {
             if (!mapTile.revealed && tilesOverlap(token, mapTile)) {
-                isUnderFoggedTile = true;
-                break;
+                // Check if the map tile is ABOVE the token (higher z-index)
+                const tokenZIndex = token.zIndex || 10;
+                const mapZIndex = mapTile.zIndex || 10;
+                
+                if (mapZIndex >= tokenZIndex) {
+                    isUnderFoggedTile = true;
+                    break;
+                }
             }
         }
         
@@ -1027,19 +1093,17 @@ function revealAll() {
 
 // Clear the entire map
 function clearMap() {
-    if (placedTiles.length === 0 && placedMonsters.length === 0) return;
+    if (placedTiles.length === 0) return;
     
     if (confirm('Clear all tiles and monsters from the map?')) {
         // Clear arrays first
         placedTiles = [];
-        placedMonsters = [];
         
         // Batch remove all DOM elements
         document.querySelectorAll('.grid-cell').forEach(cell => {
             cell.classList.remove('occupied');
         });
         document.querySelectorAll('.placed-tile').forEach(tile => tile.remove());
-        document.querySelectorAll('.placed-monster').forEach(monster => monster.remove());
         
         updatePlacedTilesList();
         updateRevealedRooms();
@@ -1074,9 +1138,6 @@ function saveMap() {
     const mapData = {
         name: mapName,
         tiles: placedTiles,
-        monsters: placedMonsters,
-        nextId: nextTileId,
-        nextMonsterId: nextMonsterId
         nextId: nextTileId,
         scenario: scenarioData,
         savedAt: new Date().toISOString()
@@ -1313,9 +1374,35 @@ function loadSavedMap() {
     try {
         const mapData = JSON.parse(saved);
         placedTiles = mapData.tiles || [];
-        placedMonsters = mapData.monsters || [];
         nextTileId = mapData.nextId || 0;
-        nextMonsterId = mapData.nextMonsterId || 0;
+        
+        // Convert old monster format to tiles if present
+        if (mapData.monsters && mapData.monsters.length > 0) {
+            mapData.monsters.forEach(monster => {
+                const monsterTile = {
+                    id: monster.id || `tile_${nextTileId++}`,
+                    tileTypeId: monster.monsterTypeId || monster.tileTypeId,
+                    name: monster.name,
+                    image: monster.image,
+                    col: monster.col,
+                    row: monster.row,
+                    x: monster.col * (CELL_SIZE + 2),
+                    y: monster.row * (CELL_SIZE + 2),
+                    width: 1,
+                    height: 1,
+                    rotation: 0,
+                    zIndex: monster.zIndex || 10,
+                    revealed: true,
+                    isMonster: true,
+                    players: monster.players || {
+                        2: { enabled: true, elite: false },
+                        3: { enabled: true, elite: false },
+                        4: { enabled: true, elite: false }
+                    }
+                };
+                placedTiles.push(monsterTile);
+            });
+        }
         
         // Render all tiles (ensure all properties exist)
         placedTiles.forEach(tile => {
@@ -1324,22 +1411,16 @@ function loadSavedMap() {
             if (tile.zIndex === undefined) tile.zIndex = 10;
             if (tile.revealed === undefined) tile.revealed = false;
             
-            renderPlacedTile(tile);
-        });
-        
-        // Render all monsters
-        placedMonsters.forEach(monster => {
-            // Add default values for properties that might not exist in old saves
-            if (monster.zIndex === undefined) monster.zIndex = 50;
-            if (monster.players === undefined) {
-                monster.players = {
+            // Ensure monster tiles have player data
+            if (tile.isMonster && !tile.players) {
+                tile.players = {
                     2: { enabled: true, elite: false },
                     3: { enabled: true, elite: false },
                     4: { enabled: true, elite: false }
                 };
             }
             
-            renderMonster(monster);
+            renderPlacedTile(tile);
         });
         
         updatePlacedTilesList();
@@ -1401,18 +1482,78 @@ function resizeTile(tileId, delta) {
     const tile = placedTiles.find(t => t.id === tileId);
     if (!tile) return;
     
-    const newWidth = Math.max(1, Math.min(15, tile.width + delta));
-    const newHeight = Math.max(1, Math.min(15, tile.height + delta));
+    const isMapSection = tile.image.startsWith('mapsections/');
+    const minSize = isMapSection ? 1 : 1.0;
+    const maxSize = isMapSection ? 15 : 5.0;
     
-    // Check if new size would fit
+    let newWidth = tile.width + delta;
+    let newHeight = tile.height + delta;
+    
+    // Round to nearest 0.2 for non-map tiles
+    if (!isMapSection) {
+        newWidth = Math.round(newWidth * 5) / 5;
+        newHeight = Math.round(newHeight * 5) / 5;
+    }
+    
+    tile.width = Math.max(minSize, Math.min(maxSize, newWidth));
+    tile.height = Math.max(minSize, Math.min(maxSize, newHeight));
+    
     const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
-    
-    tile.width = newWidth;
-    tile.height = newHeight;
-    
     if (tileElement) {
         updateTilePosition(tileElement, tile);
     }
+    
+    // Update slider displays
+    updateSizeDisplays(tileId, tile);
+}
+
+// Set tile width specifically
+function setTileWidth(tileId, width) {
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (!tile) return;
+    
+    const isMapSection = tile.image.startsWith('mapsections/');
+    const minSize = isMapSection ? 1 : 1.0;
+    const maxSize = isMapSection ? 15 : 5.0;
+    
+    tile.width = Math.max(minSize, Math.min(maxSize, width));
+    
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        updateTilePosition(tileElement, tile);
+    }
+    
+    updateSizeDisplays(tileId, tile);
+}
+
+// Set tile height specifically
+function setTileHeight(tileId, height) {
+    const tile = placedTiles.find(t => t.id === tileId);
+    if (!tile) return;
+    
+    const isMapSection = tile.image.startsWith('mapsections/');
+    const minSize = isMapSection ? 1 : 1.0;
+    const maxSize = isMapSection ? 15 : 5.0;
+    
+    tile.height = Math.max(minSize, Math.min(maxSize, height));
+    
+    const tileElement = document.querySelector(`[data-tile-id="${tileId}"]`);
+    if (tileElement) {
+        updateTilePosition(tileElement, tile);
+    }
+    
+    updateSizeDisplays(tileId, tile);
+}
+
+// Update size displays in control panel
+function updateSizeDisplays(tileId, tile) {
+    const widthDisplay = document.getElementById(`width-value-${tileId}`);
+    const heightDisplay = document.getElementById(`height-value-${tileId}`);
+    
+    const isMapSection = tile.image.startsWith('mapsections/');
+    
+    if (widthDisplay) widthDisplay.textContent = isMapSection ? tile.width : tile.width.toFixed(1);
+    if (heightDisplay) heightDisplay.textContent = isMapSection ? tile.height : tile.height.toFixed(1);
 }
 
 // Free cells occupied by a tile
