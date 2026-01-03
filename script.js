@@ -443,15 +443,15 @@ function renderMonster(monster) {
     // Monster info and controls
     // Generate player count rows
     const playerCountRows = [2, 3, 4].map(count => `
-        <div class="player-count-row">
+        <div class="player-count-row" data-player-count="${count}">
             <label class="player-checkbox">
                 <input type="checkbox" 
                     ${monster.players[count].enabled ? 'checked' : ''} 
-                    onchange="toggleMonsterPlayer('${monster.id}', ${count})"
+                    class="player-checkbox-input"
                 />
                 <span>${count}P</span>
             </label>
-            <select class="elite-select" onchange="toggleMonsterElite('${monster.id}', ${count}, this.value)">
+            <select class="elite-select">
                 <option value="normal" ${!monster.players[count].elite ? 'selected' : ''}>Normal</option>
                 <option value="elite" ${monster.players[count].elite ? 'selected' : ''}>Elite</option>
             </select>
@@ -464,9 +464,32 @@ function renderMonster(monster) {
             <div class="player-count-controls">
                 ${playerCountRows}
             </div>
-            <button class="tile-btn monster-remove" onclick="event.stopPropagation(); removeMonster('${monster.id}')" title="Remove">✕</button>
+            <button class="tile-btn monster-remove" title="Remove">✕</button>
         </div>
     `;
+    
+    // Add event listeners for checkboxes and selects
+    const playerCountRowElements = monsterDiv.querySelectorAll('.player-count-row');
+    playerCountRowElements.forEach(row => {
+        const playerCount = parseInt(row.dataset.playerCount);
+        const checkbox = row.querySelector('.player-checkbox-input');
+        const select = row.querySelector('.elite-select');
+        
+        checkbox.addEventListener('change', () => {
+            toggleMonsterPlayer(monster.id, playerCount);
+        });
+        
+        select.addEventListener('change', (e) => {
+            toggleMonsterElite(monster.id, playerCount, e.target.value);
+        });
+    });
+    
+    // Add event listener for remove button
+    const removeBtn = monsterDiv.querySelector('.monster-remove');
+    removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeMonster(monster.id);
+    });
     
     grid.appendChild(monsterDiv);
 }
