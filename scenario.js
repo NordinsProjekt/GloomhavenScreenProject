@@ -442,6 +442,7 @@ function loadMapData(mapData) {
     }
     
     updateTokenVisibility();
+    updateMonsterVisibility();
 }
 
 // Load map from localStorage
