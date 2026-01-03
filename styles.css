@@ -250,10 +250,6 @@ body {
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
-.placed-tile.revealed:hover {
-    border-color: #d4af37;
-}
-
 .placed-tile.fogged {
     filter: brightness(0.3);
 }
