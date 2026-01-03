@@ -441,49 +441,28 @@ function renderMonster(monster) {
     monsterDiv.style.backgroundImage = `url('${monster.image}')`;
     
     // Monster info and controls
+    // Generate player count rows
+    const playerCountRows = [2, 3, 4].map(count => `
+        <div class="player-count-row">
+            <label class="player-checkbox">
+                <input type="checkbox" 
+                    ${monster.players[count].enabled ? 'checked' : ''} 
+                    onchange="toggleMonsterPlayer('${monster.id}', ${count})"
+                />
+                <span>${count}P</span>
+            </label>
+            <select class="elite-select" onchange="toggleMonsterElite('${monster.id}', ${count}, this.value)">
+                <option value="normal" ${!monster.players[count].elite ? 'selected' : ''}>Normal</option>
+                <option value="elite" ${monster.players[count].elite ? 'selected' : ''}>Elite</option>
+            </select>
+        </div>
+    `).join('');
+    
     monsterDiv.innerHTML = `
         <div class="monster-label">${monster.name}</div>
         <div class="monster-controls">
             <div class="player-count-controls">
-                <div class="player-count-row">
-                    <label class="player-checkbox">
-                        <input type="checkbox" 
-                            ${monster.players[2].enabled ? 'checked' : ''} 
-                            onchange="toggleMonsterPlayer('${monster.id}', 2)"
-                        />
-                        <span>2P</span>
-                    </label>
-                    <select class="elite-select" onchange="toggleMonsterElite('${monster.id}', 2, this.value)">
-                        <option value="normal" ${!monster.players[2].elite ? 'selected' : ''}>Normal</option>
-                        <option value="elite" ${monster.players[2].elite ? 'selected' : ''}>Elite</option>
-                    </select>
-                </div>
-                <div class="player-count-row">
-                    <label class="player-checkbox">
-                        <input type="checkbox" 
-                            ${monster.players[3].enabled ? 'checked' : ''} 
-                            onchange="toggleMonsterPlayer('${monster.id}', 3)"
-                        />
-                        <span>3P</span>
-                    </label>
-                    <select class="elite-select" onchange="toggleMonsterElite('${monster.id}', 3, this.value)">
-                        <option value="normal" ${!monster.players[3].elite ? 'selected' : ''}>Normal</option>
-                        <option value="elite" ${monster.players[3].elite ? 'selected' : ''}>Elite</option>
-                    </select>
-                </div>
-                <div class="player-count-row">
-                    <label class="player-checkbox">
-                        <input type="checkbox" 
-                            ${monster.players[4].enabled ? 'checked' : ''} 
-                            onchange="toggleMonsterPlayer('${monster.id}', 4)"
-                        />
-                        <span>4P</span>
-                    </label>
-                    <select class="elite-select" onchange="toggleMonsterElite('${monster.id}', 4, this.value)">
-                        <option value="normal" ${!monster.players[4].elite ? 'selected' : ''}>Normal</option>
-                        <option value="elite" ${monster.players[4].elite ? 'selected' : ''}>Elite</option>
-                    </select>
-                </div>
+                ${playerCountRows}
             </div>
             <button class="tile-btn monster-remove" onclick="event.stopPropagation(); removeMonster('${monster.id}')" title="Remove">✕</button>
         </div>
@@ -603,15 +582,17 @@ function clearMap() {
     if (placedTiles.length === 0 && placedMonsters.length === 0) return;
     
     if (confirm('Clear all tiles and monsters from the map?')) {
-        placedTiles.forEach(tile => removeTile(tile.id));
+        // Clear arrays first
         placedTiles = [];
-        placedMonsters.forEach(monster => removeMonster(monster.id));
         placedMonsters = [];
+        
+        // Batch remove all DOM elements
         document.querySelectorAll('.grid-cell').forEach(cell => {
             cell.classList.remove('occupied');
         });
         document.querySelectorAll('.placed-tile').forEach(tile => tile.remove());
         document.querySelectorAll('.placed-monster').forEach(monster => monster.remove());
+        
         updatePlacedTilesList();
         updateRevealedRooms();
     }
