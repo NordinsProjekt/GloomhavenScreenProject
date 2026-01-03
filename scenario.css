@@ -697,3 +697,22 @@ body {
 .placed-tile[data-monster-hidden="true"] {
     display: none !important;
 }
+
+/* Line Tool Styles */
+.btn-active {
+    background: #d4af37 !important;
+    color: #2c1810 !important;
+    border-color: #d4af37 !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5) !important;
+}
+
+.range-line {
+    position: absolute;
+    height: 3px;
+    background: linear-gradient(to right, rgba(255, 0, 0, 0.9), rgba(255, 0, 0, 0.7));
+    transform-origin: left center;
+    pointer-events: none;
+    z-index: 10000;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.8), 0 0 4px rgba(255, 0, 0, 0.6);
+    border-radius: 2px;
+}
