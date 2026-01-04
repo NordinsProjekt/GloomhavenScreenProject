@@ -1,130 +1,195 @@
 # Gloomhaven Digital Map Builder
 
-A web-based digital companion for creating and displaying custom Gloomhaven scenarios, designed to work seamlessly with 3D printed map tiles and game components.
+En webbaserad digital följeslagare för att skapa och visa anpassade Gloomhaven-scenarier, designad för att fungera sömlöst med 3D-printade kartbrickor och spelkomponenter.
 
-## 🎯 Overview
+## 🎯 Översikt
 
-This project provides a comprehensive digital toolset for Gloomhaven enthusiasts who use 3D printed tiles. Build, save, and display custom scenarios on any screen or projector, perfect for enhancing your tabletop experience with physical 3D printed components.
+Detta projekt tillhandahåller ett komplett digitalt verktygsset för Gloomhaven-entusiaster som använder 3D-printade brickor. Bygg, spara och visa anpassade scenarier på valfri skärm eller projektor, perfekt för att förbättra din bordsspelsupplevelse med fysiska 3D-printade komponenter.
 
-## ✨ Features
+## ✨ Funktioner
 
-### 🗺️ Scenario Map Builder
-- **Drag-and-drop interface** for placing map tiles and tokens
-- **Large grid workspace** (25x25) for creating complex scenarios
-- **Tile rotation and positioning** with pixel-precise control
-- **Z-index layering** to stack tiles and overlays properly
-- **Save/Load functionality** for storing custom scenarios as JSON files
-- **Import/Export** scenarios to share with others
+### 🗺️ Scenariobyggare (scenariomaker.html)
+- **Drag-and-drop-gränssnitt** för placering av kartbrickor och markörer
+- **Stort rutnät** (25x25) för att skapa komplexa scenarier
+- **Brickorientering och positionering** med pixelprecis kontroll
+- **Z-index lagring** för att stapla brickor och överlägg korrekt
+- **Kontrollpanel för brickor** - klicka på placerade brickor för att öppna kontroller för:
+  - Rotation (0°, 90°, 180°, 270°)
+  - Z-index justering (flytta framåt/bakåt)
+  - Pixelprecis positionering (X/Y-offset)
+  - Fog of War-kontroller
+  - Monster-konfiguration (spelare antal, normal/elit)
+  - Anpassade tecken för markörer
+- **Sök-funktionalitet** för att snabbt hitta specifika brickor
+- **Spara/Ladda funktionalitet** för att lagra anpassade scenarier som JSON-filer
+- **Import/Export** scenarier för att dela med andra
+- **Missionsinformation sidopanel** med:
+  - Missionstitel och nummer
+  - Uppdragsmål
+  - Scenarioskatt detaljer
+  - Specialregler och anteckningar (upp till 4 textsektioner)
 
-### 📺 Scenario Viewer
-- **Clean viewing mode** optimized for projection on screens or tablets
-- **Fog of War** system - click map sections to reveal as players explore
-- **Toggle grid visibility** for cleaner presentation
-- **Scenario information sidebar** with:
-  - Mission objectives
-  - Scenario loot details
-  - Special rules and notes
-- **Read-only mode** prevents accidental changes during gameplay
+### 📺 Scenariovisare (scenario.html)
+- **Rent visningsläge** optimerat för projektion på skärmar eller surfplattor
+- **Fog of War-system** - klicka på kartbrickor för att avslöja när spelare utforskar
+- **Växla rutnätssynlighet** för renare presentation
+- **Monster synlighetsväxling** - visa/dölj alla monster
+- **Spelarantal-väljare** (2P/3P/4P) - påverkar vilka monster som visas
+- **Mätverktyg** - klicka två gånger på kartan för att mäta avstånd mellan punkter
+- **Missionsinformation sidopanel** med:
+  - Missionsmål
+  - Scenarioskatt detaljer
+  - Introduktion och rum-avslöjanden
+  - Specialregler och anteckningar
+- **Skrivskyddat läge** förhindrar oavsiktliga ändringar under spelet
 
-### 🎨 Tile Library
-- Support for **map sections** from the base game and expansions
-- **Tokens and overlays** including:
-  - Doors, traps, and obstacles
-  - Treasure chests and objectives
-  - Monster standees (when using 2D tokens)
-- **Search functionality** to quickly find specific tiles
-- Organized into collapsible categories
+### 🎨 Brickbibliotek
+- Stöd för **kartbrickor** från grundspelet och expansioner (A-N serier)
+- **Markörer och överlägg** inklusive:
+  - Dörrar (sten och trä, horisontella och vertikala)
+  - Fällor (björnfälla, giftgas, spikfälla)
+  - Hinder (stenblock, stenpelare, väggsektioner)
+  - Möbler (bord, hyllor, skåp, kistor, sarkofager)
+  - Miljöelement (träd, buskar, vatten, taggar, kristaller)
+  - Skatter och mål
+- **Monsterbrickor** med stöd för:
+  - 15+ monstertyper från grundspelet
+  - Spelarantal-konfiguration (2-4 spelare)
+  - Normal/Elite-status
+  - Färgkodade ramar i visaren
 
-## 🚀 Getting Started
+### 🏠 Huvudmeny (index.html)
+- **Välkomstsida** med enkel navigation
+- Snabblänkar till Scenariobyggare och Scenariovisare
+- Information om projektets syfte
 
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Edge, or Safari)
-- 3D printed Gloomhaven map tiles (recommended for physical gameplay)
+## 🚀 Komma Igång
+
+### Förutsättningar
+- En modern webbläsare (Chrome, Firefox, Edge, eller Safari)
+- 3D-printade Gloomhaven kartbrickor (rekommenderat för fysiskt spel)
 
 ### Installation
 
-1. Clone this repository:
+1. Klona detta repository:
 ```bash
 git clone https://github.com/yourusername/GloomhavenScreenProject.git
 cd GloomhavenScreenProject
 ```
 
-2. Open `index.html` in your web browser to access the main menu
+2. Öppna `index.html` i din webbläsare för att komma åt huvudmenyn
 
-3. Or directly open:
-   - `scenariomaker.html` - To create new scenarios
-   - `scenario.html` - To view saved scenarios during gameplay
+3. Eller öppna direkt:
+   - `scenariomaker.html` - För att skapa nya scenarier
+   - `scenario.html` - För att visa sparade scenarier under spelet
 
-No build process or dependencies required - just open and play!
+Ingen byggprocess eller beroenden krävs - bara öppna och spela!
 
-## 📖 How to Use
+## 📖 Hur Man Använder
 
-### Creating a Custom Scenario
+### Skapa ett Anpassat Scenario
 
-1. Open `scenariomaker.html` in your browser
-2. Browse or search for tiles in the left palette
-3. Drag tiles onto the grid to build your map
-4. Click tiles to adjust rotation, z-index, or fine-tune positioning
-5. Use "Save Map As..." to export your scenario as a JSON file
+1. Öppna `scenariomaker.html` i din webbläsare
+2. Bläddra eller sök efter brickor i vänster palett
+3. Dra brickor till rutnätet för att bygga din karta
+4. Klicka på brickor för att justera rotation, z-index eller finjustera positionering
+5. Använd kontrollpanelen för att:
+   - Rotera brickor (0°, 90°, 180°, 270°)
+   - Justera lagerordning (z-index)
+   - Finjustera position med pixeloffset
+   - Sätta fog of war-status
+   - Konfigurera monster för olika spelarantal
+   - Lägga till anpassade tecken på markörer
+6. Fyll i missionsinformation i sidopanelen (titel, mål, skatter, regler)
+7. Använd "💾 Save Map As..." för att exportera ditt scenario som en JSON-fil
 
-### Displaying During Gameplay
+### Visa Under Spel
 
-1. Open `scenario.html` in your browser
-2. Click "Load Map" and select your saved scenario JSON file
-3. Position your screen/projector above your 3D printed tiles
-4. Click map sections to reveal them as players explore
-5. Use the sidebar to track objectives and special rules
+1. Öppna `scenario.html` i din webbläsare
+2. Klicka på "📂 Load Map" och välj din sparade scenario JSON-fil
+3. Välj spelarantal (2P/3P/4P) - detta påverkar vilka monster som visas
+4. Klicka på kartbrickor för att avslöja dem när spelare utforskar
+5. Använd "📏 Line Tool" för att mäta avstånd mellan punkter
+6. Använd "👹 Toggle Monsters" för att visa/dölj alla monster
+7. Använd sidopanelen för att spåra mål och specialregler
+8. Använd "⊞ Toggle Grid" för att dölja rutnätet för renare visning
 
-### Using with 3D Printed Tiles
+### Använda med 3D-Printade Brickor
 
-This digital overlay is designed to complement physical 3D printed Gloomhaven tiles:
+Detta digitala överlägg är designat för att komplettera fysiska 3D-printade Gloomhaven-brickor:
 
-- Project the scenario viewer onto your gaming table
-- Align digital map sections with your 3D printed tiles
-- Use fog of war digitally while players see the physical layout
-- Track objectives, monsters, and scenario rules on-screen while using physical miniatures
+- Projicera scenariovisaren på ditt spelbord
+- Justera digitala kartbrickor med dina 3D-printade brickor
+- Använd fog of war digitalt medan spelare ser den fysiska layouten
+- Spåra mål, monster och scenarioregler på skärmen medan du använder fysiska miniatyrer
 
-## 📁 Project Structure
+## 📁 Projektstruktur
 
 ```
 GloomhavenScreenProject/
-├── index.html              # Main menu/landing page
-├── scenariomaker.html      # Map builder interface
-├── scenario.html           # Scenario viewer for gameplay
-├── scenario.js             # Viewer logic and fog of war
-├── script.js               # Map builder functionality
-├── styles.css              # Map builder styles
-├── scenario.css            # Viewer styles
-├── tiles/                  # Tile images and definitions
-│   └── tile-list.txt       # Tile inventory
-├── mapsections/            # Map section images
-└── images/                 # UI assets and icons
+├── index.html              # Huvudmeny/välkomstsida
+├── scenariomaker.html      # Kartbyggargränssnitt
+├── scenario.html           # Scenariovisare för spel
+├── scenario.js             # Visarlogik och fog of war
+├── script.js               # Kartbyggarfunktionalitet
+├── styles.css              # Kartbyggarstilar
+├── scenario.css            # Visarstilar
+├── tiles/                  # Brickbilder och definitioner
+│   └── tile-list.txt       # Brickinventering
+├── mapsections/            # Kartbricksbilder
+├── monsters/               # Monsterbilder
+├── Missions/               # Sparade scenariofiler
+│   ├── CustomMissions/     # Anpassade scenarier
+│   └── *.json              # Scenariofiler
+└── docs/                   # Funktionsdokumentation
 ```
 
-## 🎮 Workflow Example
+## 🎮 Arbetsflödesexempel
 
-1. **Prepare**: Create your custom scenario using the map builder
-2. **Setup**: Arrange your 3D printed tiles according to your digital map
-3. **Play**: Display the scenario viewer on a screen/projector positioned above the table
-4. **Explore**: Reveal map sections digitally as players move through the dungeon
-5. **Track**: Keep objectives and rules visible in the sidebar
+1. **Förbered**: Skapa ditt anpassade scenario med kartbyggaren
+2. **Sätt upp**: Arrangera dina 3D-printade brickor enligt din digitala karta
+3. **Spela**: Visa scenariovisaren på en skärm/projektor placerad ovanför bordet
+4. **Utforska**: Avslöja kartbrickor digitalt när spelare rör sig genom fängelsehålan
+5. **Spåra**: Håll mål och regler synliga i sidopanelen
 
-## 🔧 Customization
+## 🔧 Anpassning
 
-### Adding Custom Tiles
+### Lägga Till Anpassade Brickor
 
-1. Add tile images to the `tiles/` or `mapsections/` directory
-2. Update `tile-list.txt` with new tile definitions
-3. Follow the naming convention: `tilename-WxH.png` (e.g., `corridor-2x1.png`)
+1. Lägg till brickbilder i katalogen `tiles/` eller `mapsections/`
+2. Uppdatera `availableTiles`-arrayen i `script.js`
+3. Följ namnkonventionen: `bricknamn-BxH.png` (t.ex., `corridor-2x1.png`)
 
-### Modifying Grid Size
+### Ändra Rutnätsstorlek
 
-Edit the constants in `scenario.js` and `script.js`:
+Ändra konstanterna i både `script.js` och `scenario.js`:
 ```javascript
-const GRID_COLS = 25;  // Number of columns
-const GRID_ROWS = 25;  // Number of rows
-const CELL_SIZE = 80;  // Pixel size of each cell
+const GRID_COLS = 25;  // Antal kolumner
+const GRID_ROWS = 25;  // Antal rader
+const CELL_SIZE = 80;  // Pixelstorlek per cell
 ```
+
+## 📚 Dokumentation
+
+För detaljerad funktionsdokumentation, se [docs/](docs/) katalogen:
+- [script.js funktioner](docs/script-functions.md) - Kartbyggarens funktioner
+- [scenario.js funktioner](docs/scenario-functions.md) - Scenariovisarens funktioner
+
+## 🤝 Bidrag
+
+Bidrag är välkomna! Skapa gärna en pull request eller öppna en issue för att diskutera nya funktioner.
+
+## 📝 Licens
+
+Detta projekt är licensierat under MIT-licensen - se LICENSE-filen för detaljer.
+
+## 🎲 Ansvarsfriskrivning
+
+Detta projekt är en fan-skapad digital följeslagare för Gloomhaven och är inte officiellt kopplat till Cephalofair Games. Gloomhaven är ett varumärke som tillhör Cephalofair Games.
+
+---
+
+Skapad med ❤️ för Gloomhaven-communityn
 
 ## 🤝 Contributing
 
