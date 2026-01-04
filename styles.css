@@ -1345,3 +1345,123 @@ body {
 .placed-tile[data-monster-hidden="true"] {
     display: none !important;
 }
+
+/* Player Reference Modal */
+.reference-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 20000;
+    justify-content: center;
+    align-items: center;
+}
+
+.reference-modal.active {
+    display: flex;
+}
+
+.reference-modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 100%);
+    border: 4px solid #d4af37;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: auto;
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+}
+
+.reference-modal-content h2 {
+    text-align: center;
+    color: #d4af37;
+    font-size: 32px;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.reference-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(139, 69, 19, 0.8);
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    font-size: 28px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0;
+}
+
+.reference-close-btn:hover {
+    background: rgba(212, 175, 55, 0.9);
+    color: #1a0f0a;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+}
+
+.reference-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.reference-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 3px solid #8b6f47;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.reference-card:hover {
+    transform: scale(1.02);
+    border-color: #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.reference-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.reference-card.rotated {
+    transform: rotate(180deg);
+}
+
+.reference-card.rotated:hover {
+    transform: rotate(180deg) scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .reference-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reference-card.rotated {
+        transform: rotate(0deg);
+    }
+    
+    .reference-card.rotated:hover {
+        transform: scale(1.02);
+    }
+}

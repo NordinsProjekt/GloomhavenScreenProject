@@ -19,6 +19,7 @@
                     <button id="toggleGrid" class="btn">⊞ Toggle Grid</button>
                     <button id="toggleMonsters" class="btn">👹 Toggle Monsters</button>
                     <button id="lineToolBtn" class="btn">📏 Line Tool</button>
+                    <button id="libraryBtn" class="btn">📚 Library</button>
                 </div>
             </div>
             
@@ -177,6 +178,42 @@ Chest: 2 Random Items</textarea>
         </div>
     </div>
 
-    <script src="scenario.js"></script>
+    <!-- Player Reference Modal -->
+    <div id="referenceModal" class="reference-modal">
+        <div class="reference-modal-content">
+            <button class="reference-close-btn" onclick="closeReferenceCards()">✕</button>
+            <h2>Player Reference Cards</h2>
+            <div class="reference-grid">
+                <div class="reference-card">
+                    <img src="reference/player-reference-1.png" alt="Player Reference Card 1">
+                </div>
+                <div class="reference-card">
+                    <img src="reference/player-reference-2.png" alt="Player Reference Card 2">
+                </div>
+                <div class="reference-card rotated">
+                    <img src="reference/player-reference-1.png" alt="Player Reference Card 1">
+                </div>
+                <div class="reference-card rotated">
+                    <img src="reference/player-reference-2.png" alt="Player Reference Card 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared Modules -->
+    <script src="js/shared/constants.js"></script>
+    <script src="js/shared/tile-data.js"></script>
+    <script src="js/shared/utils.js"></script>
+    
+    <!-- Scenario Viewer Modules -->
+    <script src="js/viewer/state.js"></script>
+    <script src="js/viewer/grid.js"></script>
+    <script src="js/viewer/tiles.js"></script>
+    <script src="js/viewer/fog.js"></script>
+    <script src="js/viewer/monsters.js"></script>
+    <script src="js/viewer/tools.js"></script>
+    <script src="js/viewer/obstacles.js"></script>
+    <script src="js/viewer/save-load.js"></script>
+    <script src="js/viewer/init.js"></script>
 </body>
 </html>

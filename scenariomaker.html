@@ -69,6 +69,7 @@
                     <button id="revealAll" class="btn">👁️ Reveal All</button>
                     <button id="toggleGrid" class="btn">⊞ Toggle Grid</button>
                     <button id="resizeAll" class="btn">⊡ Resize All</button>
+                    <button id="libraryBtn" class="btn">📚 Library</button>
                 </div>
             </div>
             
@@ -222,6 +223,43 @@ Chest: 2 Random Items</textarea>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Player Reference Modal -->
+    <div id="referenceModal" class="reference-modal">
+        <div class="reference-modal-content">
+            <button class="reference-close-btn" onclick="closeReferenceCards()">✕</button>
+            <h2>Player Reference Cards</h2>
+            <div class="reference-grid">
+                <div class="reference-card">
+                    <img src="reference/player-reference-1.png" alt="Player Reference Card 1">
+                </div>
+                <div class="reference-card">
+                    <img src="reference/player-reference-2.png" alt="Player Reference Card 2">
+                </div>
+                <div class="reference-card rotated">
+                    <img src="reference/player-reference-1.png" alt="Player Reference Card 1">
+                </div>
+                <div class="reference-card rotated">
+                    <img src="reference/player-reference-2.png" alt="Player Reference Card 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared Modules -->
+    <script src="js/shared/constants.js"></script>
+    <script src="js/shared/tile-data.js"></script>
+    <script src="js/shared/utils.js"></script>
+    
+    <!-- Scenario Maker Modules -->
+    <script src="js/scenariomaker/state.js"></script>
+    <script src="js/scenariomaker/grid.js"></script>
+    <script src="js/scenariomaker/tiles.js"></script>
+    <script src="js/scenariomaker/controls.js"></script>
+    <script src="js/scenariomaker/palette.js"></script>
+    <script src="js/scenariomaker/dragdrop.js"></script>
+    <script src="js/scenariomaker/save-load.js"></script>
+    <script src="js/scenariomaker/mission.js"></script>
+    <script src="js/scenariomaker/fog.js"></script>
+    <script src="js/scenariomaker/init.js"></script>
 </body>
 </html>
