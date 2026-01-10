@@ -78,7 +78,6 @@ function placeTile(tileTypeId, col, row) {
     
     placedTiles.push(placedTile);
     renderPlacedTile(placedTile);
-    updatePlacedTilesList();
 }
 
 // Place a monster on the grid
@@ -110,7 +109,6 @@ function placeMonster(monsterTypeId, col, row) {
     
     placedTiles.push(placedMonster);
     renderPlacedTile(placedMonster);
-    updatePlacedTilesList();
 }
 
 // Check if space is available for tile

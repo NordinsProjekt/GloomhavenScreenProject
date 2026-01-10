@@ -19,33 +19,3 @@ function toggleSection(sectionId) {
         icon.textContent = '▶';
     }
 }
-
-// Update placed tiles list
-function updatePlacedTilesList() {
-    const placedTilesDiv = document.getElementById('placedTiles');
-    if (!placedTilesDiv) return;
-    
-    if (placedTiles.length === 0) {
-        placedTilesDiv.innerHTML = '<span class="room-tag">None</span>';
-    } else {
-        placedTilesDiv.innerHTML = placedTiles
-            .map(tile => `<span class="room-tag">${tile.name}</span>`)
-            .join('');
-    }
-}
-
-// Update revealed rooms list
-function updateRevealedRooms() {
-    const revealedRoomsDiv = document.getElementById('revealedRooms');
-    if (!revealedRoomsDiv) return;
-    
-    const revealedTiles = placedTiles.filter(t => t.revealed);
-    
-    if (revealedTiles.length === 0) {
-        revealedRoomsDiv.innerHTML = '<span class="room-tag">None</span>';
-    } else {
-        revealedRoomsDiv.innerHTML = revealedTiles
-            .map(tile => `<span class="room-tag">${tile.name}</span>`)
-            .join('');
-    }
-}

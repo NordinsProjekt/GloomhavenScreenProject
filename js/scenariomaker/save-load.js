@@ -142,8 +142,6 @@ function handleFileImport(event) {
                 localStorage.setItem('gloomhavenMaps', JSON.stringify(savedMaps));
                 localStorage.setItem('gloomhavenMap', JSON.stringify(mapData));
                 
-                updatePlacedTilesList();
-                updateRevealedRooms();
                 updateTokenVisibility();
                 
                 alert(`Map "${mapData.name || 'Unnamed'}" imported successfully!`);
@@ -261,8 +259,6 @@ function loadSelectedMap(mapName) {
         // Also save as default for scenario viewer
         localStorage.setItem('gloomhavenMap', JSON.stringify(mapToLoad));
         
-        updatePlacedTilesList();
-        updateRevealedRooms();
         updateTokenVisibility();
         
         alert(`Map "${mapToLoad.name}" loaded successfully!`);
@@ -326,8 +322,6 @@ function loadSavedMap() {
             renderPlacedTile(tile);
         });
         
-        updatePlacedTilesList();
-        updateRevealedRooms();
         updateTokenVisibility();
     } catch (e) {
         console.error('Error loading map:', e);

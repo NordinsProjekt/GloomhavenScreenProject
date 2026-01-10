@@ -49,7 +49,7 @@ function toggleTileReveal(tileId) {
         }
     }
     
-    updateRevealedRooms();
+
     updateTokenVisibility();
 }
 

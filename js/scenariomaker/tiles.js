@@ -78,9 +78,8 @@ function renderPlacedTile(tile) {
         }
     });
     
-    // Drag to move - only from drag handle or label
+    // Drag to move - only from drag handle
     dragHandle.addEventListener('mousedown', handleTileDragStart);
-    label.addEventListener('mousedown', handleTileDragStart);
     
     grid.appendChild(tileDiv);
     
@@ -159,8 +158,6 @@ function removeTile(tileId) {
         tileElement.remove();
     }
     
-    updatePlacedTilesList();
-    updateRevealedRooms();
     updateTokenVisibility();
 }
 

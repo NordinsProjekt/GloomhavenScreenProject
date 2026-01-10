@@ -58,7 +58,7 @@ function copyTile(tileId) {
         height: sourceTile.height,
         revealed: sourceTile.revealed,
         rotation: sourceTile.rotation,
-        zIndex: sourceTile.zIndex + 1, // Place above original
+        zIndex: sourceTile.zIndex, // Keep same z-index as original
         customChar: sourceTile.customChar || ''
     };
     
@@ -85,7 +85,6 @@ function copyTile(tileId) {
     // Add to placed tiles and render
     placedTiles.push(copiedTile);
     renderPlacedTile(copiedTile);
-    updatePlacedTilesList();
     
     // Select the new copy
     selectTile(copiedTile.id);
