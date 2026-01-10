@@ -55,6 +55,7 @@ function loadMonsterPalette() {
         monsterItem.className = 'tile-item monster-item';
         monsterItem.draggable = true;
         monsterItem.dataset.monsterId = monster.id;
+        monsterItem.dataset.tileName = monster.name.toLowerCase();
         
         monsterItem.innerHTML = `
             <div class="tile-preview" style="background-image: url('${monster.image}')"></div>

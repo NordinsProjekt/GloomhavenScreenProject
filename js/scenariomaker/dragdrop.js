@@ -226,6 +226,10 @@ function handleTileDragEnd(e) {
     draggedPlacedTile.col = newCol;
     draggedPlacedTile.row = newRow;
     
+    // Clear pixel offsets when snapping to grid (dragging resets to grid alignment)
+    delete draggedPlacedTile.pixelOffsetX;
+    delete draggedPlacedTile.pixelOffsetY;
+    
     // Snap to grid and update display
     updateTilePosition(tileElement, draggedPlacedTile);
     

@@ -38,6 +38,59 @@ function deselectTile() {
     hideControlPanel();
 }
 
+// Copy a tile
+function copyTile(tileId) {
+    const sourceTile = placedTiles.find(t => t.id === tileId);
+    if (!sourceTile) return;
+    
+    // Create a copy with a slight offset so it's visible
+    const offsetPixels = 50;
+    
+    // Create new tile object copying all properties from source
+    const copiedTile = {
+        id: `placed_${nextTileId++}`,
+        tileTypeId: sourceTile.tileTypeId,
+        name: sourceTile.name,
+        image: sourceTile.image,
+        col: sourceTile.col,
+        row: sourceTile.row,
+        width: sourceTile.width,
+        height: sourceTile.height,
+        revealed: sourceTile.revealed,
+        rotation: sourceTile.rotation,
+        zIndex: sourceTile.zIndex + 1, // Place above original
+        customChar: sourceTile.customChar || ''
+    };
+    
+    // Only copy pixel offsets if the source tile has them, otherwise add new offsets
+    if (sourceTile.pixelOffsetX !== undefined || sourceTile.pixelOffsetY !== undefined) {
+        copiedTile.pixelOffsetX = (sourceTile.pixelOffsetX || 0) + offsetPixels;
+        copiedTile.pixelOffsetY = (sourceTile.pixelOffsetY || 0) + offsetPixels;
+    } else {
+        // For tiles without offsets, add them so the copy is visible
+        copiedTile.pixelOffsetX = offsetPixels;
+        copiedTile.pixelOffsetY = offsetPixels;
+    }
+    
+    // Copy monster properties if applicable
+    if (sourceTile.isMonster) {
+        copiedTile.isMonster = true;
+        copiedTile.players = {
+            2: { ...sourceTile.players[2] },
+            3: { ...sourceTile.players[3] },
+            4: { ...sourceTile.players[4] }
+        };
+    }
+    
+    // Add to placed tiles and render
+    placedTiles.push(copiedTile);
+    renderPlacedTile(copiedTile);
+    updatePlacedTilesList();
+    
+    // Select the new copy
+    selectTile(copiedTile.id);
+}
+
 // Show control panel
 function showControlPanel(tile) {
     let panel = document.getElementById('tileControlPanel');
@@ -193,6 +246,12 @@ function showControlPanel(tile) {
             ${monsterSection}
             
             ${fogSection}
+            
+            <div class="control-section">
+                <div class="control-buttons">
+                    <button class="control-btn" onclick="copyTile('${tile.id}')" title="Copy Tile">📋 Copy Tile</button>
+                </div>
+            </div>
             
             <div class="control-section">
                 <button class="control-btn-danger" onclick="removeTileFromPanel('${tile.id}')" title="Remove Tile">✕ Remove Tile</button>
