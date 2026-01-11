@@ -3,109 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gloomhaven Digital Tabletop</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Gloomhaven Digital Companion</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container">
-        <!-- Tile Palette -->
-        <div class="tile-palette">
-            <h3>Room Tiles</h3>
-            <div class="controls-top">
-                <button id="saveMap" class="btn btn-small">💾 Save Map</button>
-                <button id="loadMap" class="btn btn-small">📂 Load Map</button>
-                <button id="clearMap" class="btn btn-small">🗑️ Clear Map</button>
-            </div>
-            <div id="tileList" class="tile-list">
-                <!-- Tiles will be loaded here -->
-            </div>
-            <h3 style="margin-top: 15px;">Monster Tokens</h3>
-            <div id="monsterList" class="tile-list">
-                <!-- Monster tokens will be loaded here -->
-            </div>
-            <div class="palette-info">
-                <p>Drag tiles and monsters onto the grid</p>
-            </div>
+        <h1>⚔️ Gloomhaven Digital Companion</h1>
+        <p class="subtitle">Your ultimate tool for managing Gloomhaven adventures</p>
+
+        <div class="nav-grid">
+            <a href="scenariomaker.html" class="nav-card">
+                <div class="nav-card-content">
+                    <h2>📝 Scenario Maker</h2>
+                    <p>Create and edit scenarios, place map tiles and tokens, manage fog of war, and save your campaigns.</p>
+                    <span class="badge">GAME MASTER</span>
+                </div>
+            </a>
+
+            <a href="scenario.html" class="nav-card">
+                <div class="nav-card-content">
+                    <h2>🎮 Scenario Viewer</h2>
+                    <p>View active scenarios in read-only mode. Perfect for players to reference during gameplay.</p>
+                    <span class="badge">PLAYER VIEW</span>
+                </div>
+            </a>
+
+            <a href="#" class="nav-card disabled" onclick="return false;">
+                <div class="nav-card-content">
+                    <h2>🗺️ World Map</h2>
+                    <p>Explore the world of Gloomhaven. Track completed scenarios and unlocked locations.</p>
+                    <span class="badge">COMING SOON</span>
+                </div>
+            </a>
+
+            <a href="#" class="nav-card disabled" onclick="return false;">
+                <div class="nav-card-content">
+                    <h2>🏘️ Visiting Gloomhaven</h2>
+                    <p>Manage party resources, visit the shop, upgrade abilities, and plan your next adventure.</p>
+                    <span class="badge">COMING SOON</span>
+                </div>
+            </a>
         </div>
 
-        <!-- Main Map Area -->
-        <div class="map-container">
-            <div class="map-header">
-                <h1>Gloomhaven Mission Board</h1>
-                <div class="controls">
-                    <button id="resetFog" class="btn">🌫️ Reset Fog</button>
-                    <button id="revealAll" class="btn">👁️ Reveal All</button>
-                    <button id="toggleGrid" class="btn">⊞ Toggle Grid</button>
-                </div>
-            </div>
-            
-            <div id="hexMap" class="hex-map">
-                <div id="placementGrid" class="placement-grid">
-                    <!-- Grid cells will be generated here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Mission Info Sidebar -->
-        <div class="sidebar">
-            <div class="mission-info">
-                <h2>Mission Information</h2>
-                <div class="mission-details">
-                    <h3 id="missionTitle">Black Barrow</h3>
-                    <p class="mission-number">Mission #1</p>
-                    
-                    <div class="info-section">
-                        <h4>Objective</h4>
-                        <p id="objective">
-                            Clear all enemies from the dungeon and retrieve the ancient artifact.
-                        </p>
-                    </div>
-
-                    <div class="info-section">
-                        <h4>Placed Tiles</h4>
-                        <div id="placedTiles">
-                            <span class="room-tag">None</span>
-                        </div>
-                    </div>
-
-                    <div class="info-section">
-                        <h4>Revealed Rooms</h4>
-                        <div id="revealedRooms">
-                            <span class="room-tag">None</span>
-                        </div>
-                    </div>
-
-                    <div class="info-section">
-                        <h4>Special Rules</h4>
-                        <ul id="specialRules">
-                            <li>Trap damage increased by 1</li>
-                            <li>Monsters gain +1 movement</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-section">
-                        <h4>Notes</h4>
-                        <textarea id="notes" placeholder="Add mission notes here..."></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div class="room-legend">
-                <h4>Room Legend</h4>
-                <div class="legend-items">
-                    <div class="legend-item">
-                        <span class="color-box revealed"></span>
-                        <span>Revealed</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="color-box fogged"></span>
-                        <span>Fog of War</span>
-                    </div>
-                </div>
-            </div>
+        <div class="footer">
+            <p>Gloomhaven Digital Companion • Created for enhancing your tabletop experience</p>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

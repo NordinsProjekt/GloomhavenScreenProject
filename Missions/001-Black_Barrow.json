@@ -1,0 +1,947 @@
+{
+  "name": "001-Black_Barrow",
+  "tiles": [
+    {
+      "id": "placed_0",
+      "tileTypeId": "L1a",
+      "name": "L1a",
+      "image": "mapsections/L1a.png",
+      "col": 11,
+      "row": 6,
+      "width": 6,
+      "height": 6,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 12,
+      "customChar": ""
+    },
+    {
+      "id": "placed_1",
+      "tileTypeId": "G1b",
+      "name": "G1b",
+      "image": "mapsections/G1b.png",
+      "col": 11,
+      "row": 1,
+      "width": 6,
+      "height": 6,
+      "revealed": false,
+      "rotation": 270,
+      "zIndex": 11,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_2",
+      "tileTypeId": "I1b",
+      "name": "I1b",
+      "image": "mapsections/I1b.png",
+      "col": 8,
+      "row": 2,
+      "width": 5,
+      "height": 5,
+      "revealed": false,
+      "rotation": 90,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 30,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "tile_3",
+      "tileTypeId": "bandit-guard",
+      "name": "Bandit Guard",
+      "image": "monsters/bandit-guard.png",
+      "col": 13,
+      "row": 7,
+      "x": 738,
+      "y": 574,
+      "width": 1.2,
+      "height": 1.2,
+      "rotation": 0,
+      "zIndex": 12,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_4",
+      "tileTypeId": "stone-door-h",
+      "name": "Stone Door (H)",
+      "image": "tiles/stone-door-horizontal.png",
+      "col": 14,
+      "row": 7,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 13,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_5",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 12,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 11,
+      "customChar": "",
+      "pixelOffsetX": 30,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_6",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 13,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 11,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_7",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 13,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 11,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -50
+    },
+    {
+      "id": "tile_8",
+      "tileTypeId": "bandit-archer",
+      "name": "Bandit Archer",
+      "image": "monsters/bandit-archer.png",
+      "col": 13,
+      "row": 1,
+      "x": 492,
+      "y": 410,
+      "width": 1,
+      "height": 1,
+      "rotation": 0,
+      "zIndex": 11,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_9",
+      "tileTypeId": "bandit-archer",
+      "name": "Bandit Archer",
+      "image": "monsters/bandit-archer.png",
+      "col": 13,
+      "row": 1,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 11,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": 60,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      }
+    },
+    {
+      "id": "placed_10",
+      "tileTypeId": "bandit-archer",
+      "name": "Bandit Archer",
+      "image": "monsters/bandit-archer.png",
+      "col": 13,
+      "row": 1,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 11,
+      "customChar": "",
+      "pixelOffsetX": 90,
+      "pixelOffsetY": 30,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_11",
+      "tileTypeId": "bandit-guard",
+      "name": "Bandit Guard",
+      "image": "monsters/bandit-guard.png",
+      "col": 13,
+      "row": 7,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "pixelOffsetX": 90,
+      "pixelOffsetY": -10,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_12",
+      "tileTypeId": "bandit-guard",
+      "name": "Bandit Guard",
+      "image": "monsters/bandit-guard.png",
+      "col": 11,
+      "row": 7,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 30,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_13",
+      "tileTypeId": "bandit-guard",
+      "name": "Bandit Guard",
+      "image": "monsters/bandit-guard.png",
+      "col": 11,
+      "row": 7,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "pixelOffsetX": 370,
+      "pixelOffsetY": -10,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_14",
+      "tileTypeId": "bandit-guard",
+      "name": "Bandit Guard",
+      "image": "monsters/bandit-guard.png",
+      "col": 13,
+      "row": 7,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 11,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": true
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": false,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 30,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_15",
+      "tileTypeId": "bandit-guard",
+      "name": "Bandit Guard",
+      "image": "monsters/bandit-guard.png",
+      "col": 12,
+      "row": 7,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_16",
+      "tileTypeId": "bandit-guard",
+      "name": "Bandit Guard",
+      "image": "monsters/bandit-guard.png",
+      "col": 15,
+      "row": 7,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": -20,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_17",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 13,
+      "row": 10,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_18",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 13,
+      "row": 10,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_19",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 13,
+      "row": 10,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -90,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_20",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 13,
+      "row": 10,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -70
+    },
+    {
+      "id": "placed_21",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 13,
+      "row": 10,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 80,
+      "pixelOffsetY": -70
+    },
+    {
+      "id": "placed_22",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 13,
+      "row": 10,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 80,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_23",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 13,
+      "row": 10,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 140,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_24",
+      "tileTypeId": "table-2h",
+      "name": "Table",
+      "image": "tiles/table-2h.png",
+      "col": 10,
+      "row": 3,
+      "width": 2,
+      "height": 2,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": -70
+    },
+    {
+      "id": "placed_25",
+      "tileTypeId": "table-2h",
+      "name": "Table",
+      "image": "tiles/table-2h.png",
+      "col": 10,
+      "row": 3,
+      "width": 2,
+      "height": 2,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": 120
+    },
+    {
+      "id": "placed_26",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 12,
+      "row": 3,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 11,
+      "customChar": "1",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_27",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 9,
+      "row": 2,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_28",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 9,
+      "row": 2,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 50,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_29",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 9,
+      "row": 2,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 100,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_30",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 10,
+      "row": 5,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_31",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 10,
+      "row": 5,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_32",
+      "tileTypeId": "chest",
+      "name": "Treasure Chest",
+      "image": "tiles/chest.png",
+      "col": 9,
+      "row": 6,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 10,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "tile_33",
+      "tileTypeId": "living-bones",
+      "name": "Living Bones",
+      "image": "monsters/living-bones.png",
+      "col": 12,
+      "row": 4,
+      "x": 492,
+      "y": 328,
+      "width": 1.2,
+      "height": 1.2,
+      "rotation": 0,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_34",
+      "tileTypeId": "living-bones",
+      "name": "Living Bones",
+      "image": "monsters/living-bones.png",
+      "col": 10,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "tile_35",
+      "tileTypeId": "living-bones",
+      "name": "Living Bones",
+      "image": "monsters/living-bones.png",
+      "col": 10,
+      "row": 3,
+      "x": 328,
+      "y": 574,
+      "width": 1.2,
+      "height": 1.2,
+      "rotation": 0,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "tile_36",
+      "tileTypeId": "living-bones",
+      "name": "Living Bones",
+      "image": "monsters/living-bones.png",
+      "col": 12,
+      "row": 3,
+      "x": 246,
+      "y": 410,
+      "width": 1.2,
+      "height": 1.2,
+      "rotation": 0,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "tile_37",
+      "tileTypeId": "bandit-archer",
+      "name": "Bandit Archer",
+      "image": "monsters/bandit-archer.png",
+      "col": 9,
+      "row": 3,
+      "x": 492,
+      "y": 328,
+      "width": 1.2,
+      "height": 1.2,
+      "rotation": 0,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_38",
+      "tileTypeId": "bandit-archer",
+      "name": "Bandit Archer",
+      "image": "monsters/bandit-archer.png",
+      "col": 9,
+      "row": 3,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_39",
+      "tileTypeId": "bandit-archer",
+      "name": "Bandit Archer",
+      "image": "monsters/bandit-archer.png",
+      "col": 9,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_40",
+      "tileTypeId": "bandit-archer",
+      "name": "Bandit Archer",
+      "image": "monsters/bandit-archer.png",
+      "col": 9,
+      "row": 5,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -20
+    }
+  ],
+  "nextId": 41,
+  "scenario": {
+    "missionTitle": "Mission Name",
+    "objectives": "Goal: Kill all enemies",
+    "loot": "Chest: 07",
+    "intro": "",
+    "room1": "",
+    "room2": "",
+    "room3": "",
+    "rules": "",
+    "conclusion": "New location: Barrow Lair 2 (G-11)\nParty achivement: First Steps",
+    "notes": ""
+  },
+  "savedAt": "2026-01-11T11:20:22.616Z"
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gloomhaven Digital Tabletop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tile Palette -->
+        <div class="tile-palette">
+            <h3>Tiles & Tokens</h3>
+            <div class="controls-top">
+                <button id="saveMap" class="btn btn-small">💾 Save Map As...</button>
+                <button id="loadMap" class="btn btn-small">📂 Load Map</button>
+                <button id="downloadMap" class="btn btn-small">⬇️ Download</button>
+                <button id="importMap" class="btn btn-small">⬆️ Import</button>
+                <button id="clearMap" class="btn btn-small">🗑️ Clear Map</button>
+            </div>
+            <input type="file" id="fileInput" accept=".json" style="display: none;" />
+            
+            <!-- Search Filter -->
+            <div class="palette-search">
+                <input type="text" id="tileSearch" placeholder="🔍 Search tiles..." />
+            </div>
+            
+            <!-- Map Tiles Section -->
+            <div class="palette-section">
+                <button class="palette-section-toggle active" onclick="togglePaletteSection('mapTiles')">
+                    <span class="toggle-icon">▼</span> Map Sections
+                </button>
+                <div id="mapTiles-list" class="tile-list">
+                    <!-- Map tiles will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Tokens & Overlays Section -->
+            <div class="palette-section">
+                <button class="palette-section-toggle active" onclick="togglePaletteSection('tokens')">
+                    <span class="toggle-icon">▼</span> Tokens & Overlays
+                </button>
+                <div id="tokens-list" class="tile-list">
+                    <!-- Tokens will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Monster Tokens Section -->
+            <div class="palette-section">
+                <button class="palette-section-toggle active" onclick="togglePaletteSection('monster')">
+                    <span class="toggle-icon">▼</span> Monster Tokens
+                </button>
+                <div id="monsterList" class="tile-list">
+                    <!-- Monster tokens will be loaded here -->
+                </div>
+            </div>
+            
+            <div class="palette-info">
+                <p>Drag tiles onto the grid to build your map</p>
+            </div>
+        </div>
+
+        <!-- Main Map Area -->
+        <div class="map-container">
+            <div class="map-header">
+                <h1>Gloomhaven Mission Board</h1>
+                <div class="controls">
+                    <button id="resetFog" class="btn">🌫️ Reset Fog</button>
+                    <button id="revealAll" class="btn">👁️ Reveal All</button>
+                    <button id="toggleGrid" class="btn">⊞ Toggle Grid</button>
+                    <button id="resizeAll" class="btn">⊡ Resize All</button>
+                    <button id="libraryBtn" class="btn">📚 Library</button>
+                </div>
+            </div>
+            
+            <div id="hexMap" class="hex-map">
+                <div id="placementGrid" class="placement-grid">
+                    <!-- Grid cells will be generated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Info Sidebar -->
+        <div class="sidebar">
+            <div class="mission-info">
+                <h2 id="missionTitle">Black Barrow</h2>
+                <p class="mission-number">Mission #1</p>
+                
+                <!-- Objectives Section -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('objectives')">
+                        <span class="toggle-icon">▼</span> Objectives
+                    </button>
+                    <div id="objectives-content" class="section-content">
+                        <textarea id="objectives" placeholder="Enter mission objectives...">Clear all enemies from the dungeon and retrieve the ancient artifact.</textarea>
+                    </div>
+                </div>
+
+                <!-- Scenario Loot Section -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('loot')">
+                        <span class="toggle-icon">▼</span> Scenario Loot
+                    </button>
+                    <div id="loot-content" class="section-content">
+                        <textarea id="loot" placeholder="Enter loot information...">Treasure #12: Random Item
+Treasure #65: 50 Gold
+Chest: 2 Random Items</textarea>
+                    </div>
+                </div>
+
+                <!-- Introduction -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('intro')">
+                        <span class="toggle-icon">▼</span> Introduction
+                    </button>
+                    <div id="intro-content" class="section-content">
+                        <textarea id="intro" placeholder="Enter introduction text...">The entrance to the Black Barrow looms before you, ancient stone weathered by centuries of neglect. Strange sounds echo from within...</textarea>
+                    </div>
+                </div>
+
+                <!-- Room Reveals -->
+                <div class="info-section">
+                    <button class="section-toggle" onclick="toggleSection('room1')">
+                        <span class="toggle-icon">▶</span> Special Rules 1
+                    </button>
+                    <div id="room1-content" class="section-content collapsed">
+                        <textarea id="room1" placeholder="Enter special rules 1 text...">As you push open the heavy door, the stench of decay fills your nostrils. Undead creatures turn to face you...</textarea>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <button class="section-toggle" onclick="toggleSection('room2')">
+                        <span class="toggle-icon">▶</span> Special Rules 2
+                    </button>
+                    <div id="room2-content" class="section-content collapsed">
+                        <textarea id="room2" placeholder="Enter special rules 2 text..."></textarea>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <button class="section-toggle" onclick="toggleSection('room3')">
+                        <span class="toggle-icon">▶</span> Boss Room
+                    </button>
+                    <div id="room3-content" class="section-content collapsed">
+                        <textarea id="room3" placeholder="Enter boss room text..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Special Rules -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('rules')">
+                        <span class="toggle-icon">▼</span> Special Rules
+                    </button>
+                    <div id="rules-content" class="section-content">
+                        <textarea id="rules" placeholder="Enter special rules...">- Trap damage increased by 1
+- Monsters gain +1 movement
+- All monsters have Shield 1</textarea>
+                    </div>
+                </div>
+
+                <!-- Conclusion -->
+                <div class="info-section">
+                    <button class="section-toggle" onclick="toggleSection('conclusion')">
+                        <span class="toggle-icon">▶</span> Conclusion
+                    </button>
+                    <div id="conclusion-content" class="section-content collapsed">
+                        <textarea id="conclusion" placeholder="Enter conclusion text...">With the last enemy defeated, an eerie silence falls over the barrow. The ancient artifact pulses with mysterious energy...</textarea>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="info-section">
+                    <button class="section-toggle active" onclick="toggleSection('notes')">
+                        <span class="toggle-icon">▼</span> Notes
+                    </button>
+                    <div id="notes-content" class="section-content">
+                        <textarea id="notes" placeholder="Add session notes here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Map Modal -->
+    <div id="loadMapModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Load Saved Map</h2>
+                <button class="modal-close" onclick="closeLoadMapModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="mapListContainer">
+                    <!-- Map list will be populated here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeLoadMapModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Reference Modal -->
+    <div id="referenceModal" class="reference-modal">
+        <div class="reference-modal-content">
+            <button class="reference-close-btn" onclick="closeReferenceCards()">✕</button>
+            <h2>Player Reference Cards</h2>
+            <div class="reference-grid">
+                <div class="reference-card">
+                    <img src="reference/player-reference-1.png" alt="Player Reference Card 1">
+                </div>
+                <div class="reference-card">
+                    <img src="reference/player-reference-2.png" alt="Player Reference Card 2">
+                </div>
+                <div class="reference-card rotated">
+                    <img src="reference/player-reference-1.png" alt="Player Reference Card 1">
+                </div>
+                <div class="reference-card rotated">
+                    <img src="reference/player-reference-2.png" alt="Player Reference Card 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared Modules -->
+    <script src="js/shared/constants.js"></script>
+    <script src="js/shared/tile-data.js"></script>
+    <script src="js/shared/utils.js"></script>
+    
+    <!-- Scenario Maker Modules -->
+    <script src="js/scenariomaker/state.js"></script>
+    <script src="js/scenariomaker/grid.js"></script>
+    <script src="js/scenariomaker/tiles.js"></script>
+    <script src="js/scenariomaker/controls.js"></script>
+    <script src="js/scenariomaker/palette.js"></script>
+    <script src="js/scenariomaker/dragdrop.js"></script>
+    <script src="js/scenariomaker/save-load.js"></script>
+    <script src="js/scenariomaker/mission.js"></script>
+    <script src="js/scenariomaker/fog.js"></script>
+    <script src="js/scenariomaker/init.js"></script>
+</body>
+</html>
