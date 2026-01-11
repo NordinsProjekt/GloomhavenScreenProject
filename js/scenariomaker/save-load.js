@@ -265,6 +265,37 @@ function loadSelectedMap(mapName) {
     }
 }
 
+// Clear the entire map
+function clearMap() {
+    if (!confirm('⚠️ Clear the entire map?\n\nThis will remove ALL tiles, obstacles, and monsters from the grid.\n\nThis action cannot be undone!')) {
+        return;
+    }
+    
+    // Clear arrays
+    placedTiles = [];
+    nextTileId = 0;
+    
+    // Remove all placed tiles from DOM
+    document.querySelectorAll('.placed-tile').forEach(tile => tile.remove());
+    
+    // Remove control panel if visible
+    deselectTile();
+    
+    // Clear scenario information
+    document.getElementById('missionTitle').textContent = 'Mission Name';
+    if (document.getElementById('objectives')) document.getElementById('objectives').value = '';
+    if (document.getElementById('loot')) document.getElementById('loot').value = '';
+    if (document.getElementById('intro')) document.getElementById('intro').value = '';
+    if (document.getElementById('room1')) document.getElementById('room1').value = '';
+    if (document.getElementById('room2')) document.getElementById('room2').value = '';
+    if (document.getElementById('room3')) document.getElementById('room3').value = '';
+    if (document.getElementById('rules')) document.getElementById('rules').value = '';
+    if (document.getElementById('conclusion')) document.getElementById('conclusion').value = '';
+    if (document.getElementById('notes')) document.getElementById('notes').value = '';
+    
+    console.log('Map cleared successfully');
+}
+
 // Load default map (for backward compatibility)
 function loadSavedMap() {
     const saved = localStorage.getItem('gloomhavenMap');
