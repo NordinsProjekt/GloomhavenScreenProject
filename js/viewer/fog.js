@@ -23,6 +23,9 @@ function toggleTileReveal(tileId) {
     
     updateTokenVisibility();
     updateMonsterVisibility();
+    
+    // Auto-save game state
+    autoSaveGameState();
 }
 
 // Toggle all fog
@@ -47,6 +50,9 @@ function toggleAllFog() {
     
     updateTokenVisibility();
     updateMonsterVisibility();
+    
+    // Auto-save game state
+    autoSaveGameState();
 }
 
 // Update token visibility based on underlying map tiles

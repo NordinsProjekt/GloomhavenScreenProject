@@ -3,6 +3,90 @@
  * Handles loading maps and mission info
  */
 
+// Auto-save current state to localStorage
+function autoSaveGameState() {
+    // Get scroll position from hex map
+    const hexMap = document.getElementById('hexMap');
+    const scrollLeft = hexMap ? hexMap.scrollLeft : 0;
+    const scrollTop = hexMap ? hexMap.scrollTop : 0;
+    
+    const currentState = {
+        tiles: placedTiles,
+        scenario: {
+            missionTitle: document.getElementById('missionTitle')?.textContent || '',
+            objectives: document.getElementById('objectives')?.value || '',
+            loot: document.getElementById('loot')?.value || '',
+            intro: document.getElementById('text1')?.value || '',
+            room1: document.getElementById('text2')?.value || '',
+            room2: document.getElementById('text3')?.value || '',
+            room3: document.getElementById('text4')?.value || '',
+            rules: document.getElementById('rules')?.value || '',
+            conclusion: document.getElementById('conclusion')?.value || '',
+            notes: document.getElementById('notes')?.value || ''
+        },
+        playerCount: currentPlayerCount,
+        viewport: {
+            scrollLeft: scrollLeft,
+            scrollTop: scrollTop
+        },
+        timestamp: Date.now()
+    };
+    
+    try {
+        localStorage.setItem('gloomhaven_autosave', JSON.stringify(currentState));
+        
+        // Update visual indicator
+        const indicator = document.getElementById('autoSaveIndicator');
+        if (indicator) {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            indicator.textContent = `💾 Auto-saved at ${timeStr}`;
+            indicator.classList.add('flash');
+            setTimeout(() => indicator.classList.remove('flash'), 1000);
+        }
+        
+        console.log('Game state auto-saved at', new Date().toLocaleTimeString());
+    } catch (e) {
+        console.error('Failed to auto-save game state:', e);
+        
+        // Show error in indicator
+        const indicator = document.getElementById('autoSaveIndicator');
+        if (indicator) {
+            indicator.textContent = '⚠️ Auto-save failed';
+            indicator.style.color = '#e74c3c';
+        }
+    }
+}
+
+// Load auto-saved state on page load
+function loadAutoSave() {
+    try {
+        const autoSave = localStorage.getItem('gloomhaven_autosave');
+        if (autoSave) {
+            const state = JSON.parse(autoSave);
+            const savedDate = new Date(state.timestamp);
+            console.log('Auto-save found from', savedDate.toLocaleString(), '- restoring game state...');
+            loadMapData(state);
+            
+            // Restore player count if saved
+            if (state.playerCount) {
+                setPlayerCount(state.playerCount);
+            }
+            
+            // Update indicator with load time
+            const indicator = document.getElementById('autoSaveIndicator');
+            if (indicator) {
+                indicator.textContent = `💾 Restored from ${savedDate.toLocaleTimeString()}`;
+            }
+            
+            return true;
+        }
+    } catch (e) {
+        console.error('Failed to load auto-save:', e);
+    }
+    return false;
+}
+
 // Load map data (shared function for localStorage and file upload)
 function loadMapData(mapData) {
     // Store original map data for reset functionality
@@ -40,6 +124,21 @@ function loadMapData(mapData) {
     
     updateTokenVisibility();
     updateMonsterVisibility();
+    
+    // Restore scroll position if available
+    if (mapData.viewport) {
+        // Use setTimeout to ensure DOM is fully rendered
+        setTimeout(() => {
+            const hexMap = document.getElementById('hexMap');
+            if (hexMap) {
+                hexMap.scrollLeft = mapData.viewport.scrollLeft || 0;
+                hexMap.scrollTop = mapData.viewport.scrollTop || 0;
+            }
+        }, 100);
+    }
+    
+    // Auto-save after loading to ensure backup exists
+    autoSaveGameState();
 }
 
 // Load map from localStorage
@@ -78,6 +177,9 @@ function clearMap() {
         document.querySelectorAll('.placed-tile').forEach(tile => tile.remove());
         placedTiles.forEach(tile => renderPlacedTile(tile));
         updateTokenVisibility();
+        
+        // Auto-save after reset
+        autoSaveGameState();
     }
 }
 

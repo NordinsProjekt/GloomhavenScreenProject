@@ -13,6 +13,11 @@ function setPlayerCount(count) {
     });
     
     updateMonsterVisibility();
+    
+    // Auto-save game state when player count changes
+    if (typeof autoSaveGameState === 'function') {
+        autoSaveGameState();
+    }
 }
 
 // Update monster visibility based on player count

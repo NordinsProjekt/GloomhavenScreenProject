@@ -6,8 +6,25 @@
 // Initialize the scenario viewer
 function initializeScenario() {
     createGrid();
-    loadSavedMap();
+    
+    // Try to load auto-save first, fallback to regular saved map
+    const autoSaveLoaded = loadAutoSave();
+    if (!autoSaveLoaded) {
+        loadSavedMap();
+    }
+    
     setupEventListeners();
+}
+
+// Debounce function for scroll events
+let scrollSaveTimeout = null;
+function debounceScrollSave() {
+    if (scrollSaveTimeout) {
+        clearTimeout(scrollSaveTimeout);
+    }
+    scrollSaveTimeout = setTimeout(() => {
+        autoSaveGameState();
+    }, 500); // Save 500ms after user stops scrolling
 }
 
 // Setup event listeners
@@ -32,6 +49,9 @@ function setupEventListeners() {
     const hexMap = document.getElementById('hexMap');
     hexMap.addEventListener('click', handleMapClick);
     hexMap.addEventListener('mousemove', handleMapMouseMove);
+    
+    // Scroll event listener for auto-save (debounced)
+    hexMap.addEventListener('scroll', debounceScrollSave);
 }
 
 // Initialize on page load

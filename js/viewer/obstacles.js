@@ -87,4 +87,7 @@ function destroyObstacle(tileId) {
     }
     
     closeDestroyMenu();
+    
+    // Auto-save game state after obstacle destruction
+    autoSaveGameState();
 }
