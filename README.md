@@ -6,11 +6,60 @@ En webbaserad digital följeslagare för att skapa och visa anpassade Gloomhaven
 
 Detta projekt tillhandahåller ett komplett digitalt verktygsset för Gloomhaven-entusiaster som använder 3D-printade brickor. Bygg, spara och visa anpassade scenarier på valfri skärm eller projektor, perfekt för att förbättra din bordsspelsupplevelse med fysiska 3D-printade komponenter.
 
+## 🆕 Senaste Uppdateringar (Jan 2026)
+
+### ✨ Nya Funktioner
+
+#### 💾 **Auto-Save System** (Scenario Viewer)
+- **Automatisk backup** till webbläsarens localStorage vid varje förändring
+- **Förhindrar dataförlust** om webbläsaren stängs oväntat
+- **Skyddar din fysiska setup** - inga modeller behöver flyttas på grund av tekniska problem
+- Auto-sparar vid:
+  - Fog of War ändringar (både enskilda brickor och alla)
+  - Förstörda hinder
+  - Ändrat spelarantal
+  - Kartscrolling och position
+  - Karta laddas eller återställs
+- **Automatisk återställning** vid sidladdning
+- **Visuell feedback** med tidsvisning för senaste sparning
+- **Flash-animation** när sparning sker
+- **Exakt scrollposition** återställs - kartan är exakt där du lämnade den
+
+#### 📍 **Scrollpositions-minnessystem**
+- **Sparar exakt scrollposition** för kartbehållaren
+- **Debounced sparning** (500ms fördröjning) för bättre prestanda
+- **Återställer automatiskt** till exakt samma vy när sidan laddas om
+- Perfekt för när du har **fysiska modeller placerade** och behöver exakt samma vy
+
+#### 🗑️ **Förbättrad Clear Map-funktion** (Scenario Maker)
+- **Obligatorisk bekräftelse** innan radering
+- **Tydlig varning** om vad som kommer raderas
+- **Rensar ALLT**: alla brickor, hinder, monster och scenarioinformation
+- **Återställer till tomt rutnät** för att börja om från början
+- **Förhindrar oavsiktlig radering** av timmar av arbete
+
+### 🐛 Bugfixar
+- Fixade saknad `clearMap()` funktion i Scenario Maker
+- Förbättrad felhantering vid auto-save
+- Bättre localStorage-hantering
+- Förbättrad tillståndssynkronisering mellan sidor
+
+### 🎨 UX-förbättringar
+- Grön auto-save-indikator med tidsstämpel i header
+- Animerad feedback när sparning sker
+- Röd varningstext om sparning misslyckas
+- Tydligare bekräftelsedialoger
+- Bättre responshantering vid sidladdning
+
 ## ✨ Funktioner
 
 ### 🗺️ Scenariobyggare (scenariomaker.html)
 - **Drag-and-drop-gränssnitt** för placering av kartbrickor och markörer
 - **Stort rutnät** (25x25) för att skapa komplexa scenarier
+- **🗑️ Clear Map-funktion** med obligatorisk bekräftelse
+  - Rensar alla brickor, hinder och monster
+  - Återställer scenarioinformation
+  - Säker mot oavsiktlig radering
 - **Brickorientering och positionering** med pixelprecis kontroll
 - **Z-index lagring** för att stapla brickor och överlägg korrekt
 - **Kontrollpanel för brickor** - klicka på placerade brickor för att öppna kontroller för:
@@ -31,7 +80,14 @@ Detta projekt tillhandahåller ett komplett digitalt verktygsset för Gloomhaven
 
 ### 📺 Scenariovisare (scenario.html)
 - **Rent visningsläge** optimerat för projektion på skärmar eller surfplattor
+- **💾 Auto-Save System** - automatisk backup till localStorage
+  - Sparar vid alla ändringar (fog, hinder, spelarantal, scrollning)
+  - Återställer automatiskt vid sidladdning
+  - Visuell indikator med tidsstämpel
+  - Skyddar mot dataförlust vid webbläsarkrascher
+- **📍 Scrollpositions-minne** - exakt position återställs
 - **Fog of War-system** - klicka på kartbrickor för att avslöja när spelare utforskar
+- **Hinderfunktion** - klicka på hinder för att förstöra dem under spel
 - **Växla rutnätssynlighet** för renare presentation
 - **Monster synlighetsväxling** - visa/dölj alla monster
 - **Spelarantal-väljare** (2P/3P/4P) - påverkar vilka monster som visas
@@ -107,12 +163,15 @@ Ingen byggprocess eller beroenden krävs - bara öppna och spela!
 
 1. Öppna `scenario.html` i din webbläsare
 2. Klicka på "📂 Load Map" och välj din sparade scenario JSON-fil
-3. Välj spelarantal (2P/3P/4P) - detta påverkar vilka monster som visas
-4. Klicka på kartbrickor för att avslöja dem när spelare utforskar
-5. Använd "📏 Line Tool" för att mäta avstånd mellan punkter
-6. Använd "👹 Toggle Monsters" för att visa/dölj alla monster
-7. Använd sidopanelen för att spåra mål och specialregler
-8. Använd "⊞ Toggle Grid" för att dölja rutnätet för renare visning
+3. **Systemet auto-sparar nu automatiskt** - om webbläsaren stängs kommer allt återställas
+4. Välj spelarantal (2P/3P/4P) - detta påverkar vilka monster som visas
+5. Klicka på kartbrickor för att avslöja dem när spelare utforskar
+6. Klicka på hinder för att förstöra dem under spelet
+7. Använd "📏 Line Tool" för att mäta avstånd mellan punkter
+8. Använd "👹 Toggle Monsters" för att visa/dölj alla monster
+9. Använd sidopanelen för att spåra mål och specialregler
+10. Använd "⊞ Toggle Grid" för att dölja rutnätet för renare visning
+11. **Auto-save-indikatorn** visar senaste sparning i övre högra hörnet
 
 ### Använda med 3D-Printade Brickor
 
@@ -215,9 +274,26 @@ This project is provided as-is for personal use. Gloomhaven is a trademark of Ce
 
 - Use a **projector or large monitor** mounted above your gaming table for best results
 - Keep your **3D tiles organized** to match your digital layouts
-- **Save frequently** when building complex scenarios
+- **No need to manually save** in viewer mode - auto-save protects you!
+- **Auto-save runs continuously** - you can close and reopen anytime without losing progress
 - **Test your scenarios** in viewer mode before game night
 - Share your custom scenarios with the community!
+- **Place physical models safely** - the digital board remembers exact scroll position
+- Use **Clear Map** in Scenario Maker to start fresh (confirms before deleting)
+
+## ⚠️ Important Notes
+
+### Auto-Save System
+- Auto-save uses browser localStorage (typically 5-10MB limit)
+- Data persists across browser sessions but is browser-specific
+- Clearing browser data will remove auto-saves
+- For permanent storage, use "💾 Save Map As..." in Scenario Maker
+- Auto-save is a safety net, not a replacement for proper file saves
+
+### Browser Compatibility
+- Works best in modern browsers (Chrome, Firefox, Edge, Safari)
+- localStorage must be enabled for auto-save to function
+- Some private/incognito modes may disable localStorage
 
 ---
 
