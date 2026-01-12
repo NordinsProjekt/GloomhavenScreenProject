@@ -37,6 +37,11 @@ function setupEventListeners() {
     document.getElementById('lineToolBtn').addEventListener('click', toggleLineTool);
     document.getElementById('libraryBtn').addEventListener('click', openReferenceCards);
     
+    // LLM Integration buttons
+    if (typeof initializeLLMUI === 'function') {
+        initializeLLMUI();
+    }
+    
     // Player count buttons
     document.querySelectorAll('.player-count-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {

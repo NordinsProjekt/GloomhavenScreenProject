@@ -64,12 +64,11 @@ function updateTokenVisibility() {
         const tokenElement = document.querySelector(`[data-tile-id="${token.id}"]`);
         if (!tokenElement) return;
         
-        // Doors, custom-red-circles, and traps always visible
+        // Doors and traps always visible
         const isDoor = token.image.includes('door');
-        const isCustomRedCircle = token.tileTypeId === 'custom-red-circle';
         const isTrap = token.tileTypeId && (token.tileTypeId.includes('trap') || token.tileTypeId === 'bear-trap' || token.tileTypeId === 'spike-trap' || token.tileTypeId === 'poison-gas-trap');
         
-        if (isDoor || isCustomRedCircle || isTrap) {
+        if (isDoor || isTrap) {
             tokenElement.style.opacity = '1';
             tokenElement.style.pointerEvents = 'auto';
             return;

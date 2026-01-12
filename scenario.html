@@ -20,6 +20,8 @@
                     <button id="toggleMonsters" class="btn">👹 Toggle Monsters</button>
                     <button id="lineToolBtn" class="btn">📏 Line Tool</button>
                     <button id="libraryBtn" class="btn">📚 Library</button>
+                    <button id="llmChatBtn" class="btn">🤖 AI Assistant</button>
+                    <button id="llmSettingsBtn" class="btn">⚙️ AI Settings</button>
                     <span id="autoSaveIndicator" class="auto-save-indicator" title="Game automatically saves to prevent data loss">💾 Auto-saved</span>
                 </div>
             </div>
@@ -201,6 +203,114 @@ Chest: 2 Random Items</textarea>
         </div>
     </div>
 
+    <!-- LLM Settings Modal -->
+    <div id="llmSettingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🤖 AI Assistant Settings</h2>
+                <button class="modal-close" onclick="closeLLMSettings()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label for="llmApiUrl">API Host Address:</label>
+                        <input type="text" id="llmApiUrl" placeholder="http://localhost:5000" value="http://localhost:5000">
+                        <div class="form-hint">Base URL for your local LLM API</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="llmModel">Model:</label>
+                        <div class="model-selector">
+                            <select id="llmModel">
+                                <option value="">Select a model...</option>
+                            </select>
+                            <button id="refreshModels" class="btn-small">🔄 Refresh</button>
+                        </div>
+                        <div class="form-hint">Available models from your LLM server</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="llmTemperature">Temperature: <span id="tempValue">0.7</span></label>
+                        <input type="range" id="llmTemperature" min="0" max="1" step="0.1" value="0.7">
+                        <div class="form-hint">Controls randomness (0 = focused, 1 = creative)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="llmMaxTokens">Max Tokens:</label>
+                        <input type="number" id="llmMaxTokens" min="50" max="4096" step="50" value="512">
+                        <div class="form-hint">Maximum response length</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="llmTopK">Top K:</label>
+                        <input type="number" id="llmTopK" min="1" max="10" step="1" value="3">
+                        <div class="form-hint">Number of top candidates to consider</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="llmMinRelevanceScore">Min Relevance Score:</label>
+                        <input type="number" id="llmMinRelevanceScore" min="0" max="1" step="0.1" value="0.5">
+                        <div class="form-hint">Minimum relevance score for results</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="llmEnableRag">
+                            Enable RAG (Retrieval Augmented Generation)
+                        </label>
+                        <div class="form-hint">Use knowledge base for enhanced responses</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="llmDomainFilter">Domain Filter:</label>
+                        <div class="domain-selector">
+                            <select id="llmDomainFilter" multiple size="5">
+                                <option value="gloomhaven" selected>gloomhaven</option>
+                            </select>
+                            <button id="refreshDomains" class="btn-small">🔄 Refresh Domains</button>
+                        </div>
+                        <div class="form-hint">Select domains to search (Ctrl+Click for multiple, used with RAG)</div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button id="testConnection" class="btn">🔌 Test Connection</button>
+                        <button id="saveLLMSettings" class="btn btn-primary">💾 Save Settings</button>
+                    </div>
+                    <div id="connectionStatus" class="connection-status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LLM Chat Modal -->
+    <div id="llmChatModal" class="modal llm-chat-modal">
+        <div class="modal-content chat-content">
+            <div class="modal-header">
+                <h2>🤖 AI Assistant</h2>
+                <button class="modal-close" onclick="closeLLMChat()">&times;</button>
+            </div>
+            <div class="modal-body chat-body">
+                <div id="chatMessages" class="chat-messages">
+                    <div class="chat-message system-message">
+                        <div class="message-content">
+                            Hello! I'm your AI assistant for Gloomhaven scenarios. I can help with rules, strategy, scenario information, and more. What would you like to know?
+                        </div>
+                    </div>
+                </div>
+                <div class="loading-bar-container" id="llmLoadingBar" style="display: none;">
+                    <div class="loading-bar">
+                        <div class="loading-progress"></div>
+                    </div>
+                    <div class="loading-text">Thinking... This may take up to 45 seconds</div>
+                </div>
+                <div class="chat-input-container">
+                    <textarea id="chatInput" placeholder="Ask me anything about Gloomhaven..." rows="3"></textarea>
+                    <button id="sendMessage" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Shared Modules -->
     <script src="js/shared/constants.js"></script>
     <script src="js/shared/tile-data.js"></script>
@@ -215,6 +325,12 @@ Chest: 2 Random Items</textarea>
     <script src="js/viewer/tools.js"></script>
     <script src="js/viewer/obstacles.js"></script>
     <script src="js/viewer/save-load.js"></script>
+    
+    <!-- LLM Integration Modules -->
+    <script src="js/viewer/llm-client.js"></script>
+    <script src="js/viewer/llm-ui.js"></script>
+    
+    <!-- Initialize -->
     <script src="js/viewer/init.js"></script>
 </body>
 </html>
