@@ -1451,6 +1451,196 @@ body {
     transform: rotate(180deg) scale(1.02);
 }
 
+/* ============================================
+   RESPONSIVE DESIGN & MENU TOGGLES
+   ============================================ */
+
+/* Menu Toggle Buttons - Always visible, positioned to not interfere */
+.menu-toggle-btn {
+    display: block;
+    position: fixed;
+    z-index: 2000;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.85) 0%, rgba(184, 148, 31, 0.85) 100%);
+    color: #2c1810;
+    border: 2px solid rgba(139, 111, 71, 0.8);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    backdrop-filter: blur(8px);
+    opacity: 0.7;
+}
+
+.menu-toggle-btn:hover {
+    background: linear-gradient(135deg, #f0c952 0%, #d4af37 100%);
+    color: #1a0f0a;
+    transform: scale(1.15);
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-color: #d4af37;
+    opacity: 1;
+}
+
+.menu-toggle-btn:active {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-toggle-btn .toggle-icon {
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: inline-block;
+}
+
+.header-toggle {
+    top: 10px;
+    left: 10px;
+    min-width: 40px;
+}
+
+.header-toggle:hover {
+    transform: scale(1.15);
+}
+
+.header-toggle.collapsed .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.palette-toggle {
+    bottom: 10px;
+    left: 10px;
+    min-width: 40px;
+}
+
+.palette-toggle:hover {
+    transform: scale(1.15);
+}
+
+.palette-toggle.collapsed .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.sidebar-toggle {
+    bottom: 10px;
+    right: 10px;
+    min-width: 40px;
+}
+
+.sidebar-toggle:hover {
+    transform: scale(1.15);
+}
+
+.sidebar-toggle.collapsed .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* ============================================
+   1080p OPTIMIZATION (1920x1080)
+   ============================================ */
+@media (max-width: 1920px) and (min-width: 1281px) {
+    .container {
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .tile-palette {
+        width: 280px;
+    }
+    
+    .sidebar {
+        width: 320px;
+    }
+    
+    .map-header h1 {
+        font-size: 24px;
+    }
+}
+
+/* ============================================
+   720p AND SMALLER - COLLAPSIBLE MENUS
+   ============================================ */
+@media (max-width: 1280px) {
+    /* Show menu toggle buttons */
+    .menu-toggle-btn {
+        display: block;
+    }
+    
+    /* Make header collapsible */
+    .map-header {
+        transition: all 0.3s ease;
+    }
+    
+    .map-header.collapsed {
+        padding: 8px 15px;
+    }
+    
+    .map-header.collapsed h1 {
+        font-size: 16px;
+    }
+    
+    .map-header.collapsed .controls {
+        display: none;
+    }
+    
+    /* Make tile palette collapsible */
+    .tile-palette {
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .tile-palette.collapsed {
+        width: 0;
+        min-width: 0;
+        padding: 0;
+        border: none;
+        overflow: hidden;
+        opacity: 0;
+    }
+    
+    /* Make sidebar collapsible */
+    .sidebar {
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .sidebar.collapsed {
+        width: 0;
+        min-width: 0;
+        padding: 0;
+        border: none;
+        overflow: hidden;
+        opacity: 0;
+    }
+    
+    /* Adjust controls for smaller screens */
+    .controls {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .btn-small {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+    
+    /* Reduce palette width on smaller screens when visible */
+    .tile-palette:not(.collapsed) {
+        width: 240px;
+    }
+    
+    .sidebar:not(.collapsed) {
+        width: 280px;
+    }
+}
+
 /* Responsive adjustments */
 @media (max-width: 1200px) {
     .reference-grid {

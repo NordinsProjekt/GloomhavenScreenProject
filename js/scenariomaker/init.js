@@ -9,6 +9,11 @@ function initializeMap() {
     loadTilePalette();
     loadMonsterPalette();
     loadSavedMap();
+    
+    // Initialize responsive menu controls
+    if (typeof initializeResponsiveMenus === 'function') {
+        initializeResponsiveMenus();
+    }
 }
 
 // Setup all event listeners

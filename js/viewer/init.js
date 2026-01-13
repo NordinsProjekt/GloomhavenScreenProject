@@ -14,6 +14,11 @@ function initializeScenario() {
     }
     
     setupEventListeners();
+    
+    // Initialize responsive menu controls
+    if (typeof initializeResponsiveMenus === 'function') {
+        initializeResponsiveMenus();
+    }
 }
 
 // Debounce function for scroll events
