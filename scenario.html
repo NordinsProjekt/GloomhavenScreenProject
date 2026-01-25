@@ -7,33 +7,39 @@
     <link rel="stylesheet" href="scenario.css">
 </head>
 <body>
-    <!-- Mobile Menu Toggle Buttons -->
-    <button id="toggleHeader" class="menu-toggle-btn header-toggle" title="Toggle Header">
-        <span class="toggle-icon">▼</span>
+    <!-- Menu Toggle Button for Left Control Panel -->
+    <button id="toggleControlPanel" class="menu-toggle-btn control-panel-toggle" title="Toggle Control Panel">
+        <span class="toggle-icon">►</span>
     </button>
+    
+    <!-- Right Sidebar Toggle -->
     <button id="toggleSidebar" class="menu-toggle-btn sidebar-toggle" title="Toggle Sidebar">
         <span class="toggle-icon">◀</span>
     </button>
     
     <div class="scenario-container">
+        <!-- Left Control Panel -->
+        <div id="controlPanel" class="control-panel">
+            <div class="control-panel-header">
+                <h2>Controls</h2>
+            </div>
+            <div class="control-panel-content">
+                <button id="loadMap" class="btn control-btn">📂 Load Map</button>
+                <button id="clearMap" class="btn control-btn btn-warning">🔄 Clear Map</button>
+                <button id="toggleAllFog" class="btn control-btn">🌫️ Toggle All Fog</button>
+                <button id="toggleGrid" class="btn control-btn">⊞ Toggle Grid</button>
+                <button id="toggleMonsters" class="btn control-btn">👹 Toggle Monsters</button>
+                <button id="lineToolBtn" class="btn control-btn">📏 Line Tool</button>
+                <button id="libraryBtn" class="btn control-btn">📚 Library</button>
+                <button id="llmChatBtn" class="btn control-btn">🤖 AI Assistant</button>
+                <button id="llmSettingsBtn" class="btn control-btn">⚙️ AI Settings</button>
+                <div id="autoSaveIndicator" class="auto-save-indicator" title="Game automatically saves to prevent data loss">💾 Auto-saved</div>
+            </div>
+        </div>
+    
+    <div class="scenario-container">
         <!-- Main Map Area -->
         <div class="map-section">
-            <div class="map-header">
-                <h1>Gloomhaven Scenario</h1>
-                <div class="controls">
-                    <button id="loadMap" class="btn">📂 Load Map</button>
-                    <button id="clearMap" class="btn btn-warning">🔄 Clear Map</button>
-                    <button id="toggleAllFog" class="btn">🌫️ Toggle All Fog</button>
-                    <button id="toggleGrid" class="btn">⊞ Toggle Grid</button>
-                    <button id="toggleMonsters" class="btn">👹 Toggle Monsters</button>
-                    <button id="lineToolBtn" class="btn">📏 Line Tool</button>
-                    <button id="libraryBtn" class="btn">📚 Library</button>
-                    <button id="llmChatBtn" class="btn">🤖 AI Assistant</button>
-                    <button id="llmSettingsBtn" class="btn">⚙️ AI Settings</button>
-                    <span id="autoSaveIndicator" class="auto-save-indicator" title="Game automatically saves to prevent data loss">💾 Auto-saved</span>
-                </div>
-            </div>
-            
             <div class="player-count-selector">
                 <label>Number of Players:</label>
                 <div class="player-count-buttons">

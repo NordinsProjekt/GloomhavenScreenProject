@@ -3,9 +3,9 @@
  * Handles showing/hiding UI elements on smaller screens
  */
 
-// State tracking for menu visibility - Default to collapsed for max map space
+// State tracking for menu visibility - Default control panel open, sidebar collapsed
 const menuState = {
-    headerCollapsed: true,
+    controlPanelCollapsed: false,
     sidebarCollapsed: true
 };
 
@@ -13,11 +13,11 @@ const menuState = {
  * Initialize responsive menu controls
  */
 function initializeResponsiveMenus() {
-    const headerToggle = document.getElementById('toggleHeader');
+    const controlPanelToggle = document.getElementById('toggleControlPanel');
     const sidebarToggle = document.getElementById('toggleSidebar');
     
-    if (headerToggle) {
-        headerToggle.addEventListener('click', toggleHeader);
+    if (controlPanelToggle) {
+        controlPanelToggle.addEventListener('click', toggleControlPanel);
     }
     
     if (sidebarToggle) {
@@ -35,10 +35,10 @@ function initializeResponsiveMenus() {
 }
 
 /**
- * Toggle header visibility
+ * Toggle control panel visibility
  */
-function toggleHeader() {
-    menuState.headerCollapsed = !menuState.headerCollapsed;
+function toggleControlPanel() {
+    menuState.controlPanelCollapsed = !menuState.controlPanelCollapsed;
     applyMenuState();
     saveMenuState();
 }
@@ -56,19 +56,19 @@ function toggleSidebar() {
  * Apply current menu state to DOM
  */
 function applyMenuState() {
-    const mapHeader = document.querySelector('.map-header');
+    const controlPanel = document.querySelector('.control-panel');
     const sidebar = document.querySelector('.scenario-sidebar');
-    const headerToggle = document.getElementById('toggleHeader');
+    const controlPanelToggle = document.getElementById('toggleControlPanel');
     const sidebarToggle = document.getElementById('toggleSidebar');
     
-    // Apply header state
-    if (mapHeader && headerToggle) {
-        if (menuState.headerCollapsed) {
-            mapHeader.classList.add('collapsed');
-            headerToggle.classList.add('collapsed');
+    // Apply control panel state
+    if (controlPanel && controlPanelToggle) {
+        if (menuState.controlPanelCollapsed) {
+            controlPanel.classList.add('collapsed');
+            controlPanelToggle.classList.add('collapsed');
         } else {
-            mapHeader.classList.remove('collapsed');
-            headerToggle.classList.remove('collapsed');
+            controlPanel.classList.remove('collapsed');
+            controlPanelToggle.classList.remove('collapsed');
         }
     }
     
@@ -103,8 +103,8 @@ function loadMenuState() {
         const saved = localStorage.getItem('gloomhaven_menu_state');
         if (saved) {
             const loaded = JSON.parse(saved);
-            menuState.headerCollapsed = loaded.headerCollapsed || false;
-            menuState.sidebarCollapsed = loaded.sidebarCollapsed || false;
+            menuState.controlPanelCollapsed = loaded.controlPanelCollapsed !== undefined ? loaded.controlPanelCollapsed : false;
+            menuState.sidebarCollapsed = loaded.sidebarCollapsed !== undefined ? loaded.sidebarCollapsed : true;
         }
     } catch (e) {
         console.warn('Could not load menu state:', e);
