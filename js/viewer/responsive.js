@@ -3,9 +3,8 @@
  * Handles showing/hiding UI elements on smaller screens
  */
 
-// State tracking for menu visibility - Default control panel open, sidebar collapsed
+// State tracking for menu visibility - Default sidebar collapsed
 const menuState = {
-    controlPanelCollapsed: false,
     sidebarCollapsed: true
 };
 
@@ -13,16 +12,14 @@ const menuState = {
  * Initialize responsive menu controls
  */
 function initializeResponsiveMenus() {
-    const controlPanelToggle = document.getElementById('toggleControlPanel');
     const sidebarToggle = document.getElementById('toggleSidebar');
-    
-    if (controlPanelToggle) {
-        controlPanelToggle.addEventListener('click', toggleControlPanel);
-    }
     
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', toggleSidebar);
     }
+    
+    // Setup right-click context menu for control panel
+    initializeControlPanelContextMenu();
     
     // Load saved menu state from localStorage
     loadMenuState();
@@ -35,12 +32,46 @@ function initializeResponsiveMenus() {
 }
 
 /**
- * Toggle control panel visibility
+ * Initialize control panel as right-click context menu
  */
-function toggleControlPanel() {
-    menuState.controlPanelCollapsed = !menuState.controlPanelCollapsed;
-    applyMenuState();
-    saveMenuState();
+function initializeControlPanelContextMenu() {
+    const controlPanel = document.querySelector('.control-panel');
+    
+    if (!controlPanel) return;
+    
+    // Show control panel on right-click anywhere on the map area
+    document.addEventListener('contextmenu', (e) => {
+        // Exclude right-click on buttons, inputs, textareas, and sidebar
+        const excludeSelectors = ['button', 'input', 'textarea', '.scenario-sidebar', '.control-panel'];
+        const isExcluded = excludeSelectors.some(selector => 
+            e.target.closest(selector)
+        );
+        
+        if (!isExcluded) {
+            e.preventDefault();
+            
+            // Position the control panel at cursor
+            controlPanel.style.left = e.pageX + 'px';
+            controlPanel.style.top = e.pageY + 'px';
+            
+            // Show the panel
+            controlPanel.classList.add('show');
+        }
+    });
+    
+    // Hide control panel when clicking elsewhere
+    document.addEventListener('click', (e) => {
+        if (!controlPanel.contains(e.target)) {
+            controlPanel.classList.remove('show');
+        }
+    });
+    
+    // Hide on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            controlPanel.classList.remove('show');
+        }
+    });
 }
 
 /**
@@ -56,21 +87,8 @@ function toggleSidebar() {
  * Apply current menu state to DOM
  */
 function applyMenuState() {
-    const controlPanel = document.querySelector('.control-panel');
     const sidebar = document.querySelector('.scenario-sidebar');
-    const controlPanelToggle = document.getElementById('toggleControlPanel');
     const sidebarToggle = document.getElementById('toggleSidebar');
-    
-    // Apply control panel state
-    if (controlPanel && controlPanelToggle) {
-        if (menuState.controlPanelCollapsed) {
-            controlPanel.classList.add('collapsed');
-            controlPanelToggle.classList.add('collapsed');
-        } else {
-            controlPanel.classList.remove('collapsed');
-            controlPanelToggle.classList.remove('collapsed');
-        }
-    }
     
     // Apply sidebar state
     if (sidebar && sidebarToggle) {
