@@ -56,12 +56,7 @@ function updateMonsterVisibility() {
                 tileElement.removeAttribute('data-monster-hidden');
             }
             
-            // Update border style based on current player count
-            tileElement.classList.remove('monster-border-normal', 'monster-border-elite');
-            if (isEnabledForPlayerCount && monstersVisible && !isUnderFoggedTile) {
-                const isElite = tile.players[currentPlayerCount].elite;
-                tileElement.classList.add(isElite ? 'monster-border-elite' : 'monster-border-normal');
-            }
+            // No longer using border styles - using circle indicators instead
         }
     });
 }
