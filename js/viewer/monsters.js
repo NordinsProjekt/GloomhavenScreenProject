@@ -35,17 +35,17 @@ function updateMonsterVisibility() {
                                            tile.players[currentPlayerCount].enabled;
             
             // Check if monster is under a fogged map section
+            // Monster belongs to the map tile where the biggest percentage of it is in
             let isUnderFoggedTile = false;
-            for (const mapTile of mapSections) {
-                if (!mapTile.revealed && tilesOverlap(tile, mapTile)) {
-                    // Check if the map tile is ABOVE the monster (higher z-index)
-                    const monsterZIndex = tile.zIndex || 10;
-                    const mapZIndex = mapTile.zIndex || 10;
-                    
-                    if (mapZIndex >= monsterZIndex) {
-                        isUnderFoggedTile = true;
-                        break;
-                    }
+            const primaryMapTile = findPrimaryMapTile(tile, mapSections);
+            
+            if (primaryMapTile && !primaryMapTile.revealed) {
+                // Check if the map tile is ABOVE the monster (higher z-index)
+                const monsterZIndex = tile.zIndex || 10;
+                const mapZIndex = primaryMapTile.zIndex || 10;
+                
+                if (mapZIndex >= monsterZIndex) {
+                    isUnderFoggedTile = true;
                 }
             }
             

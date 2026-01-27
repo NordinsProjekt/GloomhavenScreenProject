@@ -1,0 +1,1481 @@
+{
+  "name": "43_DrakeNest",
+  "tiles": [
+    {
+      "id": "placed_0",
+      "tileTypeId": "G2a",
+      "name": "G2a",
+      "image": "mapsections/G2a.png",
+      "col": 6,
+      "row": 1,
+      "width": 9,
+      "height": 4,
+      "revealed": false,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_1",
+      "tileTypeId": "N1a",
+      "name": "N1a",
+      "image": "mapsections/N1a.png",
+      "col": 6,
+      "row": 4,
+      "width": 9,
+      "height": 8,
+      "revealed": false,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_2",
+      "tileTypeId": "I2a",
+      "name": "I2a",
+      "image": "mapsections/I2a.png",
+      "col": 0,
+      "row": 4,
+      "width": 6,
+      "height": 6,
+      "revealed": true,
+      "rotation": 180,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_3",
+      "tileTypeId": "E1b",
+      "name": "E1b",
+      "image": "mapsections/E1b.png",
+      "col": 15,
+      "row": 4,
+      "width": 6,
+      "height": 6,
+      "revealed": false,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 90
+    },
+    {
+      "id": "placed_4",
+      "tileTypeId": "A2b",
+      "name": "A2b",
+      "image": "mapsections/A2b.png",
+      "col": 4,
+      "row": 11,
+      "width": 6,
+      "height": 3,
+      "revealed": false,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_5",
+      "tileTypeId": "A3a",
+      "name": "A3a",
+      "image": "mapsections/A3a.png",
+      "col": 12,
+      "row": 11,
+      "width": 6,
+      "height": 3,
+      "revealed": false,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -100,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "tile_6",
+      "tileTypeId": "flame-demon",
+      "name": "Flame Demon",
+      "image": "monsters/flame-demon.png",
+      "col": 2,
+      "row": 5,
+      "x": 164,
+      "y": 246,
+      "width": 1.6,
+      "height": 1.6,
+      "rotation": 30,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 190,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_7",
+      "tileTypeId": "flame-demon",
+      "name": "Flame Demon",
+      "image": "monsters/flame-demon.png",
+      "col": 2,
+      "row": 5,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 110,
+      "pixelOffsetY": 170,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      }
+    },
+    {
+      "id": "placed_8",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 6,
+      "row": 7,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_9",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 0,
+      "row": 5,
+      "width": 1.8,
+      "height": 1.8,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_10",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 0,
+      "row": 5,
+      "width": 1.8,
+      "height": 1.8,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 90
+    },
+    {
+      "id": "placed_11",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 0,
+      "row": 5,
+      "width": 1.8,
+      "height": 1.8,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 170
+    },
+    {
+      "id": "placed_12",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 0,
+      "row": 5,
+      "width": 1.8,
+      "height": 1.8,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 240
+    },
+    {
+      "id": "placed_13",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 0,
+      "row": 5,
+      "width": 1.8,
+      "height": 1.8,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -50
+    },
+    {
+      "id": "placed_14",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 7,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_15",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 7,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 60,
+      "pixelOffsetY": 190
+    },
+    {
+      "id": "placed_16",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 7,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 340
+    },
+    {
+      "id": "placed_17",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 13,
+      "row": 6,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_18",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 13,
+      "row": 6,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 110
+    },
+    {
+      "id": "placed_19",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 13,
+      "row": 6,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": 180
+    },
+    {
+      "id": "placed_20",
+      "tileTypeId": "boulder-1h",
+      "name": "Boulder",
+      "image": "tiles/boulder-1h.png",
+      "col": 8,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_21",
+      "tileTypeId": "boulder-1h",
+      "name": "Boulder",
+      "image": "tiles/boulder-1h.png",
+      "col": 8,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 100,
+      "pixelOffsetY": 110
+    },
+    {
+      "id": "placed_22",
+      "tileTypeId": "boulder-1h",
+      "name": "Boulder",
+      "image": "tiles/boulder-1h.png",
+      "col": 8,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 320,
+      "pixelOffsetY": 190
+    },
+    {
+      "id": "placed_23",
+      "tileTypeId": "boulder-1h",
+      "name": "Boulder",
+      "image": "tiles/boulder-1h.png",
+      "col": 8,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 450,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_24",
+      "tileTypeId": "boulder-1h",
+      "name": "Boulder",
+      "image": "tiles/boulder-1h.png",
+      "col": 8,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 190,
+      "pixelOffsetY": 410
+    },
+    {
+      "id": "placed_25",
+      "tileTypeId": "boulder-1h",
+      "name": "Boulder",
+      "image": "tiles/boulder-1h.png",
+      "col": 8,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -160,
+      "pixelOffsetY": 410
+    },
+    {
+      "id": "placed_26",
+      "tileTypeId": "flame-demon",
+      "name": "Flame Demon",
+      "image": "monsters/flame-demon.png",
+      "col": 17,
+      "row": 7,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 12,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": -70,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_27",
+      "tileTypeId": "flame-demon",
+      "name": "Flame Demon",
+      "image": "monsters/flame-demon.png",
+      "col": 10,
+      "row": 6,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_28",
+      "tileTypeId": "flame-demon",
+      "name": "Flame Demon",
+      "image": "monsters/flame-demon.png",
+      "col": 9,
+      "row": 9,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 60,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_30",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 9,
+      "row": 7,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_31",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 9,
+      "row": 7,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -160,
+      "pixelOffsetY": 240,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "tile_32",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 11,
+      "row": 4,
+      "x": 246,
+      "y": 164,
+      "width": 1.6,
+      "height": 1.6,
+      "rotation": 30,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_33",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 11,
+      "row": 4,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 70,
+      "pixelOffsetY": 410,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_34",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 7,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_35",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 7,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 490,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_36",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 8,
+      "row": 11,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_37",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 12,
+      "row": 11,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 90,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_38",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 9,
+      "row": 12,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -120,
+      "pixelOffsetY": 50
+    },
+    {
+      "id": "placed_39",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 6,
+      "row": 13,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 40,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_40",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 5,
+      "row": 12,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_41",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 5,
+      "row": 12,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -50,
+      "pixelOffsetY": 50,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_42",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 13,
+      "row": 13,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_43",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 6,
+      "row": 13,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 490,
+      "pixelOffsetY": -30,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_44",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 15,
+      "row": 12,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_45",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 15,
+      "row": 12,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 50,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_46",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 14,
+      "row": 7,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_47",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 15,
+      "row": 6,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "pixelOffsetX": 30,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_48",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 15,
+      "row": 9,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 12,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_49",
+      "tileTypeId": "chest",
+      "name": "Treasure Chest",
+      "image": "tiles/chest.png",
+      "col": 18,
+      "row": 7,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 35,
+      "zIndex": 12,
+      "customChar": "",
+      "pixelOffsetX": 30,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_50",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 7,
+      "row": 2,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -20,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_51",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 10,
+      "row": 1,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 30,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_52",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 13,
+      "row": 3,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_53",
+      "tileTypeId": "nest",
+      "name": "Nest",
+      "image": "tiles/nest.png",
+      "col": 8,
+      "row": 1,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_54",
+      "tileTypeId": "nest",
+      "name": "Nest",
+      "image": "tiles/nest.png",
+      "col": 8,
+      "row": 1,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 280,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_57",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 11,
+      "row": 2,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 110,
+      "pixelOffsetY": -100,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_58",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 11,
+      "row": 4,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 70,
+      "pixelOffsetY": -190,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_59",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 11,
+      "row": 2,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -20,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_60",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 7,
+      "row": 1,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 10,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_61",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 9,
+      "row": 2,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -20,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_62",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 8,
+      "row": 2,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_63",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 17,
+      "row": 5,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 12,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_64",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 7,
+      "row": 4,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_65",
+      "tileTypeId": "rending-drake",
+      "name": "Rending Drake",
+      "image": "monsters/rending-drake.png",
+      "col": 17,
+      "row": 9,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 12,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_66",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 19,
+      "row": 6,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 12,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_67",
+      "tileTypeId": "spitting-drake",
+      "name": "Spitting Drake",
+      "image": "monsters/spitting-drake.png",
+      "col": 19,
+      "row": 6,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 12,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 180,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      }
+    }
+  ],
+  "nextId": 69,
+  "scenario": {
+    "missionTitle": "Drake Nest",
+    "objectives": "Kill a number of drakes equal to four times the number of players.",
+    "loot": "Treasure #35",
+    "intro": "",
+    "room1": "",
+    "room2": "",
+    "room3": "",
+    "rules": "",
+    "conclusion": "Gain Waterbreating achivement",
+    "notes": ""
+  },
+  "savedAt": "2026-01-27T05:09:35.918Z"
+}

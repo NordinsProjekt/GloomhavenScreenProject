@@ -72,19 +72,19 @@ function updateTokenVisibility() {
         }
         
         // Check if token is under any fogged map section
+        // Token belongs to the map tile where the biggest percentage of it is in
         let isUnderFoggedTile = false;
         
-        // Only hide if token is UNDER a fogged map section (lower z-index)
-        for (const mapTile of mapSections) {
-            if (!mapTile.revealed && tilesOverlap(token, mapTile)) {
-                // Check if the map tile is ABOVE the token (higher z-index)
-                const tokenZIndex = token.zIndex || 10;
-                const mapZIndex = mapTile.zIndex || 10;
-                
-                if (mapZIndex >= tokenZIndex) {
-                    isUnderFoggedTile = true;
-                    break;
-                }
+        // Find the map tile with the biggest overlap percentage
+        const primaryMapTile = findPrimaryMapTile(token, mapSections);
+        
+        if (primaryMapTile && !primaryMapTile.revealed) {
+            // Check if the map tile is ABOVE the token (higher z-index)
+            const tokenZIndex = token.zIndex || 10;
+            const mapZIndex = primaryMapTile.zIndex || 10;
+            
+            if (mapZIndex >= tokenZIndex) {
+                isUnderFoggedTile = true;
             }
         }
         
@@ -131,4 +131,51 @@ function getTileBounds(tile) {
         right: left + width,
         bottom: top + height
     };
+}
+
+// Calculate what percentage of tile1's area overlaps with tile2
+function getOverlapPercentage(tile1, tile2) {
+    const bounds1 = getTileBounds(tile1);
+    const bounds2 = getTileBounds(tile2);
+    
+    // Calculate intersection bounds
+    const overlapLeft = Math.max(bounds1.left, bounds2.left);
+    const overlapRight = Math.min(bounds1.right, bounds2.right);
+    const overlapTop = Math.max(bounds1.top, bounds2.top);
+    const overlapBottom = Math.min(bounds1.bottom, bounds2.bottom);
+    
+    // Check if there's no overlap
+    if (overlapLeft > overlapRight || overlapTop > overlapBottom) {
+        return 0;
+    }
+    
+    // Calculate overlap area
+    const overlapWidth = overlapRight - overlapLeft;
+    const overlapHeight = overlapBottom - overlapTop;
+    const overlapArea = overlapWidth * overlapHeight;
+    
+    // Calculate tile1's area
+    const tile1Width = bounds1.right - bounds1.left;
+    const tile1Height = bounds1.bottom - bounds1.top;
+    const tile1Area = tile1Width * tile1Height;
+    
+    // Return percentage (0 to 1)
+    return tile1Area > 0 ? overlapArea / tile1Area : 0;
+}
+
+// Find the map tile that has the biggest overlap with the given token/monster
+// Returns the map tile with largest overlap percentage, or null if no overlap
+function findPrimaryMapTile(token, mapSections) {
+    let maxOverlap = 0;
+    let primaryMapTile = null;
+    
+    for (const mapTile of mapSections) {
+        const overlap = getOverlapPercentage(token, mapTile);
+        if (overlap > maxOverlap) {
+            maxOverlap = overlap;
+            primaryMapTile = mapTile;
+        }
+    }
+    
+    return primaryMapTile;
 }

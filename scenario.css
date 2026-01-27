@@ -227,9 +227,11 @@ body {
 /* Hex Map */
 .hex-map {
     flex: 1;
-    overflow: auto;
+    overflow: scroll;
     padding: 10px;
     position: relative;
+    /* Always show scrollbars for better navigation */
+    scrollbar-gutter: stable both-edges;
 }
 
 .placement-grid {
@@ -540,6 +542,7 @@ body {
     bottom: 10px;
     right: 10px;
     min-width: 40px;
+    display: block !important; /* Always visible for all screen sizes */
 }
 
 .sidebar-toggle:hover {
