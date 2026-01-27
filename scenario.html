@@ -7,10 +7,48 @@
     <link rel="stylesheet" href="scenario.css">
 </head>
 <body>
-    <!-- Right Sidebar Toggle -->
-    <button id="toggleSidebar" class="menu-toggle-btn sidebar-toggle" title="Toggle Sidebar">
-        <span class="toggle-icon">◀</span>
+    <!-- Toggle Sidebar Button -->
+    <button id="toggleSidebarBtn" class="toggle-sidebar-btn" title="Toggle Mission Info">
+        <span class="toggle-icon">▶</span>
     </button>
+    
+    <!-- Right-Click Context Menu -->
+    <div id="contextMenu" class="context-menu">
+        <div class="context-menu-header">
+            <h3>Quick Controls</h3>
+        </div>
+        <div class="context-menu-content">
+            <button class="context-menu-item" data-action="toggleAllFog">
+                🌫️ Toggle All Fog
+            </button>
+            <button class="context-menu-item" data-action="toggleGrid">
+                ⊞ Toggle Grid
+            </button>
+            <button class="context-menu-item" data-action="toggleMonsters">
+                👹 Toggle Monsters
+            </button>
+            <button class="context-menu-item" data-action="lineTool">
+                📏 Line Tool
+            </button>
+            <div class="context-menu-divider"></div>
+            <button class="context-menu-item" data-action="loadMap">
+                📂 Load Map
+            </button>
+            <button class="context-menu-item" data-action="clearMap">
+                🔄 Clear Map
+            </button>
+            <div class="context-menu-divider"></div>
+            <button class="context-menu-item" data-action="library">
+                📚 Library
+            </button>
+            <button class="context-menu-item" data-action="llmChat">
+                🤖 AI Assistant
+            </button>
+            <button class="context-menu-item" data-action="llmSettings">
+                ⚙️ AI Settings
+            </button>
+        </div>
+    </div>
     
     <div class="scenario-container">
         <!-- Left Control Panel -->
