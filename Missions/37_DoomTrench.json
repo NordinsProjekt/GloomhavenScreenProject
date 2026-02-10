@@ -1,0 +1,1000 @@
+{
+  "name": "37_Doom_Trench",
+  "tiles": [
+    {
+      "id": "placed_0",
+      "tileTypeId": "J1b",
+      "name": "J1b",
+      "image": "mapsections/J1b.png",
+      "col": 3,
+      "row": 2,
+      "width": 4,
+      "height": 8,
+      "revealed": true,
+      "rotation": 115,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_1",
+      "tileTypeId": "H2a",
+      "name": "H2a",
+      "image": "mapsections/H2a.png",
+      "col": 8,
+      "row": 6,
+      "width": 6,
+      "height": 6,
+      "revealed": true,
+      "rotation": 230,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 30,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_2",
+      "tileTypeId": "K2a",
+      "name": "K2a",
+      "image": "mapsections/K2a.png",
+      "col": 13,
+      "row": 2,
+      "width": 7,
+      "height": 5,
+      "revealed": true,
+      "rotation": 350,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_3",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 25,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -50
+    },
+    {
+      "id": "placed_4",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 25,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -50
+    },
+    {
+      "id": "placed_5",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 25,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_6",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 25,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 60
+    },
+    {
+      "id": "placed_7",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 25,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 30,
+      "pixelOffsetY": 60
+    },
+    {
+      "id": "placed_8",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 25,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 60,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_9",
+      "tileTypeId": "stalagmites",
+      "name": "Stalagmites",
+      "image": "tiles/stalagmites.png",
+      "col": 4,
+      "row": 5,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "tile_10",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 6,
+      "row": 4,
+      "x": 246,
+      "y": 738,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 325,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -20,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_11",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 6,
+      "row": 4,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 25,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 30,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      }
+    },
+    {
+      "id": "placed_12",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 5,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 325,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_13",
+      "tileTypeId": "stalagmites",
+      "name": "Stalagmites",
+      "image": "tiles/stalagmites.png",
+      "col": 7,
+      "row": 6,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 355,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "tile_14",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 8,
+      "row": 6,
+      "x": 410,
+      "y": 738,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 25,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_15",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 7,
+      "row": 6,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 320,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_16",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 7,
+      "row": 7,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 320,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": true
+        },
+        "3": {
+          "enabled": false,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_17",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 7,
+      "row": 7,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 55,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "tile_18",
+      "tileTypeId": "harrower-infester",
+      "name": "Harrower Infester",
+      "image": "monsters/harrower-infester.png",
+      "col": 10,
+      "row": 9,
+      "x": 328,
+      "y": 902,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 320,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_19",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 10,
+      "row": 9,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 355,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_20",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 10,
+      "row": 9,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 355,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 60,
+      "pixelOffsetY": 80
+    },
+    {
+      "id": "placed_21",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 10,
+      "row": 9,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 355,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": 140
+    },
+    {
+      "id": "placed_22",
+      "tileTypeId": "chest",
+      "name": "Treasure Chest",
+      "image": "tiles/chest.png",
+      "col": 11,
+      "row": 11,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 25,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "tile_23",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 10,
+      "row": 10,
+      "x": 574,
+      "y": 902,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 325,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -20,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_24",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 10,
+      "row": 7,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 260,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_25",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 11,
+      "row": 7,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 355,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_26",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 11,
+      "row": 8,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 200,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 30,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_27",
+      "tileTypeId": "stalagmites",
+      "name": "Stalagmites",
+      "image": "tiles/stalagmites.png",
+      "col": 12,
+      "row": 7,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 355,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_28",
+      "tileTypeId": "spike-trap",
+      "name": "Spike Trap",
+      "image": "tiles/spike-trap.png",
+      "col": 11,
+      "row": 8,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 355,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_29",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 13,
+      "row": 6,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 170,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_30",
+      "tileTypeId": "stalagmites",
+      "name": "Stalagmites",
+      "image": "tiles/stalagmites.png",
+      "col": 15,
+      "row": 5,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 345,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_31",
+      "tileTypeId": "stalagmites",
+      "name": "Stalagmites",
+      "image": "tiles/stalagmites.png",
+      "col": 15,
+      "row": 3,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 345,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 30,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "tile_32",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 14,
+      "row": 5,
+      "x": 1394,
+      "y": 738,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 20,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 10,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_33",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 14,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 20,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -80,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      }
+    },
+    {
+      "id": "placed_34",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 15,
+      "row": 2,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 20,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "tile_35",
+      "tileTypeId": "harrower-infester",
+      "name": "Harrower Infester",
+      "image": "monsters/harrower-infester.png",
+      "col": 15,
+      "row": 4,
+      "x": 1394,
+      "y": 656,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 15,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_36",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 17,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 20,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_37",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 17,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 20,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 40,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_38",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 17,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 20,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -60,
+      "pixelOffsetY": 100,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_39",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 18,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "A",
+      "pixelOffsetX": -20,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_40",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 18,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "A",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 60
+    },
+    {
+      "id": "placed_41",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 18,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "A",
+      "pixelOffsetX": -100,
+      "pixelOffsetY": 70
+    },
+    {
+      "id": "placed_42",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 18,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "A",
+      "pixelOffsetX": -60,
+      "pixelOffsetY": 120
+    },
+    {
+      "id": "placed_43",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 18,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "A",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 110
+    },
+    {
+      "id": "placed_44",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 18,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "A",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 50
+    }
+  ],
+  "nextId": 45,
+  "scenario": {
+    "missionTitle": "Doom Trench",
+    "objectives": "All characters must escape through the exit",
+    "loot": "Treasure 49",
+    "intro": "Add three curses as scenario effect.\nAll characters needs to be on a. Otherwise its a loss.",
+    "room1": "As you push open the heavy door, the stench of decay fills your nostrils. Undead creatures turn to face you...",
+    "room2": "",
+    "room3": "",
+    "rules": "Immobilize and Damage trap",
+    "conclusion": "New Location: Lair of the Unseeing Eye 47\nParty Achivement: Through the Trench",
+    "notes": ""
+  },
+  "savedAt": "2026-02-10T06:28:17.602Z"
+}
