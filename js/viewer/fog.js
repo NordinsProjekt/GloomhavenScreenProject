@@ -57,7 +57,7 @@ function toggleAllFog() {
 
 // Update token visibility based on underlying map tiles
 function updateTokenVisibility() {
-    const tokens = placedTiles.filter(t => !t.image.startsWith('mapsections/'));
+    const tokens = placedTiles.filter(t => !t.image.startsWith('mapsections/') && !t.isMonster);
     const mapSections = placedTiles.filter(t => t.image.startsWith('mapsections/'));
     
     tokens.forEach(token => {
