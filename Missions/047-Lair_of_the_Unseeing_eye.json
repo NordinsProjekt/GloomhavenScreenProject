@@ -1,0 +1,713 @@
+{
+  "name": "047_Lair_of_the_Unseeing_eye",
+  "tiles": [
+    {
+      "id": "placed_0",
+      "tileTypeId": "J1a",
+      "name": "J1a",
+      "image": "mapsections/J1a.png",
+      "col": 2,
+      "row": 1,
+      "width": 5,
+      "height": 10,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": ""
+    },
+    {
+      "id": "placed_1",
+      "tileTypeId": "M1a",
+      "name": "M1a",
+      "image": "mapsections/M1a.png",
+      "col": 8,
+      "row": 1,
+      "width": 7,
+      "height": 7,
+      "revealed": false,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_2",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 8,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_3",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 8,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "1",
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_4",
+      "tileTypeId": "chest",
+      "name": "Treasure Chest",
+      "image": "tiles/chest.png",
+      "col": 13,
+      "row": 7,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_5",
+      "tileTypeId": "chest",
+      "name": "Treasure Chest",
+      "image": "tiles/chest.png",
+      "col": 13,
+      "row": 1,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_6",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 1,
+      "row": 7,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -40
+    },
+    {
+      "id": "placed_7",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 0,
+      "row": 7,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_8",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 1,
+      "row": 7,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_9",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 1,
+      "row": 7,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 50,
+      "pixelOffsetY": 90
+    },
+    {
+      "id": "placed_10",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 1,
+      "row": 7,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 80,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_11",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 1,
+      "row": 6,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_12",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 1,
+      "row": 6,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 140,
+      "pixelOffsetY": 60
+    },
+    {
+      "id": "placed_13",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_14",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 60,
+      "pixelOffsetY": 80
+    },
+    {
+      "id": "placed_15",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 140,
+      "pixelOffsetY": 80
+    },
+    {
+      "id": "placed_16",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 100,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_17",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 140,
+      "pixelOffsetY": -60
+    },
+    {
+      "id": "placed_18",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 260,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_19",
+      "tileTypeId": "water",
+      "name": "Water",
+      "image": "tiles/water.png",
+      "col": 2,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 60,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 300,
+      "pixelOffsetY": -60
+    },
+    {
+      "id": "tile_20",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 2,
+      "row": 5,
+      "x": 164,
+      "y": 246,
+      "width": 1.6,
+      "height": 1.6,
+      "rotation": 30,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_21",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 2,
+      "row": 5,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 80,
+      "pixelOffsetY": 50,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      }
+    },
+    {
+      "id": "placed_22",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 4,
+      "row": 3,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 40,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_23",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 5,
+      "row": 5,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 30,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_24",
+      "tileTypeId": "lurker",
+      "name": "Lurker",
+      "image": "monsters/lurker.png",
+      "col": 6,
+      "row": 4,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "tile_25",
+      "tileTypeId": "harrower-infester",
+      "name": "Harrower Infester",
+      "image": "monsters/harrower-infester.png",
+      "col": 10,
+      "row": 2,
+      "x": 738,
+      "y": 738,
+      "width": 1.6,
+      "height": 1.6,
+      "rotation": 30,
+      "zIndex": 9,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_26",
+      "tileTypeId": "harrower-infester",
+      "name": "Harrower Infester",
+      "image": "monsters/harrower-infester.png",
+      "col": 10,
+      "row": 6,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 9,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_27",
+      "tileTypeId": "harrower-infester",
+      "name": "Harrower Infester",
+      "image": "monsters/harrower-infester.png",
+      "col": 13,
+      "row": 4,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 9,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": true
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "tile_28",
+      "tileTypeId": "boss",
+      "name": "Boss",
+      "image": "monsters/boss.svg",
+      "col": 11,
+      "row": 4,
+      "x": 984,
+      "y": 738,
+      "width": 1,
+      "height": 1,
+      "rotation": 0,
+      "zIndex": 9,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "tile_29",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 12,
+      "row": 3,
+      "x": 902,
+      "y": 820,
+      "width": 1.6,
+      "height": 1.6,
+      "rotation": 30,
+      "zIndex": 9,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_30",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 12,
+      "row": 3,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -50,
+      "pixelOffsetY": 150,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_31",
+      "tileTypeId": "deep-terror",
+      "name": "Deep Terror",
+      "image": "monsters/deep-terror.png",
+      "col": 12,
+      "row": 3,
+      "width": 1.6,
+      "height": 1.6,
+      "revealed": true,
+      "rotation": 30,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -170,
+      "pixelOffsetY": 80,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      }
+    }
+  ],
+  "nextId": 32,
+  "scenario": {
+    "missionTitle": "Mission Name",
+    "objectives": "Kill the Sightless Eye",
+    "loot": "Upp: Treasure 57\nNere: Treasure 18",
+    "intro": "",
+    "room1": "",
+    "room2": "",
+    "room3": "",
+    "rules": "Add three curse cards to each characters deck.",
+    "conclusion": "Location: Void 51\nAchivement: End of Corruption",
+    "notes": ""
+  },
+  "savedAt": "2026-02-19T15:36:09.662Z"
+}
