@@ -32,9 +32,12 @@ function clearLineTool() {
 function handleMapClick(e) {
     if (!lineToolActive) return;
     
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const hexMap = e.currentTarget;
+    const rect = hexMap.getBoundingClientRect();
+    
+    // Account for scroll offset
+    const x = e.clientX - rect.left + hexMap.scrollLeft;
+    const y = e.clientY - rect.top + hexMap.scrollTop;
     
     if (!lineStartPoint) {
         // First click - set start point
@@ -54,19 +57,22 @@ function handleMapClick(e) {
 function handleMapMouseMove(e) {
     if (!lineToolActive || !lineStartPoint || !lineElement) return;
     
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const hexMap = e.currentTarget;
+    const rect = hexMap.getBoundingClientRect();
+    
+    // Account for scroll offset
+    const x = e.clientX - rect.left + hexMap.scrollLeft;
+    const y = e.clientY - rect.top + hexMap.scrollTop;
     
     updateLineElement(x, y);
 }
 
 // Create line element
 function createLineElement() {
-    const hexMap = document.getElementById('hexMap');
+    const placementGrid = document.getElementById('placementGrid');
     lineElement = document.createElement('div');
     lineElement.className = 'range-line';
-    hexMap.appendChild(lineElement);
+    placementGrid.appendChild(lineElement);
 }
 
 // Update line element position and rotation

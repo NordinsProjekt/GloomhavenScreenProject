@@ -299,7 +299,7 @@ body {
 
 .placed-tile {
     position: absolute;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border: 3px solid transparent;

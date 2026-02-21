@@ -3,9 +3,8 @@
  * Handles showing/hiding UI elements on smaller screens
  */
 
-// State tracking for menu visibility - Default control panel open, sidebar collapsed
+// State tracking for menu visibility - Default sidebar collapsed
 const menuState = {
-    controlPanelCollapsed: false,
     sidebarCollapsed: true
 };
 
@@ -13,75 +12,155 @@ const menuState = {
  * Initialize responsive menu controls
  */
 function initializeResponsiveMenus() {
-    const controlPanelToggle = document.getElementById('toggleControlPanel');
-    const sidebarToggle = document.getElementById('toggleSidebar');
+    // Setup right-click context menu
+    initializeContextMenu();
     
-    if (controlPanelToggle) {
-        controlPanelToggle.addEventListener('click', toggleControlPanel);
-    }
-    
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', toggleSidebar);
-    }
-    
-    // Load saved menu state from localStorage
-    loadMenuState();
-    
-    // Apply initial state
-    applyMenuState();
+    // Setup sidebar toggle button
+    initializeSidebarToggle();
     
     // Handle window resize
     window.addEventListener('resize', handleResize);
 }
 
 /**
- * Toggle control panel visibility
+ * Initialize sidebar toggle button
  */
-function toggleControlPanel() {
-    menuState.controlPanelCollapsed = !menuState.controlPanelCollapsed;
-    applyMenuState();
-    saveMenuState();
+function initializeSidebarToggle() {
+    const toggleBtn = document.getElementById('toggleSidebarBtn');
+    const sidebar = document.querySelector('.scenario-sidebar');
+    
+    if (!toggleBtn || !sidebar) return;
+    
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+        toggleBtn.classList.toggle('sidebar-hidden');
+    });
 }
 
 /**
- * Toggle sidebar visibility
+ * Initialize context menu (right-click menu)
  */
-function toggleSidebar() {
-    menuState.sidebarCollapsed = !menuState.sidebarCollapsed;
-    applyMenuState();
-    saveMenuState();
+function initializeContextMenu() {
+    const contextMenu = document.getElementById('contextMenu');
+    
+    if (!contextMenu) return;
+    
+    // Show context menu on right-click
+    document.addEventListener('contextmenu', (e) => {
+        // Exclude right-click on buttons, inputs, textareas, sidebar, and modals
+        const excludeSelectors = ['button', 'input', 'textarea', '.scenario-sidebar', '.modal', '.context-menu'];
+        const isExcluded = excludeSelectors.some(selector => 
+            e.target.closest(selector)
+        );
+        
+        if (!isExcluded) {
+            e.preventDefault();
+            
+            // Show the menu first so we can get its dimensions
+            contextMenu.classList.add('show');
+            
+            // Position the context menu at cursor
+            let menuX = e.pageX;
+            let menuY = e.pageY;
+            
+            // Adjust if menu goes off screen
+            const menuRect = contextMenu.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            if (menuX + menuRect.width > viewportWidth) {
+                menuX = viewportWidth - menuRect.width - 10;
+            }
+            if (menuY + menuRect.height > viewportHeight) {
+                menuY = viewportHeight - menuRect.height - 10;
+            }
+            
+            contextMenu.style.left = menuX + 'px';
+            contextMenu.style.top = menuY + 'px';
+        }
+    });
+    
+    // Handle context menu item clicks
+    const menuItems = contextMenu.querySelectorAll('.context-menu-item');
+    menuItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            const action = item.dataset.action;
+            handleContextMenuAction(action);
+            hideContextMenu();
+        });
+    });
+    
+    // Hide context menu when clicking elsewhere
+    document.addEventListener('click', (e) => {
+        if (!contextMenu.contains(e.target)) {
+            hideContextMenu();
+        }
+    });
+    
+    // Hide on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            hideContextMenu();
+        }
+    });
 }
 
 /**
- * Apply current menu state to DOM
+ * Hide context menu
+ */
+function hideContextMenu() {
+    const contextMenu = document.getElementById('contextMenu');
+    if (contextMenu) {
+        contextMenu.classList.remove('show');
+    }
+}
+
+/**
+ * Handle context menu action
+ */
+function handleContextMenuAction(action) {
+    switch(action) {
+        case 'toggleAllFog':
+            toggleAllFog();
+            break;
+        case 'toggleGrid':
+            toggleGrid();
+            break;
+        case 'toggleMonsters':
+            toggleMonsterVisibility();
+            break;
+        case 'lineTool':
+            toggleLineTool();
+            break;
+        case 'loadMap':
+            loadMap();
+            break;
+        case 'clearMap':
+            clearMap();
+            break;
+        case 'library':
+            openReferenceCards();
+            break;
+        case 'llmChat':
+            if (typeof openLLMChat === 'function') {
+                openLLMChat();
+            }
+            break;
+        case 'llmSettings':
+            if (typeof openLLMSettings === 'function') {
+                openLLMSettings();
+            }
+            break;
+        default:
+            console.warn('Unknown context menu action:', action);
+    }
+}
+
+/**
+ * Apply current menu state to DOM (sidebar always visible)
  */
 function applyMenuState() {
-    const controlPanel = document.querySelector('.control-panel');
-    const sidebar = document.querySelector('.scenario-sidebar');
-    const controlPanelToggle = document.getElementById('toggleControlPanel');
-    const sidebarToggle = document.getElementById('toggleSidebar');
-    
-    // Apply control panel state
-    if (controlPanel && controlPanelToggle) {
-        if (menuState.controlPanelCollapsed) {
-            controlPanel.classList.add('collapsed');
-            controlPanelToggle.classList.add('collapsed');
-        } else {
-            controlPanel.classList.remove('collapsed');
-            controlPanelToggle.classList.remove('collapsed');
-        }
-    }
-    
-    // Apply sidebar state
-    if (sidebar && sidebarToggle) {
-        if (menuState.sidebarCollapsed) {
-            sidebar.classList.add('collapsed');
-            sidebarToggle.classList.add('collapsed');
-        } else {
-            sidebar.classList.remove('collapsed');
-            sidebarToggle.classList.remove('collapsed');
-        }
-    }
+    // Sidebar is always visible - no state to apply
 }
 
 /**

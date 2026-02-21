@@ -40,30 +40,23 @@ function renderPlacedTile(tile) {
         tileDiv.appendChild(charDisplay);
     }
     
-    // Monster border indicator - show colored border based on player count
+    // Monster indicators - show colored circles for each player count (like scenariomaker)
     if (tile.isMonster && tile.players) {
-        // Find which player counts this monster is enabled for
-        let borderClass = '';
-        let isElite = false;
+        const monsterIndicators = document.createElement('div');
+        monsterIndicators.className = 'monster-indicators';
         
-        // Check for current player count first
-        if (tile.players[currentPlayerCount] && tile.players[currentPlayerCount].enabled) {
-            isElite = tile.players[currentPlayerCount].elite;
-            borderClass = isElite ? 'monster-border-elite' : 'monster-border-normal';
-        } else {
-            // Fallback to showing any enabled player count
-            for (let count of [2, 3, 4]) {
-                if (tile.players[count] && tile.players[count].enabled) {
-                    isElite = tile.players[count].elite;
-                    borderClass = isElite ? 'monster-border-elite' : 'monster-border-normal';
-                    break;
-                }
+        [2, 3, 4].forEach(playerCount => {
+            if (tile.players[playerCount] && tile.players[playerCount].enabled) {
+                const indicator = document.createElement('div');
+                indicator.className = `monster-indicator player-${playerCount}`;
+                indicator.classList.add(tile.players[playerCount].elite ? 'elite' : 'normal');
+                indicator.textContent = playerCount;
+                indicator.dataset.playerCount = playerCount;
+                monsterIndicators.appendChild(indicator);
             }
-        }
+        });
         
-        if (borderClass) {
-            tileDiv.classList.add(borderClass);
-        }
+        tileDiv.appendChild(monsterIndicators);
     }
     
     // Click to reveal/hide fog (only for map sections)

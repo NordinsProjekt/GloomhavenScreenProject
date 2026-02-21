@@ -57,18 +57,17 @@ function toggleAllFog() {
 
 // Update token visibility based on underlying map tiles
 function updateTokenVisibility() {
-    const tokens = placedTiles.filter(t => !t.image.startsWith('mapsections/'));
+    const tokens = placedTiles.filter(t => !t.image.startsWith('mapsections/') && !t.isMonster);
     const mapSections = placedTiles.filter(t => t.image.startsWith('mapsections/'));
     
     tokens.forEach(token => {
         const tokenElement = document.querySelector(`[data-tile-id="${token.id}"]`);
         if (!tokenElement) return;
         
-        // Doors and traps always visible
+        // Doors always visible (traps hidden by fog)
         const isDoor = token.image.includes('door');
-        const isTrap = token.tileTypeId && (token.tileTypeId.includes('trap') || token.tileTypeId === 'bear-trap' || token.tileTypeId === 'spike-trap' || token.tileTypeId === 'poison-gas-trap');
         
-        if (isDoor || isTrap) {
+        if (isDoor) {
             tokenElement.style.opacity = '1';
             tokenElement.style.pointerEvents = 'auto';
             return;
@@ -76,17 +75,17 @@ function updateTokenVisibility() {
         
         let isUnderFoggedTile = false;
         
-        // Only hide if token is UNDER a fogged map section (lower z-index)
-        for (const mapTile of mapSections) {
-            if (!mapTile.revealed && tilesOverlap(token, mapTile)) {
-                // Check if the map tile is ABOVE the token (higher z-index)
-                const tokenZIndex = token.zIndex || 10;
-                const mapZIndex = mapTile.zIndex || 10;
-                
-                if (mapZIndex >= tokenZIndex) {
-                    isUnderFoggedTile = true;
-                    break;
-                }
+        // Find the map tile with the biggest overlap percentage
+        // Token belongs to the map tile where the biggest percentage is in
+        const primaryMapTile = findPrimaryMapTile(token, mapSections);
+        
+        if (primaryMapTile && !primaryMapTile.revealed) {
+            // Check if the map tile is ABOVE the token (higher z-index)
+            const tokenZIndex = token.zIndex || 10;
+            const mapZIndex = primaryMapTile.zIndex || 10;
+            
+            if (mapZIndex >= tokenZIndex) {
+                isUnderFoggedTile = true;
             }
         }
         
