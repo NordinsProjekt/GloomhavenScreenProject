@@ -1,0 +1,1045 @@
+{
+  "name": "081-Temple_of_the_eclipse",
+  "tiles": [
+    {
+      "id": "placed_0",
+      "tileTypeId": "J2a",
+      "name": "J2a",
+      "image": "mapsections/J2a.png",
+      "col": 2,
+      "row": 2,
+      "width": 4,
+      "height": 8,
+      "revealed": true,
+      "rotation": 300,
+      "zIndex": 10,
+      "customChar": ""
+    },
+    {
+      "id": "placed_1",
+      "tileTypeId": "J1a",
+      "name": "J1a",
+      "image": "mapsections/J1a.png",
+      "col": 9,
+      "row": 2,
+      "width": 4,
+      "height": 8,
+      "revealed": false,
+      "rotation": 240,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_2",
+      "tileTypeId": "D1a",
+      "name": "D1a",
+      "image": "mapsections/D1a.png",
+      "col": 7,
+      "row": 1,
+      "width": 5,
+      "height": 5,
+      "revealed": false,
+      "rotation": 60,
+      "zIndex": 8,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -50
+    },
+    {
+      "id": "placed_3",
+      "tileTypeId": "stone-door-v",
+      "name": "Stone Door (V)",
+      "image": "tiles/stone-door-vertical.png",
+      "col": 11,
+      "row": 3,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 55,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_4",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_5",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 50
+    },
+    {
+      "id": "placed_6",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 110
+    },
+    {
+      "id": "placed_7",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -70,
+      "pixelOffsetY": 50
+    },
+    {
+      "id": "placed_8",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -100,
+      "pixelOffsetY": 100
+    },
+    {
+      "id": "placed_9",
+      "tileTypeId": "entrance",
+      "name": "Entrance",
+      "image": "tiles/entrance.png",
+      "col": 2,
+      "row": 3,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -130,
+      "pixelOffsetY": 50
+    },
+    {
+      "id": "tile_10",
+      "tileTypeId": "sun-demon",
+      "name": "Sun Demon",
+      "image": "monsters/sun-demon.png",
+      "col": 3,
+      "row": 6,
+      "x": 246,
+      "y": 82,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 35,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": false,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_11",
+      "tileTypeId": "sun-demon",
+      "name": "Sun Demon",
+      "image": "monsters/sun-demon.png",
+      "col": 2,
+      "row": 6,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 270,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 30,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "placed_12",
+      "tileTypeId": "sun-demon",
+      "name": "Sun Demon",
+      "image": "monsters/sun-demon.png",
+      "col": 6,
+      "row": 7,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 35,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_13",
+      "tileTypeId": "sun-demon",
+      "name": "Sun Demon",
+      "image": "monsters/sun-demon.png",
+      "col": 5,
+      "row": 8,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 35,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 40,
+      "pixelOffsetY": -80
+    },
+    {
+      "id": "tile_14",
+      "tileTypeId": "night-demon",
+      "name": "Night Demon",
+      "image": "monsters/night-demon.png",
+      "col": 6,
+      "row": 6,
+      "x": 82,
+      "y": 738,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 330,
+      "zIndex": 10,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": false,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_15",
+      "tileTypeId": "night-demon",
+      "name": "Night Demon",
+      "image": "monsters/night-demon.png",
+      "col": 5,
+      "row": 6,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_16",
+      "tileTypeId": "stone-pillar",
+      "name": "Stone Pillar",
+      "image": "tiles/stone-pillar.png",
+      "col": 4,
+      "row": 6,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 40,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_17",
+      "tileTypeId": "stone-pillar",
+      "name": "Stone Pillar",
+      "image": "tiles/stone-pillar.png",
+      "col": 3,
+      "row": 6,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_18",
+      "tileTypeId": "poison-gas-trap",
+      "name": "Poison Gas Trap",
+      "image": "tiles/poison-gas-trap.png",
+      "col": 4,
+      "row": 6,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": -30,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_19",
+      "tileTypeId": "chest",
+      "name": "Treasure Chest",
+      "image": "tiles/chest.png",
+      "col": 3,
+      "row": 7,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 270,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_20",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 4,
+      "row": 7,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "",
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_21",
+      "tileTypeId": "night-demon",
+      "name": "Night Demon",
+      "image": "monsters/night-demon.png",
+      "col": 2,
+      "row": 6,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 20
+    },
+    {
+      "id": "placed_22",
+      "tileTypeId": "night-demon",
+      "name": "Night Demon",
+      "image": "monsters/night-demon.png",
+      "col": 3,
+      "row": 5,
+      "width": 1.4,
+      "height": 1.4,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 10,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": false,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -20,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_23",
+      "tileTypeId": "poison-gas-trap",
+      "name": "Poison Gas Trap",
+      "image": "tiles/poison-gas-trap.png",
+      "col": 7,
+      "row": 6,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_24",
+      "tileTypeId": "poison-gas-trap",
+      "name": "Poison Gas Trap",
+      "image": "tiles/poison-gas-trap.png",
+      "col": 7,
+      "row": 6,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 100
+    },
+    {
+      "id": "tile_25",
+      "tileTypeId": "stone-golem",
+      "name": "Stone Golem",
+      "image": "monsters/stone-golem.png",
+      "col": 8,
+      "row": 6,
+      "x": 328,
+      "y": 82,
+      "width": 1.2,
+      "height": 1.2,
+      "rotation": 330,
+      "zIndex": 9,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_26",
+      "tileTypeId": "stone-golem",
+      "name": "Stone Golem",
+      "image": "monsters/stone-golem.png",
+      "col": 8,
+      "row": 6,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 30,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      }
+    },
+    {
+      "id": "placed_27",
+      "tileTypeId": "stone-golem",
+      "name": "Stone Golem",
+      "image": "monsters/stone-golem.png",
+      "col": 8,
+      "row": 6,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": 90,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      }
+    },
+    {
+      "id": "placed_28",
+      "tileTypeId": "stone-pillar",
+      "name": "Stone Pillar",
+      "image": "tiles/stone-pillar.png",
+      "col": 9,
+      "row": 7,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -20,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "placed_29",
+      "tileTypeId": "chest",
+      "name": "Treasure Chest",
+      "image": "tiles/chest.png",
+      "col": 10,
+      "row": 7,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 270,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": 10
+    },
+    {
+      "id": "tile_30",
+      "tileTypeId": "ancient-artillery",
+      "name": "Ancient Artillery",
+      "image": "monsters/ancient-artillery.png",
+      "col": 11,
+      "row": 6,
+      "x": 1312,
+      "y": 656,
+      "width": 1.2,
+      "height": 1.2,
+      "rotation": 325,
+      "zIndex": 9,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 30,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "placed_31",
+      "tileTypeId": "stone-pillar",
+      "name": "Stone Pillar",
+      "image": "tiles/stone-pillar.png",
+      "col": 11,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 10,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_32",
+      "tileTypeId": "stone-pillar",
+      "name": "Stone Pillar",
+      "image": "tiles/stone-pillar.png",
+      "col": 11,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 70,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_33",
+      "tileTypeId": "poison-gas-trap",
+      "name": "Poison Gas Trap",
+      "image": "tiles/poison-gas-trap.png",
+      "col": 12,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_34",
+      "tileTypeId": "poison-gas-trap",
+      "name": "Poison Gas Trap",
+      "image": "tiles/poison-gas-trap.png",
+      "col": 12,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 50,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_35",
+      "tileTypeId": "poison-gas-trap",
+      "name": "Poison Gas Trap",
+      "image": "tiles/poison-gas-trap.png",
+      "col": 12,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 90
+    },
+    {
+      "id": "placed_36",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 12,
+      "row": 8,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -230
+    },
+    {
+      "id": "placed_37",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 12,
+      "row": 8,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 9,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -180
+    },
+    {
+      "id": "placed_38",
+      "tileTypeId": "ancient-artillery",
+      "name": "Ancient Artillery",
+      "image": "monsters/ancient-artillery.png",
+      "col": 10,
+      "row": 5,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 9,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 50,
+      "pixelOffsetY": 0
+    },
+    {
+      "id": "placed_39",
+      "tileTypeId": "ancient-artillery",
+      "name": "Ancient Artillery",
+      "image": "monsters/ancient-artillery.png",
+      "col": 13,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 330,
+      "zIndex": 9,
+      "customChar": "",
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": false,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": false,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "placed_40",
+      "tileTypeId": "custom-red-circle",
+      "name": "Custom Red Circle",
+      "image": "tiles/custom-red-circle.png",
+      "col": 11,
+      "row": 3,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 10,
+      "customChar": "1"
+    },
+    {
+      "id": "placed_41",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 9,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 8,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_42",
+      "tileTypeId": "coin",
+      "name": "Coin",
+      "image": "tiles/coin.png",
+      "col": 10,
+      "row": 4,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 8,
+      "customChar": "",
+      "pixelOffsetX": -20,
+      "pixelOffsetY": -10
+    },
+    {
+      "id": "placed_43",
+      "tileTypeId": "chest",
+      "name": "Treasure Chest",
+      "image": "tiles/chest.png",
+      "col": 8,
+      "row": 4,
+      "width": 1.2,
+      "height": 1.2,
+      "revealed": true,
+      "rotation": 270,
+      "zIndex": 8,
+      "customChar": "",
+      "pixelOffsetX": -10,
+      "pixelOffsetY": -20
+    },
+    {
+      "id": "tile_44",
+      "tileTypeId": "boss",
+      "name": "Boss",
+      "image": "monsters/boss.svg",
+      "col": 8,
+      "row": 2,
+      "x": 246,
+      "y": 82,
+      "width": 1,
+      "height": 1,
+      "rotation": 0,
+      "zIndex": 8,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": false
+        }
+      },
+      "pixelOffsetX": 0,
+      "pixelOffsetY": 30
+    },
+    {
+      "id": "tile_45",
+      "tileTypeId": "sun-demon",
+      "name": "Sun Demon",
+      "image": "monsters/sun-demon.png",
+      "col": 8,
+      "row": 1,
+      "x": 246,
+      "y": 82,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 330,
+      "zIndex": 8,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": true
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": 40
+    },
+    {
+      "id": "placed_46",
+      "tileTypeId": "altar-h",
+      "name": "Altar (H)",
+      "image": "tiles/altar-horizontal.png",
+      "col": 8,
+      "row": 2,
+      "width": 1,
+      "height": 1,
+      "revealed": true,
+      "rotation": 0,
+      "zIndex": 8,
+      "customChar": "",
+      "pixelOffsetX": -40,
+      "pixelOffsetY": -30
+    },
+    {
+      "id": "tile_47",
+      "tileTypeId": "night-demon",
+      "name": "Night Demon",
+      "image": "monsters/night-demon.png",
+      "col": 8,
+      "row": 3,
+      "x": 246,
+      "y": 82,
+      "width": 1.4,
+      "height": 1.4,
+      "rotation": 330,
+      "zIndex": 8,
+      "revealed": true,
+      "isMonster": true,
+      "players": {
+        "2": {
+          "enabled": true,
+          "elite": false
+        },
+        "3": {
+          "enabled": true,
+          "elite": false
+        },
+        "4": {
+          "enabled": true,
+          "elite": true
+        }
+      },
+      "pixelOffsetX": 20,
+      "pixelOffsetY": -10
+    }
+  ],
+  "nextId": 48,
+  "scenario": {
+    "missionTitle": "Mission Name",
+    "objectives": "Kill the Colorless",
+    "loot": "First chest = Crystal of Zenith\nSecound chest = Sphere of Midnight\n",
+    "intro": "Poison and immobilize traps",
+    "room1": "",
+    "room2": "",
+    "room3": "",
+    "rules": "Start of everyround, Light and Dark to max. Fire, Ice, Wind and Earth to inert.",
+    "conclusion": "Treasure chest. 68 bossroom",
+    "notes": ""
+  },
+  "savedAt": "2026-02-24T10:17:40.172Z"
+}
